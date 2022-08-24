@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "GfOtMxUGZZf6F8U0RAguZbLkrIyh+VyXIMe2NKQmdskWRD5Ju/SQIWr3BwJqRYVNGpIpJFRKg9Q8tPutjVUZXg==",
+  "success": true,
+  "projectFilePath": "D:\\Frank´s User Data\\OneDrive\\Documentos\\Universidad de Caldas\\Cic;lo 3 - Desarrollo de Software\\BikeStore\\BikeStore.APP\\BikeStore.App.Dominio\\BikeStore.App.Dominio.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\quihu\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\quihu\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
