@@ -6,13 +6,13 @@ namespace BikeStore.App.Persistencia
 {
     public class AppContext : DbContext
     {
-        public Dbset<Persona> Personas { get; set; }
-        public Dbset<Comercial> Comerciales { get; set; }
+        public DbSet<Persona> Personas { get; set; }
+        public DbSet<Comercial> Comerciales { get; set; }
 
-        protected override void OnConfiguring(DbContexOptionBuilder optionsBuilder){
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder){
             if(!optionsBuilder.IsConfigured){
                 optionsBuilder
-                .UseSqlServer();
+                .UseSqlServer("Server=HP-PAVILION-GAM; Database=testProyects; Integrated Security=True;");
             }
         }
     }

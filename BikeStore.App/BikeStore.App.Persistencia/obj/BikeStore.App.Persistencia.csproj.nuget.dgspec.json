@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Frank´s User Data\\OneDrive\\Documentos\\Universidad de Caldas\\Cic;lo 3 - Desarrollo de Software\\BikeStore\\BikeStore.App\\BikeStore.App.Persistencia\\BikeStore.App.Persistencia.csproj": {}
+    "D:\\Frank´s User Data\\OneDrive\\Documentos\\Universidad de Caldas\\Ciclo 3 - Desarrollo de Software\\BikeStore\\BikeStore.App\\BikeStore.App.Persistencia\\BikeStore.App.Persistencia.csproj": {}
   },
   "projects": {
-    "D:\\Frank´s User Data\\OneDrive\\Documentos\\Universidad de Caldas\\Cic;lo 3 - Desarrollo de Software\\BikeStore\\BikeStore.App\\BikeStore.App.Dominio\\BikeStore.App.Dominio.csproj": {
+    "D:\\Frank´s User Data\\OneDrive\\Documentos\\Universidad de Caldas\\Ciclo 3 - Desarrollo de Software\\BikeStore\\BikeStore.App\\BikeStore.App.Dominio\\BikeStore.App.Dominio.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Frank´s User Data\\OneDrive\\Documentos\\Universidad de Caldas\\Cic;lo 3 - Desarrollo de Software\\BikeStore\\BikeStore.App\\BikeStore.App.Dominio\\BikeStore.App.Dominio.csproj",
+        "projectUniqueName": "D:\\Frank´s User Data\\OneDrive\\Documentos\\Universidad de Caldas\\Ciclo 3 - Desarrollo de Software\\BikeStore\\BikeStore.App\\BikeStore.App.Dominio\\BikeStore.App.Dominio.csproj",
         "projectName": "BikeStore.App.Dominio",
-        "projectPath": "D:\\Frank´s User Data\\OneDrive\\Documentos\\Universidad de Caldas\\Cic;lo 3 - Desarrollo de Software\\BikeStore\\BikeStore.App\\BikeStore.App.Dominio\\BikeStore.App.Dominio.csproj",
+        "projectPath": "D:\\Frank´s User Data\\OneDrive\\Documentos\\Universidad de Caldas\\Ciclo 3 - Desarrollo de Software\\BikeStore\\BikeStore.App\\BikeStore.App.Dominio\\BikeStore.App.Dominio.csproj",
         "packagesPath": "C:\\Users\\quihu\\.nuget\\packages\\",
-        "outputPath": "D:\\Frank´s User Data\\OneDrive\\Documentos\\Universidad de Caldas\\Cic;lo 3 - Desarrollo de Software\\BikeStore\\BikeStore.App\\BikeStore.App.Dominio\\obj\\",
+        "outputPath": "D:\\Frank´s User Data\\OneDrive\\Documentos\\Universidad de Caldas\\Ciclo 3 - Desarrollo de Software\\BikeStore\\BikeStore.App\\BikeStore.App.Dominio\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\quihu\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -57,14 +57,14 @@
         }
       }
     },
-    "D:\\Frank´s User Data\\OneDrive\\Documentos\\Universidad de Caldas\\Cic;lo 3 - Desarrollo de Software\\BikeStore\\BikeStore.App\\BikeStore.App.Persistencia\\BikeStore.App.Persistencia.csproj": {
+    "D:\\Frank´s User Data\\OneDrive\\Documentos\\Universidad de Caldas\\Ciclo 3 - Desarrollo de Software\\BikeStore\\BikeStore.App\\BikeStore.App.Persistencia\\BikeStore.App.Persistencia.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Frank´s User Data\\OneDrive\\Documentos\\Universidad de Caldas\\Cic;lo 3 - Desarrollo de Software\\BikeStore\\BikeStore.App\\BikeStore.App.Persistencia\\BikeStore.App.Persistencia.csproj",
+        "projectUniqueName": "D:\\Frank´s User Data\\OneDrive\\Documentos\\Universidad de Caldas\\Ciclo 3 - Desarrollo de Software\\BikeStore\\BikeStore.App\\BikeStore.App.Persistencia\\BikeStore.App.Persistencia.csproj",
         "projectName": "BikeStore.App.Persistencia",
-        "projectPath": "D:\\Frank´s User Data\\OneDrive\\Documentos\\Universidad de Caldas\\Cic;lo 3 - Desarrollo de Software\\BikeStore\\BikeStore.App\\BikeStore.App.Persistencia\\BikeStore.App.Persistencia.csproj",
+        "projectPath": "D:\\Frank´s User Data\\OneDrive\\Documentos\\Universidad de Caldas\\Ciclo 3 - Desarrollo de Software\\BikeStore\\BikeStore.App\\BikeStore.App.Persistencia\\BikeStore.App.Persistencia.csproj",
         "packagesPath": "C:\\Users\\quihu\\.nuget\\packages\\",
-        "outputPath": "D:\\Frank´s User Data\\OneDrive\\Documentos\\Universidad de Caldas\\Cic;lo 3 - Desarrollo de Software\\BikeStore\\BikeStore.App\\BikeStore.App.Persistencia\\obj\\",
+        "outputPath": "D:\\Frank´s User Data\\OneDrive\\Documentos\\Universidad de Caldas\\Ciclo 3 - Desarrollo de Software\\BikeStore\\BikeStore.App\\BikeStore.App.Persistencia\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\quihu\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -78,8 +78,8 @@
         "frameworks": {
           "netstandard2.1": {
             "projectReferences": {
-              "D:\\Frank´s User Data\\OneDrive\\Documentos\\Universidad de Caldas\\Cic;lo 3 - Desarrollo de Software\\BikeStore\\BikeStore.App\\BikeStore.App.Dominio\\BikeStore.App.Dominio.csproj": {
-                "projectPath": "D:\\Frank´s User Data\\OneDrive\\Documentos\\Universidad de Caldas\\Cic;lo 3 - Desarrollo de Software\\BikeStore\\BikeStore.App\\BikeStore.App.Dominio\\BikeStore.App.Dominio.csproj"
+              "D:\\Frank´s User Data\\OneDrive\\Documentos\\Universidad de Caldas\\Ciclo 3 - Desarrollo de Software\\BikeStore\\BikeStore.App\\BikeStore.App.Dominio\\BikeStore.App.Dominio.csproj": {
+                "projectPath": "D:\\Frank´s User Data\\OneDrive\\Documentos\\Universidad de Caldas\\Ciclo 3 - Desarrollo de Software\\BikeStore\\BikeStore.App\\BikeStore.App.Dominio\\BikeStore.App.Dominio.csproj"
               }
             }
           }

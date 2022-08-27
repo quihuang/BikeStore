@@ -7,3 +7,21 @@ D:\Frank´s User Data\OneDrive\Documentos\Universidad de Caldas\Cic;lo 3 - Desar
 D:\Frank´s User Data\OneDrive\Documentos\Universidad de Caldas\Cic;lo 3 - Desarrollo de Software\BikeStore\BikeStore.App\BikeStore.App.Dominio\obj\Debug\netstandard2.0\BikeStore.App.Dominio.csproj.CoreCompileInputs.cache
 D:\Frank´s User Data\OneDrive\Documentos\Universidad de Caldas\Cic;lo 3 - Desarrollo de Software\BikeStore\BikeStore.App\BikeStore.App.Dominio\obj\Debug\netstandard2.0\BikeStore.App.Dominio.dll
 D:\Frank´s User Data\OneDrive\Documentos\Universidad de Caldas\Cic;lo 3 - Desarrollo de Software\BikeStore\BikeStore.App\BikeStore.App.Dominio\obj\Debug\netstandard2.0\BikeStore.App.Dominio.pdb
+D:\Frank´s User Data\OneDrive\Documentos\Universidad de Caldas\Ciclo3-DesarrollodeSoftware\BikeStore\BikeStore.App\BikeStore.App.Dominio\bin\Debug\netstandard2.0\BikeStore.App.Dominio.deps.json
+D:\Frank´s User Data\OneDrive\Documentos\Universidad de Caldas\Ciclo3-DesarrollodeSoftware\BikeStore\BikeStore.App\BikeStore.App.Dominio\bin\Debug\netstandard2.0\BikeStore.App.Dominio.dll
+D:\Frank´s User Data\OneDrive\Documentos\Universidad de Caldas\Ciclo3-DesarrollodeSoftware\BikeStore\BikeStore.App\BikeStore.App.Dominio\bin\Debug\netstandard2.0\BikeStore.App.Dominio.pdb
+D:\Frank´s User Data\OneDrive\Documentos\Universidad de Caldas\Ciclo3-DesarrollodeSoftware\BikeStore\BikeStore.App\BikeStore.App.Dominio\obj\Debug\netstandard2.0\BikeStore.App.Dominio.csprojAssemblyReference.cache
+D:\Frank´s User Data\OneDrive\Documentos\Universidad de Caldas\Ciclo3-DesarrollodeSoftware\BikeStore\BikeStore.App\BikeStore.App.Dominio\obj\Debug\netstandard2.0\BikeStore.App.Dominio.AssemblyInfoInputs.cache
+D:\Frank´s User Data\OneDrive\Documentos\Universidad de Caldas\Ciclo3-DesarrollodeSoftware\BikeStore\BikeStore.App\BikeStore.App.Dominio\obj\Debug\netstandard2.0\BikeStore.App.Dominio.AssemblyInfo.cs
+D:\Frank´s User Data\OneDrive\Documentos\Universidad de Caldas\Ciclo3-DesarrollodeSoftware\BikeStore\BikeStore.App\BikeStore.App.Dominio\obj\Debug\netstandard2.0\BikeStore.App.Dominio.csproj.CoreCompileInputs.cache
+D:\Frank´s User Data\OneDrive\Documentos\Universidad de Caldas\Ciclo3-DesarrollodeSoftware\BikeStore\BikeStore.App\BikeStore.App.Dominio\obj\Debug\netstandard2.0\BikeStore.App.Dominio.dll
+D:\Frank´s User Data\OneDrive\Documentos\Universidad de Caldas\Ciclo3-DesarrollodeSoftware\BikeStore\BikeStore.App\BikeStore.App.Dominio\obj\Debug\netstandard2.0\BikeStore.App.Dominio.pdb
+D:\Frank´s User Data\OneDrive\Documentos\Universidad de Caldas\Ciclo 3 - Desarrollo de Software\BikeStore\BikeStore.App\BikeStore.App.Dominio\bin\Debug\netstandard2.0\BikeStore.App.Dominio.deps.json
+D:\Frank´s User Data\OneDrive\Documentos\Universidad de Caldas\Ciclo 3 - Desarrollo de Software\BikeStore\BikeStore.App\BikeStore.App.Dominio\bin\Debug\netstandard2.0\BikeStore.App.Dominio.dll
+D:\Frank´s User Data\OneDrive\Documentos\Universidad de Caldas\Ciclo 3 - Desarrollo de Software\BikeStore\BikeStore.App\BikeStore.App.Dominio\bin\Debug\netstandard2.0\BikeStore.App.Dominio.pdb
+D:\Frank´s User Data\OneDrive\Documentos\Universidad de Caldas\Ciclo 3 - Desarrollo de Software\BikeStore\BikeStore.App\BikeStore.App.Dominio\obj\Debug\netstandard2.0\BikeStore.App.Dominio.csprojAssemblyReference.cache
+D:\Frank´s User Data\OneDrive\Documentos\Universidad de Caldas\Ciclo 3 - Desarrollo de Software\BikeStore\BikeStore.App\BikeStore.App.Dominio\obj\Debug\netstandard2.0\BikeStore.App.Dominio.AssemblyInfoInputs.cache
+D:\Frank´s User Data\OneDrive\Documentos\Universidad de Caldas\Ciclo 3 - Desarrollo de Software\BikeStore\BikeStore.App\BikeStore.App.Dominio\obj\Debug\netstandard2.0\BikeStore.App.Dominio.AssemblyInfo.cs
+D:\Frank´s User Data\OneDrive\Documentos\Universidad de Caldas\Ciclo 3 - Desarrollo de Software\BikeStore\BikeStore.App\BikeStore.App.Dominio\obj\Debug\netstandard2.0\BikeStore.App.Dominio.csproj.CoreCompileInputs.cache
+D:\Frank´s User Data\OneDrive\Documentos\Universidad de Caldas\Ciclo 3 - Desarrollo de Software\BikeStore\BikeStore.App\BikeStore.App.Dominio\obj\Debug\netstandard2.0\BikeStore.App.Dominio.dll
+D:\Frank´s User Data\OneDrive\Documentos\Universidad de Caldas\Ciclo 3 - Desarrollo de Software\BikeStore\BikeStore.App\BikeStore.App.Dominio\obj\Debug\netstandard2.0\BikeStore.App.Dominio.pdb

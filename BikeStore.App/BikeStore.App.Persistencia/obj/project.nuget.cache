@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xmjmAUBWkgkQ3e6msg0WRW0bjMLoUjBjRv54dPfIzonBvs7nDGK9qrjDb0/4nqAUU9O1Ntq/T2899GAUPgkUPg==",
+  "dgSpecHash": "18P8jkZQHNcuPA3sWdaD3823CaG3z1NO96yCAvnAGtplZSUkuLAHxGRsWZ5cfiK0vGYeJyeB0QiLsvlmkhfRCg==",
   "success": true,
-  "projectFilePath": "D:\\Frank´s User Data\\OneDrive\\Documentos\\Universidad de Caldas\\Cic;lo 3 - Desarrollo de Software\\BikeStore\\BikeStore.App\\BikeStore.App.Persistencia\\BikeStore.App.Persistencia.csproj",
+  "projectFilePath": "D:\\Frank´s User Data\\OneDrive\\Documentos\\Universidad de Caldas\\Ciclo 3 - Desarrollo de Software\\BikeStore\\BikeStore.App\\BikeStore.App.Persistencia\\BikeStore.App.Persistencia.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\quihu\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\quihu\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
