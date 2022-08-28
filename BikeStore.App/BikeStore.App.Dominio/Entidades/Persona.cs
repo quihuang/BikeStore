@@ -9,6 +9,5 @@ namespace BikeStore.App.Dominio
         public String Nombre { get; set; }
         public String Apelido { get; set; }
         public String NumeroTelefono { get; set; }
-        public Genero Genero { get; set; }
     }
 }
