@@ -17,8 +17,7 @@ namespace BikeStore.App.Consola
                 Cedula = "1144213155",
                 Nombre = "Franklin",
                 Apelido = "Quihuang",
-                NumeroTelefono = "3205282231",
-                Genero = 0
+                NumeroTelefono = "3205282231"
             };
 
            var resultInsert = _repositorioPersona.AddPersona(persona);

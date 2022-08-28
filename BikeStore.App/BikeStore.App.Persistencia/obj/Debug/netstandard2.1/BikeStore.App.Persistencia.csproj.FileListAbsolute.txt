@@ -34,3 +34,15 @@ D:\Frank´s User Data\OneDrive\Documentos\Universidad de Caldas\Ciclo 3 - Desarr
 D:\Frank´s User Data\OneDrive\Documentos\Universidad de Caldas\Ciclo 3 - Desarrollo de Software\BikeStore\BikeStore.App\BikeStore.App.Persistencia\obj\Debug\netstandard2.1\BikeStore.App.Persistencia.csproj.CopyComplete
 D:\Frank´s User Data\OneDrive\Documentos\Universidad de Caldas\Ciclo 3 - Desarrollo de Software\BikeStore\BikeStore.App\BikeStore.App.Persistencia\obj\Debug\netstandard2.1\BikeStore.App.Persistencia.dll
 D:\Frank´s User Data\OneDrive\Documentos\Universidad de Caldas\Ciclo 3 - Desarrollo de Software\BikeStore\BikeStore.App\BikeStore.App.Persistencia\obj\Debug\netstandard2.1\BikeStore.App.Persistencia.pdb
+D:\1. Universidad de Caldas\BikeStore\BikeStore.App\BikeStore.App.Persistencia\bin\Debug\netstandard2.1\BikeStore.App.Persistencia.deps.json
+D:\1. Universidad de Caldas\BikeStore\BikeStore.App\BikeStore.App.Persistencia\bin\Debug\netstandard2.1\BikeStore.App.Persistencia.dll
+D:\1. Universidad de Caldas\BikeStore\BikeStore.App\BikeStore.App.Persistencia\bin\Debug\netstandard2.1\BikeStore.App.Persistencia.pdb
+D:\1. Universidad de Caldas\BikeStore\BikeStore.App\BikeStore.App.Persistencia\bin\Debug\netstandard2.1\BikeStore.App.Dominio.dll
+D:\1. Universidad de Caldas\BikeStore\BikeStore.App\BikeStore.App.Persistencia\bin\Debug\netstandard2.1\BikeStore.App.Dominio.pdb
+D:\1. Universidad de Caldas\BikeStore\BikeStore.App\BikeStore.App.Persistencia\obj\Debug\netstandard2.1\BikeStore.App.Persistencia.csprojAssemblyReference.cache
+D:\1. Universidad de Caldas\BikeStore\BikeStore.App\BikeStore.App.Persistencia\obj\Debug\netstandard2.1\BikeStore.App.Persistencia.AssemblyInfoInputs.cache
+D:\1. Universidad de Caldas\BikeStore\BikeStore.App\BikeStore.App.Persistencia\obj\Debug\netstandard2.1\BikeStore.App.Persistencia.AssemblyInfo.cs
+D:\1. Universidad de Caldas\BikeStore\BikeStore.App\BikeStore.App.Persistencia\obj\Debug\netstandard2.1\BikeStore.App.Persistencia.csproj.CoreCompileInputs.cache
+D:\1. Universidad de Caldas\BikeStore\BikeStore.App\BikeStore.App.Persistencia\obj\Debug\netstandard2.1\BikeStore.App.Persistencia.csproj.CopyComplete
+D:\1. Universidad de Caldas\BikeStore\BikeStore.App\BikeStore.App.Persistencia\obj\Debug\netstandard2.1\BikeStore.App.Persistencia.dll
+D:\1. Universidad de Caldas\BikeStore\BikeStore.App\BikeStore.App.Persistencia\obj\Debug\netstandard2.1\BikeStore.App.Persistencia.pdb
