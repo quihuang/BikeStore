@@ -14,15 +14,35 @@ namespace BikeStore.App.Persistencia
             _appContext = context;
         }
 
-        IEnumerable<Persona> IRepositorioPersona.GetAllPersonas(){
-            return null;
+        Trabajador IRepositorioPersona.Buscar(int id){
+            return _appContext.Trabajadores.Find(id);
         }
+
+        IEnumerable<Persona> IRepositorioPersona.GetAllPersonas(){
+             return _appContext.Personas;
+        }
+
         int IRepositorioPersona.AddPersona(Persona persona){
             var personaLocal = _appContext.Personas.Add(persona);
             var result = _appContext.SaveChanges();
             
             return result;
         }
+
+        int IRepositorioPersona.AddTrabajador(Trabajador Trabajador){
+            
+            var TrabajadorLocal = _appContext.Trabajadores.Add(Trabajador);
+            var result = _appContext.SaveChanges();
+            
+            return result;
+        }
+
+        IEnumerable<Persona> IRepositorioPersona.GetAllPersonasForName (string name) {
+            var persona = _appContext.Personas.Where( p => p.Nombre == name );
+            //var persona = _appContext.Personas.Where( p => p.Nombre.contains(name));
+            return persona;
+        }
+
         int IRepositorioPersona.UpdatePersona(Persona persona){
             return 0;
         }
@@ -31,6 +51,16 @@ namespace BikeStore.App.Persistencia
         }
         Persona IRepositorioPersona.GetPersona(int idPersona){ 
             return null;
+        }
+
+        int IRepositorioPersona.ActualizarTrabajador(Trabajador trabajador){
+            _appContext.Trabajadores.Update(trabajador);
+            return _appContext.SaveChanges();
+        }
+
+        int IRepositorioPersona.EliminarTrabajador(Trabajador trabajador){
+            _appContext.Trabajadores.Remove(trabajador);
+            return _appContext.SaveChanges();
         }
     } 
 }

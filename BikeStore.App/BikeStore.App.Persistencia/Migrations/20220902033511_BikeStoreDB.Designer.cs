@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BikeStore.App.Persistencia.Migrations
 {
     [DbContext(typeof(AppContext))]
-    [Migration("20220828230457_BikeStoreDB")]
+    [Migration("20220902033511_BikeStoreDB")]
     partial class BikeStoreDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,9 +28,6 @@ namespace BikeStore.App.Persistencia.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int?>("BodegueroId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Descripcion")
                         .HasColumnType("nvarchar(max)");
 
@@ -43,11 +40,14 @@ namespace BikeStore.App.Persistencia.Migrations
                     b.Property<string>("Nombre")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("TrabajadorId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("BodegueroId");
-
                     b.HasIndex("InventarioId");
+
+                    b.HasIndex("TrabajadorId");
 
                     b.ToTable("ConstanciaRecibidos");
                 });
@@ -88,7 +88,7 @@ namespace BikeStore.App.Persistencia.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<string>("Apelido")
+                    b.Property<string>("Apellido")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Cedula")
@@ -142,13 +142,13 @@ namespace BikeStore.App.Persistencia.Migrations
                     b.Property<int?>("ClienteId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ComercialId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("Fecha")
                         .HasColumnType("datetime2");
 
                     b.Property<int?>("InventarioId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("TrabajadorId")
                         .HasColumnType("int");
 
                     b.Property<int>("ValorVenta")
@@ -158,9 +158,9 @@ namespace BikeStore.App.Persistencia.Migrations
 
                     b.HasIndex("ClienteId");
 
-                    b.HasIndex("ComercialId");
-
                     b.HasIndex("InventarioId");
+
+                    b.HasIndex("TrabajadorId");
 
                     b.ToTable("Venta");
                 });
@@ -194,51 +194,29 @@ namespace BikeStore.App.Persistencia.Migrations
                     b.HasDiscriminator().HasValue("Usuario");
                 });
 
-            modelBuilder.Entity("BikeStore.App.Dominio.Bodeguero", b =>
-                {
-                    b.HasBaseType("BikeStore.App.Dominio.Usuario");
-
-                    b.Property<int>("Salario")
-                        .HasColumnType("int")
-                        .HasColumnName("Bodeguero_Salario");
-
-                    b.HasDiscriminator().HasValue("Bodeguero");
-                });
-
-            modelBuilder.Entity("BikeStore.App.Dominio.Comercial", b =>
-                {
-                    b.HasBaseType("BikeStore.App.Dominio.Usuario");
-
-                    b.Property<int>("Salario")
-                        .HasColumnType("int")
-                        .HasColumnName("Comercial_Salario");
-
-                    b.HasDiscriminator().HasValue("Comercial");
-                });
-
-            modelBuilder.Entity("BikeStore.App.Dominio.JefeOperativo", b =>
+            modelBuilder.Entity("BikeStore.App.Dominio.Trabajador", b =>
                 {
                     b.HasBaseType("BikeStore.App.Dominio.Usuario");
 
                     b.Property<int>("Salario")
                         .HasColumnType("int");
 
-                    b.HasDiscriminator().HasValue("JefeOperativo");
+                    b.HasDiscriminator().HasValue("Trabajador");
                 });
 
             modelBuilder.Entity("BikeStore.App.Dominio.ConstanciaRecibido", b =>
                 {
-                    b.HasOne("BikeStore.App.Dominio.Bodeguero", "Bodeguero")
-                        .WithMany()
-                        .HasForeignKey("BodegueroId");
-
                     b.HasOne("BikeStore.App.Dominio.Inventario", "Inventario")
                         .WithMany()
                         .HasForeignKey("InventarioId");
 
-                    b.Navigation("Bodeguero");
+                    b.HasOne("BikeStore.App.Dominio.Trabajador", "Trabajador")
+                        .WithMany()
+                        .HasForeignKey("TrabajadorId");
 
                     b.Navigation("Inventario");
+
+                    b.Navigation("Trabajador");
                 });
 
             modelBuilder.Entity("BikeStore.App.Dominio.Inventario", b =>
@@ -256,19 +234,19 @@ namespace BikeStore.App.Persistencia.Migrations
                         .WithMany()
                         .HasForeignKey("ClienteId");
 
-                    b.HasOne("BikeStore.App.Dominio.Comercial", "Comercial")
-                        .WithMany()
-                        .HasForeignKey("ComercialId");
-
                     b.HasOne("BikeStore.App.Dominio.Inventario", "Inventario")
                         .WithMany()
                         .HasForeignKey("InventarioId");
 
+                    b.HasOne("BikeStore.App.Dominio.Trabajador", "Trabajador")
+                        .WithMany()
+                        .HasForeignKey("TrabajadorId");
+
                     b.Navigation("Cliente");
 
-                    b.Navigation("Comercial");
-
                     b.Navigation("Inventario");
+
+                    b.Navigation("Trabajador");
                 });
 #pragma warning restore 612, 618
         }

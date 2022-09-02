@@ -15,7 +15,7 @@ namespace BikeStore.App.Persistencia.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Cedula = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Apelido = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Apellido = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     NumeroTelefono = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Discriminator = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -23,8 +23,6 @@ namespace BikeStore.App.Persistencia.Migrations
                     NombreUsuario = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Contraseña = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Rol = table.Column<int>(type: "int", nullable: true),
-                    Bodeguero_Salario = table.Column<int>(type: "int", nullable: true),
-                    Comercial_Salario = table.Column<int>(type: "int", nullable: true),
                     Salario = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -78,7 +76,7 @@ namespace BikeStore.App.Persistencia.Migrations
                     Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Descripcion = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Fecha = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    BodegueroId = table.Column<int>(type: "int", nullable: true),
+                    TrabajadorId = table.Column<int>(type: "int", nullable: true),
                     InventarioId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -91,8 +89,8 @@ namespace BikeStore.App.Persistencia.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_ConstanciaRecibidos_Personas_BodegueroId",
-                        column: x => x.BodegueroId,
+                        name: "FK_ConstanciaRecibidos_Personas_TrabajadorId",
+                        column: x => x.TrabajadorId,
                         principalTable: "Personas",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -107,7 +105,7 @@ namespace BikeStore.App.Persistencia.Migrations
                     Fecha = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CantidadProducto = table.Column<int>(type: "int", nullable: false),
                     ValorVenta = table.Column<int>(type: "int", nullable: false),
-                    ComercialId = table.Column<int>(type: "int", nullable: true),
+                    TrabajadorId = table.Column<int>(type: "int", nullable: true),
                     ClienteId = table.Column<int>(type: "int", nullable: true),
                     InventarioId = table.Column<int>(type: "int", nullable: true)
                 },
@@ -127,22 +125,22 @@ namespace BikeStore.App.Persistencia.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Venta_Personas_ComercialId",
-                        column: x => x.ComercialId,
+                        name: "FK_Venta_Personas_TrabajadorId",
+                        column: x => x.TrabajadorId,
                         principalTable: "Personas",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_ConstanciaRecibidos_BodegueroId",
-                table: "ConstanciaRecibidos",
-                column: "BodegueroId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_ConstanciaRecibidos_InventarioId",
                 table: "ConstanciaRecibidos",
                 column: "InventarioId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ConstanciaRecibidos_TrabajadorId",
+                table: "ConstanciaRecibidos",
+                column: "TrabajadorId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Inventarios_ProductoId",
@@ -155,14 +153,14 @@ namespace BikeStore.App.Persistencia.Migrations
                 column: "ClienteId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Venta_ComercialId",
-                table: "Venta",
-                column: "ComercialId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Venta_InventarioId",
                 table: "Venta",
                 column: "InventarioId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Venta_TrabajadorId",
+                table: "Venta",
+                column: "TrabajadorId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

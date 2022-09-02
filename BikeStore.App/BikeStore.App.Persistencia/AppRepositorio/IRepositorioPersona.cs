@@ -12,5 +12,11 @@ namespace BikeStore.App.Persistencia
         int UpdatePersona(Persona Persona);
         void DeletePersona(int idPersona);
         Persona GetPersona(int idPersona);
+        IEnumerable<Persona> GetAllPersonasForName(string name);
+        int AddTrabajador(Trabajador Trabajador);
+        int ActualizarTrabajador(Trabajador Trabajador);
+        Trabajador Buscar(int id);
+        int EliminarTrabajador(Trabajador Trabajador);
+
     } 
 }

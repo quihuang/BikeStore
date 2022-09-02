@@ -8,7 +8,7 @@ namespace BikeStore.App.Dominio
         public String Nombre { get; set; }
         public String Descripcion { get; set; }
         public DateTime Fecha { get; set; }
-        public Bodeguero Bodeguero { get; set; }
+        public Trabajador Trabajador { get; set; }
         public Inventario Inventario { get; set; }
     }
 }
