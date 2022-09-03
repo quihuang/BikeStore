@@ -11,23 +11,23 @@ namespace BikeStore.App.Consola
 
         static void Main(string[] args)
         {
-           //crearTrabajador();
+           crearTrabajador();
            //ObtenerTodasPersonas();
            //ObtenerPersonasPorNombre("Dario");
            //ActualizarTrabajador();
-           EliminarTrabajador(4);
+           //EliminarTrabajador(4);
         }
 
         public static void crearTrabajador (){
             var trabajador = new Trabajador{
-                Cedula = "1144213155",
-                Nombre = "AAAA",
-                Apellido = "AAAA",
-                NumeroTelefono = "AAAAAA",
-                NombreUsuario = "Sterling",
-                Contraseña = "666666",
-                Rol = 4,
-                Salario = 324329434
+                Cedula = "00000",
+                Nombre = "Gabrial",
+                Apellido = "Zapaata",
+                NumeroTelefono = "sdad",
+                NombreUsuario = "Stesadasasdrling",
+                Contraseña = "adlajdnawanw",
+                Rol = 2,
+                Salario = 4324324
             };
 
             var resultInsert = _repositorioPersona.AddTrabajador(trabajador);
