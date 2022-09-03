@@ -18,7 +18,8 @@ namespace BikeStore.App.Persistencia
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder){
             if(!optionsBuilder.IsConfigured){
                 optionsBuilder
-                .UseSqlServer("Server=HP-PAVILION-GAM; Database=BikeStoresDB; Integrated Security=True;");
+                //.UseSqlServer("Server=HP-PAVILION-GAM; Database=BikeStoresDB; Integrated Security=True;");
+                .UseSqlServer("Data Source = (localdb)\\MSSQLLocalDB; Initial Catalog = BikeStoresDB");
             }
         }
     }
