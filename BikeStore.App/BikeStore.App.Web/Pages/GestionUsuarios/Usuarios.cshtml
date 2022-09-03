@@ -4,53 +4,148 @@
     ViewData["Title"] = "Gestion Usuarios";
 }
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-2 col-sm-12">
+<div class="container-fluid px-4">
 
-    </div>
-    <div class="col-md-8 col-sm-12">
-      <h1>Registro de Trabajadores</h1>
-        <form method="post">
-            <div class="form-group">
-              <label for="nombre">Cedula</label>
-              <input type="number" name="" id="cedula" class="form-control" placeholder="Ingrese su numero de cedula" aria-describedby="helpId" minlength="3" maxlength="50">
-            </div>
-            <div class="form-group">
-              <label for="nombre">Nombres</label>
-              <input type="text" name="" id="nombre" class="form-control" placeholder="Ingrese el nombre" aria-describedby="helpId" minlength="3" maxlength="50">
-            </div>
-            <div class="form-group">
-              <label for="apellido">Apellidos</label>
-              <input type="text" name="" id="apellido" class="form-control" placeholder="Ingrese el apellido" aria-describedby="helpId" minlength="3" maxlength="50">
-            </div>
-            <div class="form-group">
-              <label for="apellido">Telefono</label>
-              <input type="number" name="" id="telefono" class="form-control" placeholder="Ingrese el Telefono" aria-describedby="helpId" minlength="3" maxlength="50">
-            </div>
-            <div class="form-group">
-              <label for="nombreUsuario">Nombre usuario</label>
-              <input type="text" name="" id="nombreUsuario" class="form-control" placeholder="Ingrese el Nombre usuario" aria-describedby="helpId" minlength="3" maxlength="50">
-            </div>
-             <div class="form-group">
-              <label for="contraseña">Contraseña</label>
-              <input type="password" name="" id="contraseña" class="form-control" placeholder="Ingrese contraseña" aria-describedby="helpId" minlength="3" maxlength="50">
-            </div>
-            <div class="form-group">
-              <label for="rol">rol</label>
-              <select class="form-select form-control" aria-label="Default select example">
-                <option selected>Seleccionar..</option>
-                <option value="1">Comercial</option>
-                <option value="2">Jefe Operativo</option>
-                <option value="3">Bodeguero</option>
-               </select>
-            </div>
-            <button type="submit" class="btn btn-primary">Crear</button>
-        </form>
+    <div>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            Crear
+        </button>
     </div>
 
-    <div class="col-md-2 col-sm-12">
-
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Registro de Trabajadores</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col">
+                            <form method="post">
+                                <div class="form-group">
+                                    <label for="nombre">Cedula</label>
+                                    <input type="number" name="" id="cedula" class="form-control"
+                                        placeholder="Ingrese su numero de cedula" aria-describedby="helpId"
+                                        minlength="3" maxlength="50">
+                                </div>
+                                <div class="form-group">
+                                    <label for="nombre">Nombres</label>
+                                    <input type="text" name="" id="nombre" class="form-control"
+                                        placeholder="Ingrese el nombre" aria-describedby="helpId" minlength="3"
+                                        maxlength="50">
+                                </div>
+                                <div class="form-group">
+                                    <label for="apellido">Apellidos</label>
+                                    <input type="text" name="" id="apellido" class="form-control"
+                                        placeholder="Ingrese el apellido" aria-describedby="helpId" minlength="3"
+                                        maxlength="50">
+                                </div>
+                                <div class="form-group">
+                                    <label for="apellido">Telefono</label>
+                                    <input type="number" name="" id="telefono" class="form-control"
+                                        placeholder="Ingrese el Telefono" aria-describedby="helpId" minlength="3"
+                                        maxlength="50">
+                                </div>
+                                <div class="form-group">
+                                    <label for="nombreUsuario">Nombre usuario</label>
+                                    <input type="text" name="" id="nombreUsuario" class="form-control"
+                                        placeholder="Ingrese el Nombre usuario" aria-describedby="helpId" minlength="3"
+                                        maxlength="50">
+                                </div>
+                                <div class="form-group">
+                                    <label for="contraseña">Contraseña</label>
+                                    <input type="password" name="" id="contraseña" class="form-control"
+                                        placeholder="Ingrese contraseña" aria-describedby="helpId" minlength="3"
+                                        maxlength="50">
+                                </div>
+                                <div class="form-group">
+                                    <label for="rol">rol</label>
+                                    <select class="form-select form-control" aria-label="Default select example">
+                                        <option selected>Seleccionar..</option>
+                                        <option value="1">Comercial</option>
+                                        <option value="2">Jefe Operativo</option>
+                                        <option value="3">Bodeguero</option>
+                                    </select>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Crear</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table me-1"></i>
+            Trabajadores
+        </div>
+        <div class="card-body">
+            <table id="datatablesSimple">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Position</th>
+                        <th>Office</th>
+                        <th>Age</th>
+                        <th>Start date</th>
+                        <th>Salary</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Name</th>
+                        <th>Position</th>
+                        <th>Office</th>
+                        <th>Age</th>
+                        <th>Start date</th>
+                        <th>Salary</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    <tr>
+                        <td>Tiger Nixon</td>
+                        <td>System Architect</td>
+                        <td>Edinburgh</td>
+                        <td>61</td>
+                        <td>2011/04/25</td>
+                        <td>$320,800</td>
+                    </tr>
+                    <tr>
+                        <td>Garrett Winters</td>
+                        <td>Accountant</td>
+                        <td>Tokyo</td>
+                        <td>63</td>
+                        <td>2011/07/25</td>
+                        <td>$170,750</td>
+                    </tr>
+                    <tr>
+                        <td>Ashton Cox</td>
+                        <td>Junior Technical Author</td>
+                        <td>San Francisco</td>
+                        <td>66</td>
+                        <td>2009/01/12</td>
+                        <td>$86,000</td>
+                    </tr>
+                    <tr>
+                        <td>Cedric Kelly</td>
+                        <td>Senior Javascript Developer</td>
+                        <td>Edinburgh</td>
+                        <td>22</td>
+                        <td>2012/03/29</td>
+                        <td>$433,060</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>

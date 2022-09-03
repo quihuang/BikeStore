@@ -80,3 +80,4 @@ D:\1. Universidad de Caldas\BikeStore\BikeStore.App\BikeStore.App.Web\bin\Debug\
 D:\1. Universidad de Caldas\BikeStore\BikeStore.App\BikeStore.App.Web\bin\Debug\netcoreapp3.1\BikeStore.App.Persistencia.dll
 D:\1. Universidad de Caldas\BikeStore\BikeStore.App\BikeStore.App.Web\bin\Debug\netcoreapp3.1\BikeStore.App.Dominio.pdb
 D:\1. Universidad de Caldas\BikeStore\BikeStore.App\BikeStore.App.Web\bin\Debug\netcoreapp3.1\BikeStore.App.Persistencia.pdb
+D:\1. Universidad de Caldas\BikeStore\BikeStore.App\BikeStore.App.Web\obj\Debug\netcoreapp3.1\Razor\Pages\ReporteGerencial\ReporteGerencial.cshtml.g.cs
