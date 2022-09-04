@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\CASA\\Downloads\\Programs\\BikeStore\\BikeStore.App\\BikeStore.App.Web\\BikeStore.App.Web.csproj": {}
+    "C:\\Users\\pcuser\\Desktop\\BACKUP BRIAN\\Mision Tic 2022 Programador\\CSharp\\BikeStore\\BikeStore.App\\BikeStore.App.Web\\BikeStore.App.Web.csproj": {}
   },
   "projects": {
-    "C:\\Users\\CASA\\Downloads\\Programs\\BikeStore\\BikeStore.App\\BikeStore.App.Dominio\\BikeStore.App.Dominio.csproj": {
+    "C:\\Users\\pcuser\\Desktop\\BACKUP BRIAN\\Mision Tic 2022 Programador\\CSharp\\BikeStore\\BikeStore.App\\BikeStore.App.Dominio\\BikeStore.App.Dominio.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\CASA\\Downloads\\Programs\\BikeStore\\BikeStore.App\\BikeStore.App.Dominio\\BikeStore.App.Dominio.csproj",
+        "projectUniqueName": "C:\\Users\\pcuser\\Desktop\\BACKUP BRIAN\\Mision Tic 2022 Programador\\CSharp\\BikeStore\\BikeStore.App\\BikeStore.App.Dominio\\BikeStore.App.Dominio.csproj",
         "projectName": "BikeStore.App.Dominio",
-        "projectPath": "C:\\Users\\CASA\\Downloads\\Programs\\BikeStore\\BikeStore.App\\BikeStore.App.Dominio\\BikeStore.App.Dominio.csproj",
-        "packagesPath": "C:\\Users\\CASA\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\CASA\\Downloads\\Programs\\BikeStore\\BikeStore.App\\BikeStore.App.Dominio\\obj\\",
+        "projectPath": "C:\\Users\\pcuser\\Desktop\\BACKUP BRIAN\\Mision Tic 2022 Programador\\CSharp\\BikeStore\\BikeStore.App\\BikeStore.App.Dominio\\BikeStore.App.Dominio.csproj",
+        "packagesPath": "C:\\Users\\pcuser\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\pcuser\\Desktop\\BACKUP BRIAN\\Mision Tic 2022 Programador\\CSharp\\BikeStore\\BikeStore.App\\BikeStore.App.Dominio\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\CASA\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\pcuser\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.0"
@@ -59,17 +59,17 @@
         }
       }
     },
-    "C:\\Users\\CASA\\Downloads\\Programs\\BikeStore\\BikeStore.App\\BikeStore.App.Persistencia\\BikeStore.App.Persistencia.csproj": {
+    "C:\\Users\\pcuser\\Desktop\\BACKUP BRIAN\\Mision Tic 2022 Programador\\CSharp\\BikeStore\\BikeStore.App\\BikeStore.App.Persistencia\\BikeStore.App.Persistencia.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\CASA\\Downloads\\Programs\\BikeStore\\BikeStore.App\\BikeStore.App.Persistencia\\BikeStore.App.Persistencia.csproj",
+        "projectUniqueName": "C:\\Users\\pcuser\\Desktop\\BACKUP BRIAN\\Mision Tic 2022 Programador\\CSharp\\BikeStore\\BikeStore.App\\BikeStore.App.Persistencia\\BikeStore.App.Persistencia.csproj",
         "projectName": "BikeStore.App.Persistencia",
-        "projectPath": "C:\\Users\\CASA\\Downloads\\Programs\\BikeStore\\BikeStore.App\\BikeStore.App.Persistencia\\BikeStore.App.Persistencia.csproj",
-        "packagesPath": "C:\\Users\\CASA\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\CASA\\Downloads\\Programs\\BikeStore\\BikeStore.App\\BikeStore.App.Persistencia\\obj\\",
+        "projectPath": "C:\\Users\\pcuser\\Desktop\\BACKUP BRIAN\\Mision Tic 2022 Programador\\CSharp\\BikeStore\\BikeStore.App\\BikeStore.App.Persistencia\\BikeStore.App.Persistencia.csproj",
+        "packagesPath": "C:\\Users\\pcuser\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\pcuser\\Desktop\\BACKUP BRIAN\\Mision Tic 2022 Programador\\CSharp\\BikeStore\\BikeStore.App\\BikeStore.App.Persistencia\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\CASA\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\pcuser\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.1"
@@ -81,8 +81,8 @@
           "netstandard2.1": {
             "targetAlias": "netstandard2.1",
             "projectReferences": {
-              "C:\\Users\\CASA\\Downloads\\Programs\\BikeStore\\BikeStore.App\\BikeStore.App.Dominio\\BikeStore.App.Dominio.csproj": {
-                "projectPath": "C:\\Users\\CASA\\Downloads\\Programs\\BikeStore\\BikeStore.App\\BikeStore.App.Dominio\\BikeStore.App.Dominio.csproj"
+              "C:\\Users\\pcuser\\Desktop\\BACKUP BRIAN\\Mision Tic 2022 Programador\\CSharp\\BikeStore\\BikeStore.App\\BikeStore.App.Dominio\\BikeStore.App.Dominio.csproj": {
+                "projectPath": "C:\\Users\\pcuser\\Desktop\\BACKUP BRIAN\\Mision Tic 2022 Programador\\CSharp\\BikeStore\\BikeStore.App\\BikeStore.App.Dominio\\BikeStore.App.Dominio.csproj"
               }
             }
           }
@@ -137,17 +137,17 @@
         }
       }
     },
-    "C:\\Users\\CASA\\Downloads\\Programs\\BikeStore\\BikeStore.App\\BikeStore.App.Web\\BikeStore.App.Web.csproj": {
+    "C:\\Users\\pcuser\\Desktop\\BACKUP BRIAN\\Mision Tic 2022 Programador\\CSharp\\BikeStore\\BikeStore.App\\BikeStore.App.Web\\BikeStore.App.Web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\CASA\\Downloads\\Programs\\BikeStore\\BikeStore.App\\BikeStore.App.Web\\BikeStore.App.Web.csproj",
+        "projectUniqueName": "C:\\Users\\pcuser\\Desktop\\BACKUP BRIAN\\Mision Tic 2022 Programador\\CSharp\\BikeStore\\BikeStore.App\\BikeStore.App.Web\\BikeStore.App.Web.csproj",
         "projectName": "BikeStore.App.Web",
-        "projectPath": "C:\\Users\\CASA\\Downloads\\Programs\\BikeStore\\BikeStore.App\\BikeStore.App.Web\\BikeStore.App.Web.csproj",
-        "packagesPath": "C:\\Users\\CASA\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\CASA\\Downloads\\Programs\\BikeStore\\BikeStore.App\\BikeStore.App.Web\\obj\\",
+        "projectPath": "C:\\Users\\pcuser\\Desktop\\BACKUP BRIAN\\Mision Tic 2022 Programador\\CSharp\\BikeStore\\BikeStore.App\\BikeStore.App.Web\\BikeStore.App.Web.csproj",
+        "packagesPath": "C:\\Users\\pcuser\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\pcuser\\Desktop\\BACKUP BRIAN\\Mision Tic 2022 Programador\\CSharp\\BikeStore\\BikeStore.App\\BikeStore.App.Web\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\CASA\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\pcuser\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -159,11 +159,11 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\CASA\\Downloads\\Programs\\BikeStore\\BikeStore.App\\BikeStore.App.Dominio\\BikeStore.App.Dominio.csproj": {
-                "projectPath": "C:\\Users\\CASA\\Downloads\\Programs\\BikeStore\\BikeStore.App\\BikeStore.App.Dominio\\BikeStore.App.Dominio.csproj"
+              "C:\\Users\\pcuser\\Desktop\\BACKUP BRIAN\\Mision Tic 2022 Programador\\CSharp\\BikeStore\\BikeStore.App\\BikeStore.App.Dominio\\BikeStore.App.Dominio.csproj": {
+                "projectPath": "C:\\Users\\pcuser\\Desktop\\BACKUP BRIAN\\Mision Tic 2022 Programador\\CSharp\\BikeStore\\BikeStore.App\\BikeStore.App.Dominio\\BikeStore.App.Dominio.csproj"
               },
-              "C:\\Users\\CASA\\Downloads\\Programs\\BikeStore\\BikeStore.App\\BikeStore.App.Persistencia\\BikeStore.App.Persistencia.csproj": {
-                "projectPath": "C:\\Users\\CASA\\Downloads\\Programs\\BikeStore\\BikeStore.App\\BikeStore.App.Persistencia\\BikeStore.App.Persistencia.csproj"
+              "C:\\Users\\pcuser\\Desktop\\BACKUP BRIAN\\Mision Tic 2022 Programador\\CSharp\\BikeStore\\BikeStore.App\\BikeStore.App.Persistencia\\BikeStore.App.Persistencia.csproj": {
+                "projectPath": "C:\\Users\\pcuser\\Desktop\\BACKUP BRIAN\\Mision Tic 2022 Programador\\CSharp\\BikeStore\\BikeStore.App\\BikeStore.App.Persistencia\\BikeStore.App.Persistencia.csproj"
               }
             }
           }

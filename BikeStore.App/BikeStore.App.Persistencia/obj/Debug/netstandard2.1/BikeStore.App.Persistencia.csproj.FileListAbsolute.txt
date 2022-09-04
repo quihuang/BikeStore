@@ -59,3 +59,16 @@ C:\Users\CASA\Downloads\Programs\BikeStore\BikeStore.App\BikeStore.App.Persisten
 C:\Users\CASA\Downloads\Programs\BikeStore\BikeStore.App\BikeStore.App.Persistencia\obj\Debug\netstandard2.1\BikeStore.App.Persistencia.csproj.CopyComplete
 C:\Users\CASA\Downloads\Programs\BikeStore\BikeStore.App\BikeStore.App.Persistencia\obj\Debug\netstandard2.1\BikeStore.App.Persistencia.dll
 C:\Users\CASA\Downloads\Programs\BikeStore\BikeStore.App\BikeStore.App.Persistencia\obj\Debug\netstandard2.1\BikeStore.App.Persistencia.pdb
+C:\Users\pcuser\Desktop\BACKUP BRIAN\Mision Tic 2022 Programador\CSharp\BikeStore\BikeStore.App\BikeStore.App.Persistencia\bin\Debug\netstandard2.1\BikeStore.App.Persistencia.deps.json
+C:\Users\pcuser\Desktop\BACKUP BRIAN\Mision Tic 2022 Programador\CSharp\BikeStore\BikeStore.App\BikeStore.App.Persistencia\bin\Debug\netstandard2.1\BikeStore.App.Persistencia.dll
+C:\Users\pcuser\Desktop\BACKUP BRIAN\Mision Tic 2022 Programador\CSharp\BikeStore\BikeStore.App\BikeStore.App.Persistencia\bin\Debug\netstandard2.1\BikeStore.App.Persistencia.pdb
+C:\Users\pcuser\Desktop\BACKUP BRIAN\Mision Tic 2022 Programador\CSharp\BikeStore\BikeStore.App\BikeStore.App.Persistencia\bin\Debug\netstandard2.1\BikeStore.App.Dominio.dll
+C:\Users\pcuser\Desktop\BACKUP BRIAN\Mision Tic 2022 Programador\CSharp\BikeStore\BikeStore.App\BikeStore.App.Persistencia\bin\Debug\netstandard2.1\BikeStore.App.Dominio.pdb
+C:\Users\pcuser\Desktop\BACKUP BRIAN\Mision Tic 2022 Programador\CSharp\BikeStore\BikeStore.App\BikeStore.App.Persistencia\obj\Debug\netstandard2.1\BikeStore.App.Persistencia.csproj.AssemblyReference.cache
+C:\Users\pcuser\Desktop\BACKUP BRIAN\Mision Tic 2022 Programador\CSharp\BikeStore\BikeStore.App\BikeStore.App.Persistencia\obj\Debug\netstandard2.1\BikeStore.App.Persistencia.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pcuser\Desktop\BACKUP BRIAN\Mision Tic 2022 Programador\CSharp\BikeStore\BikeStore.App\BikeStore.App.Persistencia\obj\Debug\netstandard2.1\BikeStore.App.Persistencia.AssemblyInfoInputs.cache
+C:\Users\pcuser\Desktop\BACKUP BRIAN\Mision Tic 2022 Programador\CSharp\BikeStore\BikeStore.App\BikeStore.App.Persistencia\obj\Debug\netstandard2.1\BikeStore.App.Persistencia.AssemblyInfo.cs
+C:\Users\pcuser\Desktop\BACKUP BRIAN\Mision Tic 2022 Programador\CSharp\BikeStore\BikeStore.App\BikeStore.App.Persistencia\obj\Debug\netstandard2.1\BikeStore.App.Persistencia.csproj.CoreCompileInputs.cache
+C:\Users\pcuser\Desktop\BACKUP BRIAN\Mision Tic 2022 Programador\CSharp\BikeStore\BikeStore.App\BikeStore.App.Persistencia\obj\Debug\netstandard2.1\BikeStore.App.Persistencia.csproj.CopyComplete
+C:\Users\pcuser\Desktop\BACKUP BRIAN\Mision Tic 2022 Programador\CSharp\BikeStore\BikeStore.App\BikeStore.App.Persistencia\obj\Debug\netstandard2.1\BikeStore.App.Persistencia.dll
+C:\Users\pcuser\Desktop\BACKUP BRIAN\Mision Tic 2022 Programador\CSharp\BikeStore\BikeStore.App\BikeStore.App.Persistencia\obj\Debug\netstandard2.1\BikeStore.App.Persistencia.pdb
