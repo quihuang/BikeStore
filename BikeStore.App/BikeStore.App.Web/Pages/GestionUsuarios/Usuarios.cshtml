@@ -1,13 +1,25 @@
 ﻿@page
 @model BikeStore.App.Web.UsuariosModel
 @{
-    ViewData["Title"] = "Gestion Usuarios"; // TODO no debería ser "Trabajadores"
+    ViewData["Title"] = "Gestion Trabajadores";
 }
 
 <div class="container-fluid px-4">
 
-    <div>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    <div class="tittleModules">
+        <h1>
+            Gestion de Trabajadores
+        </h1>
+    </div>
+
+    <div class="containerBottons">
+        <button type="button" id="btn-delete" class="btn btn-primary btn-crud" hidden>
+            Eliminar
+        </button>
+        <button type="button" id="btn-update" class="btn btn-primary btn-crud" data-toggle="modal" data-target="#exampleModal" onclick="editar('Trabajador');" hidden>
+            Editar
+        </button>
+        <button type="button" id="btn-create" class="btn btn-primary " data-toggle="modal" data-target="#exampleModal" onclick="crear('Trabajador');">
             Crear
         </button>
     </div>
@@ -18,7 +30,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Registro de Trabajadores</h5>
+                    <h5 class="modal-title" id="titleModal">Registro Trabajadores</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -29,38 +41,44 @@
                             <form method="post">
                                 <div class="form-group">
                                     <label for="nombre">Cedula</label>
-                                    <input type="number" name="" id="cedula" class="form-control"
+                                    <input type="number" name="cedula" id="cedula" class="form-control"
                                         placeholder="Ingrese su numero de cedula" aria-describedby="helpId"
                                         minlength="3" maxlength="50">
                                 </div>
                                 <div class="form-group">
                                     <label for="nombre">Nombres</label>
-                                    <input type="text" name="" id="nombre" class="form-control"
+                                    <input type="text" name="nombre" id="nombre" class="form-control"
                                         placeholder="Ingrese el nombre" aria-describedby="helpId" minlength="3"
                                         maxlength="50">
                                 </div>
                                 <div class="form-group">
                                     <label for="apellido">Apellidos</label>
-                                    <input type="text" name="" id="apellido" class="form-control"
+                                    <input type="text" name="apellido" id="apellido" class="form-control"
                                         placeholder="Ingrese el apellido" aria-describedby="helpId" minlength="3"
                                         maxlength="50">
                                 </div>
                                 <div class="form-group">
                                     <label for="apellido">Telefono</label>
-                                    <input type="number" name="" id="telefono" class="form-control"
+                                    <input type="number" name="telefono" id="telefono" class="form-control"
                                         placeholder="Ingrese el Telefono" aria-describedby="helpId" minlength="3"
                                         maxlength="50">
                                 </div>
                                 <div class="form-group">
                                     <label for="nombreUsuario">Nombre usuario</label>
-                                    <input type="text" name="" id="nombreUsuario" class="form-control"
+                                    <input type="text" name="nombreUsuario" id="nombreUsuario" class="form-control"
                                         placeholder="Ingrese el Nombre usuario" aria-describedby="helpId" minlength="3"
                                         maxlength="50">
                                 </div>
                                 <div class="form-group">
                                     <label for="contraseña">Contraseña</label>
-                                    <input type="password" name="" id="contraseña" class="form-control"
+                                    <input type="password" name="contraseña" id="contraseña" class="form-control"
                                         placeholder="Ingrese contraseña" aria-describedby="helpId" minlength="3"
+                                        maxlength="50">
+                                </div>
+                                <div class="form-group">
+                                    <label for="salario">Salario</label>
+                                    <input type="number" name="salario" id="salario" class="form-control"
+                                        placeholder="Ingrese salario" aria-describedby="helpId" minlength="3"
                                         maxlength="50">
                                 </div>
                                 <div class="form-group">
@@ -74,7 +92,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary">Crear</button>
+                                    <button type="submit" id="btn-create-modal" class="btn btn-primary">Crear</button>
                                 </div>
                             </form>
                         </div>
@@ -93,56 +111,88 @@
             <table id="datatablesSimple">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Start date</th>
-                        <th>Salary</th>
+                        <th>Id</th>
+                        <th>Cedula</th>
+                        <th>Nombres</th>
+                        <th>Apellidos</th>
+                        <th>Telefono</th>
+                        <th>Nombre de usuario</th>
+                        <th>Salario</th>
+                        <th>Rol</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Start date</th>
-                        <th>Salary</th>
+                        <th>Id</th>
+                        <th>Cedula</th>
+                        <th>Nombres</th>
+                        <th>Apellidos</th>
+                        <th>Telefono</th>
+                        <th>Nombre de usuario</th>
+                        <th>Salario</th>
+                        <th>Rol</th>
                     </tr>
                 </tfoot>
                 <tbody>
-                    <tr>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>61</td>
-                        <td>2011/04/25</td>
-                        <td>$320,800</td>
+                    <tr onclick="seleccionarRegistro();">
+                        <td>1</td>
+                        <td>113425634</td>
+                        <td>Fernando</td>
+                        <td>Guzman</td>
+                        <td>324032123</td>
+                        <td>Guz123</td>
+                        <td>$1,320,800</td>
+                        <td>Comercial</td>
                     </tr>
-                    <tr>
-                        <td>Garrett Winters</td>
-                        <td>Accountant</td>
-                        <td>Tokyo</td>
-                        <td>63</td>
-                        <td>2011/07/25</td>
-                        <td>$170,750</td>
+                    <tr onclick="seleccionarRegistro();">
+                        <td>2</td>
+                        <td>113425634</td>
+                        <td>Fernando</td>
+                        <td>Guzman</td>
+                        <td>324032123</td>
+                        <td>Guz123</td>
+                        <td>$1,320,800</td>
+                        <td>Bodeguero</td>
                     </tr>
-                    <tr>
-                        <td>Ashton Cox</td>
-                        <td>Junior Technical Author</td>
-                        <td>San Francisco</td>
-                        <td>66</td>
-                        <td>2009/01/12</td>
-                        <td>$86,000</td>
+                    <tr onclick="seleccionarRegistro();">
+                        <td>3</td>
+                        <td>113425634</td>
+                        <td>Fernando</td>
+                        <td>Guzman</td>
+                        <td>324032123</td>
+                        <td>Guz123</td>
+                        <td>$1,320,800</td>
+                        <td>Jefe Operativo</td>
                     </tr>
-                    <tr>
-                        <td>Cedric Kelly</td>
-                        <td>Senior Javascript Developer</td>
-                        <td>Edinburgh</td>
-                        <td>22</td>
-                        <td>2012/03/29</td>
-                        <td>$433,060</td>
+                    <tr onclick="seleccionarRegistro();">
+                        <td>4</td>
+                        <td>113425634</td>
+                        <td>Fernando</td>
+                        <td>Guzman</td>
+                        <td>324032123</td>
+                        <td>Guz123</td>
+                        <td>$1,320,800</td>
+                        <td>Jefe Operativo</td>
+                    </tr>
+                    <tr onclick="seleccionarRegistro();">
+                        <td>5</td>
+                        <td>113425634</td>
+                        <td>Fernando</td>
+                        <td>Guzman</td>
+                        <td>324032123</td>
+                        <td>Guz123</td>
+                        <td>$1,320,800</td>
+                        <td>Jefe Operativo</td>
+                    </tr>
+                    <tr onclick="seleccionarRegistro();"s>
+                        <td>6</td>
+                        <td>113425634</td>
+                        <td>Fernando</td>
+                        <td>Guzman</td>
+                        <td>324032123</td>
+                        <td>Guz123</td>
+                        <td>$1,320,800</td>
+                        <td>Jefe Operativo</td>
                     </tr>
                 </tbody>
             </table>
