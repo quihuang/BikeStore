@@ -46,3 +46,16 @@ D:\1. Universidad de Caldas\BikeStore\BikeStore.App\BikeStore.App.Persistencia\o
 D:\1. Universidad de Caldas\BikeStore\BikeStore.App\BikeStore.App.Persistencia\obj\Debug\netstandard2.1\BikeStore.App.Persistencia.csproj.CopyComplete
 D:\1. Universidad de Caldas\BikeStore\BikeStore.App\BikeStore.App.Persistencia\obj\Debug\netstandard2.1\BikeStore.App.Persistencia.dll
 D:\1. Universidad de Caldas\BikeStore\BikeStore.App\BikeStore.App.Persistencia\obj\Debug\netstandard2.1\BikeStore.App.Persistencia.pdb
+C:\Users\CASA\Downloads\Programs\BikeStore\BikeStore.App\BikeStore.App.Persistencia\bin\Debug\netstandard2.1\BikeStore.App.Persistencia.deps.json
+C:\Users\CASA\Downloads\Programs\BikeStore\BikeStore.App\BikeStore.App.Persistencia\bin\Debug\netstandard2.1\BikeStore.App.Persistencia.dll
+C:\Users\CASA\Downloads\Programs\BikeStore\BikeStore.App\BikeStore.App.Persistencia\bin\Debug\netstandard2.1\BikeStore.App.Persistencia.pdb
+C:\Users\CASA\Downloads\Programs\BikeStore\BikeStore.App\BikeStore.App.Persistencia\bin\Debug\netstandard2.1\BikeStore.App.Dominio.dll
+C:\Users\CASA\Downloads\Programs\BikeStore\BikeStore.App\BikeStore.App.Persistencia\bin\Debug\netstandard2.1\BikeStore.App.Dominio.pdb
+C:\Users\CASA\Downloads\Programs\BikeStore\BikeStore.App\BikeStore.App.Persistencia\obj\Debug\netstandard2.1\BikeStore.App.Persistencia.csproj.AssemblyReference.cache
+C:\Users\CASA\Downloads\Programs\BikeStore\BikeStore.App\BikeStore.App.Persistencia\obj\Debug\netstandard2.1\BikeStore.App.Persistencia.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\CASA\Downloads\Programs\BikeStore\BikeStore.App\BikeStore.App.Persistencia\obj\Debug\netstandard2.1\BikeStore.App.Persistencia.AssemblyInfoInputs.cache
+C:\Users\CASA\Downloads\Programs\BikeStore\BikeStore.App\BikeStore.App.Persistencia\obj\Debug\netstandard2.1\BikeStore.App.Persistencia.AssemblyInfo.cs
+C:\Users\CASA\Downloads\Programs\BikeStore\BikeStore.App\BikeStore.App.Persistencia\obj\Debug\netstandard2.1\BikeStore.App.Persistencia.csproj.CoreCompileInputs.cache
+C:\Users\CASA\Downloads\Programs\BikeStore\BikeStore.App\BikeStore.App.Persistencia\obj\Debug\netstandard2.1\BikeStore.App.Persistencia.csproj.CopyComplete
+C:\Users\CASA\Downloads\Programs\BikeStore\BikeStore.App\BikeStore.App.Persistencia\obj\Debug\netstandard2.1\BikeStore.App.Persistencia.dll
+C:\Users\CASA\Downloads\Programs\BikeStore\BikeStore.App\BikeStore.App.Persistencia\obj\Debug\netstandard2.1\BikeStore.App.Persistencia.pdb

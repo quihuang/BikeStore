@@ -34,3 +34,13 @@ D:\1. Universidad de Caldas\BikeStore\BikeStore.App\BikeStore.App.Dominio\obj\De
 D:\1. Universidad de Caldas\BikeStore\BikeStore.App\BikeStore.App.Dominio\bin\Debug\netstandard2.0\BikeStore.App.Dominio.deps.json
 D:\1. Universidad de Caldas\BikeStore\BikeStore.App\BikeStore.App.Dominio\bin\Debug\netstandard2.0\BikeStore.App.Dominio.dll
 D:\1. Universidad de Caldas\BikeStore\BikeStore.App\BikeStore.App.Dominio\bin\Debug\netstandard2.0\BikeStore.App.Dominio.pdb
+C:\Users\CASA\Downloads\Programs\BikeStore\BikeStore.App\BikeStore.App.Dominio\bin\Debug\netstandard2.0\BikeStore.App.Dominio.deps.json
+C:\Users\CASA\Downloads\Programs\BikeStore\BikeStore.App\BikeStore.App.Dominio\bin\Debug\netstandard2.0\BikeStore.App.Dominio.dll
+C:\Users\CASA\Downloads\Programs\BikeStore\BikeStore.App\BikeStore.App.Dominio\bin\Debug\netstandard2.0\BikeStore.App.Dominio.pdb
+C:\Users\CASA\Downloads\Programs\BikeStore\BikeStore.App\BikeStore.App.Dominio\obj\Debug\netstandard2.0\BikeStore.App.Dominio.csproj.AssemblyReference.cache
+C:\Users\CASA\Downloads\Programs\BikeStore\BikeStore.App\BikeStore.App.Dominio\obj\Debug\netstandard2.0\BikeStore.App.Dominio.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\CASA\Downloads\Programs\BikeStore\BikeStore.App\BikeStore.App.Dominio\obj\Debug\netstandard2.0\BikeStore.App.Dominio.AssemblyInfoInputs.cache
+C:\Users\CASA\Downloads\Programs\BikeStore\BikeStore.App\BikeStore.App.Dominio\obj\Debug\netstandard2.0\BikeStore.App.Dominio.AssemblyInfo.cs
+C:\Users\CASA\Downloads\Programs\BikeStore\BikeStore.App\BikeStore.App.Dominio\obj\Debug\netstandard2.0\BikeStore.App.Dominio.csproj.CoreCompileInputs.cache
+C:\Users\CASA\Downloads\Programs\BikeStore\BikeStore.App\BikeStore.App.Dominio\obj\Debug\netstandard2.0\BikeStore.App.Dominio.dll
+C:\Users\CASA\Downloads\Programs\BikeStore\BikeStore.App\BikeStore.App.Dominio\obj\Debug\netstandard2.0\BikeStore.App.Dominio.pdb
