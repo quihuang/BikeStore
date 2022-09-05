@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace BikeStore.App.Web.Pages
 {
-    public class InventarioModel : PageModel
+    public class VentasModel : PageModel
     {
         public void OnGet()
         {

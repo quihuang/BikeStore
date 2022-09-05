@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\CASA\\Downloads\\Programs\\BikeStore\\BikeStore.App\\BikeStore.App.Dominio\\BikeStore.App.Dominio.csproj": {}
+    "C:\\Users\\pcuser\\Desktop\\BACKUP BRIAN\\Mision Tic 2022 Programador\\CSharp\\BikeStore\\BikeStore.App\\BikeStore.App.Dominio\\BikeStore.App.Dominio.csproj": {}
   },
   "projects": {
-    "C:\\Users\\CASA\\Downloads\\Programs\\BikeStore\\BikeStore.App\\BikeStore.App.Dominio\\BikeStore.App.Dominio.csproj": {
+    "C:\\Users\\pcuser\\Desktop\\BACKUP BRIAN\\Mision Tic 2022 Programador\\CSharp\\BikeStore\\BikeStore.App\\BikeStore.App.Dominio\\BikeStore.App.Dominio.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\CASA\\Downloads\\Programs\\BikeStore\\BikeStore.App\\BikeStore.App.Dominio\\BikeStore.App.Dominio.csproj",
+        "projectUniqueName": "C:\\Users\\pcuser\\Desktop\\BACKUP BRIAN\\Mision Tic 2022 Programador\\CSharp\\BikeStore\\BikeStore.App\\BikeStore.App.Dominio\\BikeStore.App.Dominio.csproj",
         "projectName": "BikeStore.App.Dominio",
-        "projectPath": "C:\\Users\\CASA\\Downloads\\Programs\\BikeStore\\BikeStore.App\\BikeStore.App.Dominio\\BikeStore.App.Dominio.csproj",
-        "packagesPath": "C:\\Users\\CASA\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\CASA\\Downloads\\Programs\\BikeStore\\BikeStore.App\\BikeStore.App.Dominio\\obj\\",
+        "projectPath": "C:\\Users\\pcuser\\Desktop\\BACKUP BRIAN\\Mision Tic 2022 Programador\\CSharp\\BikeStore\\BikeStore.App\\BikeStore.App.Dominio\\BikeStore.App.Dominio.csproj",
+        "packagesPath": "C:\\Users\\pcuser\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\pcuser\\Desktop\\BACKUP BRIAN\\Mision Tic 2022 Programador\\CSharp\\BikeStore\\BikeStore.App\\BikeStore.App.Dominio\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\CASA\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\pcuser\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.0"
