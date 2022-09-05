@@ -1,0 +1,168 @@
+﻿@page
+@model BikeStore.App.Web.Pages.VentasModel
+@{
+     ViewData["Title"] = "Gestion Ventas";
+}
+<div class="container-fluid px-4">
+
+    <div>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            Crear
+        </button>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Registro de Ventas</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col">
+                            <form method="post">                             
+                                <div class="form-group">
+                                    <label for="nombre">CantidadProducto</label>
+                                    <input type="number" name="" id="nombre" class="form-control"
+                                        placeholder="Ingrese la cantidad del producto" aria-describedby="helpId" minlength="3"
+                                        maxlength="50">
+                                </div>
+                                <div class="form-group">
+                                    <label for="fecha">Valor Venta</label>
+                                    <input type="number" name="nombre" id="nombre" class="form-control"
+                                        placeholder=" Ingrese el Valor Venta" aria-describedby="helpId"
+                                        minlength="3" maxlength="50">
+                                </div>
+                                <div class="form-group">
+                                    <label for="fecha">Trabajador</label>
+                                    <input type="text" name="nombre" id="nombre" class="form-control"
+                                        placeholder="Ingrese el nombre del Trabajador" aria-describedby="helpId"
+                                        minlength="3" maxlength="50">
+                                </div>
+                                <div class="form-group">
+                                    <label for="fecha">Cliente</label>
+                                    <input type="text" name="nombre" id="nombre" class="form-control"
+                                        placeholder="Ingrese el nombre del Cliente" aria-describedby="helpId"
+                                        minlength="3" maxlength="50">
+                                </div>
+                                <div class="form-group">
+                                    <label for="fecha">Inventario</label>
+                                    <input type="number" name="nombre" id="nombre" class="form-control"
+                                        placeholder="Ingrese la cantidad de productos en el Inventario" aria-describedby="helpId"
+                                        minlength="3" maxlength="50">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Crear</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table me-1"></i>
+            Ventas
+        </div>
+        <div class="card-body">
+            <table id="datatablesSimple">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Fecha</th>
+                        <th>Cantidad del Producto</th>
+                        <th>Valor Venta</th>
+                        <th>Trabajador</th>
+                        <th>Cliente</th>
+                        <th>Inventario</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>ID</th>
+                        <th>Fecha</th>
+                        <th>Cantidad del Producto</th>
+                        <th>Valor Venta</th>
+                        <th>Trabajador</th>
+                        <th>Cliente</th>
+                        <th>Inventario</th>                        
+                    </tr>
+                </tfoot>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>2</td>
+                        <td>2</td>
+                        <td>2</td>
+                        <td>2</td>
+                        <td>2</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>3</td>
+                        <td>3</td>
+                        <td>3</td>
+                        <td>3</td>
+                        <td>3</td>
+                        <td>3</td>                        
+                    </tr>
+                    <tr>                    
+                        <td>4</td>
+                        <td>4</td>
+                        <td>4</td>
+                        <td>4</td>
+                        <td>4</td>
+                        <td>4</td>
+                        <td>4</td>                        
+                    </tr>                    
+                    <tr>
+                        <td>5</td>
+                        <td>5</td>
+                        <td>5</td>
+                        <td>5</td>
+                        <td>5</td>
+                        <td>5</td>
+                        <td>5</td>                        
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>6</td>
+                        <td>6</td>
+                        <td>6</td>
+                        <td>6</td>
+                        <td>6</td>
+                        <td>6</td>                        
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>7</td>
+                        <td>7</td>
+                        <td>7</td>
+                        <td>7</td>
+                        <td>7</td>
+                        <td>7</td>                        
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
