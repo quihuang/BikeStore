@@ -3,11 +3,22 @@
 @{
     ViewData["Title"] = "Gestion Productos";
 }
-
 <div class="container-fluid px-4">
 
-    <div>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    <div class="tittleModules">
+        <h1>
+            Gestion de Productos
+        </h1>
+    </div>
+
+    <div class="containerBottons">
+        <button type="button" id="btn-delete" class="btn btn-primary btn-crud" hidden>
+            Eliminar
+        </button>
+        <button type="button" id="btn-update" class="btn btn-primary btn-crud" data-toggle="modal" data-target="#exampleModal" onclick="editar('Productos');" hidden>
+            Editar
+        </button>
+        <button type="button" id="btn-create" class="btn btn-primary " data-toggle="modal" data-target="#exampleModal" onclick="crear('Productos');">
             Crear
         </button>
     </div>
@@ -18,7 +29,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Registro de Productos</h5>
+                    <h5 class="modal-title" id="titleModal">Registro de Productos</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -41,7 +52,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary">Crear</button>
+                                    <button type="submit" id="btn-create-modal" class="btn btn-primary">Crear</button>
                                 </div>
                             </form>
                         </div>
@@ -73,22 +84,22 @@
                     </tr>
                 </tfoot>
                 <tbody>
-                    <tr>
+                    <tr onclick="seleccionarRegistro();">
                         <td>1</td>
                         <td>Bicicleta marca specialized turbo levo</td>
                         <td>Ruedas entre 27'5" y 29", dirección puede ajustarse entre 63 y 65,5 grados, Supensión delantera de 160 mm y trasera de 150 mm</td>
                     </tr>
-                    <tr>
+                    <tr onclick="seleccionarRegistro();">
                         <td>2</td>
                         <td>Bicicleta marca specialized turbo levo</td>
                         <td>Ruedas entre 27'5" y 29", dirección puede ajustarse entre 63 y 65,5 grados, Supensión delantera de 160 mm y trasera de 150 mm</td>
                     </tr>
-                    <tr>
+                    <tr onclick="seleccionarRegistro();">
                         <td>3</td>
                         <td>Bicicleta marca specialized turbo levo</td>
                         <td>Ruedas entre 27'5" y 29", dirección puede ajustarse entre 63 y 65,5 grados, Supensión delantera de 160 mm y trasera de 150 mm</td>
                     </tr>
-                    <tr>
+                    <tr onclick="seleccionarRegistro();">
                         <td>4</td>
                         <td>Bicicleta marca specialized turbo levo</td>
                         <td>Ruedas entre 27'5" y 29", dirección puede ajustarse entre 63 y 65,5 grados, Supensión delantera de 160 mm y trasera de 150 mm</td>

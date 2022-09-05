@@ -5,8 +5,20 @@
 }
 <div class="container-fluid px-4">
 
-    <div>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    <div class="tittleModules">
+        <h1>
+            Gestion de Ventas
+        </h1>
+    </div>
+
+    <div class="containerBottons">
+        <button type="button" id="btn-delete" class="btn btn-primary btn-crud" hidden>
+            Eliminar
+        </button>
+        <button type="button" id="btn-update" class="btn btn-primary btn-crud" data-toggle="modal" data-target="#exampleModal" onclick="editar('Ventas');" hidden>
+            Editar
+        </button>
+        <button type="button" id="btn-create" class="btn btn-primary " data-toggle="modal" data-target="#exampleModal" onclick="crear('Ventas');">
             Crear
         </button>
     </div>
@@ -17,7 +29,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Registro de Ventas</h5>
+                    <h5 class="modal-title" id="titleModal">Registro de Ventas</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -58,7 +70,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary">Crear</button>
+                                    <button type="submit" id="btn-create-modal" class="btn btn-primary">Crear</button>
                                 </div>
                             </form>
                         </div>
@@ -98,7 +110,7 @@
                     </tr>
                 </tfoot>
                 <tbody>
-                    <tr>
+                    <tr onclick="seleccionarRegistro();">
                         <td>1</td>
                         <td>1</td>
                         <td>1</td>
@@ -107,7 +119,7 @@
                         <td>1</td>
                         <td>1</td>
                     </tr>
-                    <tr>
+                    <tr onclick="seleccionarRegistro();">
                         <td>2</td>
                         <td>2</td>
                         <td>2</td>
@@ -116,7 +128,7 @@
                         <td>2</td>
                         <td>2</td>
                     </tr>
-                    <tr>
+                    <tr onclick="seleccionarRegistro();">
                         <td>3</td>
                         <td>3</td>
                         <td>3</td>
@@ -125,7 +137,7 @@
                         <td>3</td>
                         <td>3</td>                        
                     </tr>
-                    <tr>                    
+                    <tr onclick="seleccionarRegistro();">                    
                         <td>4</td>
                         <td>4</td>
                         <td>4</td>
@@ -134,7 +146,7 @@
                         <td>4</td>
                         <td>4</td>                        
                     </tr>                    
-                    <tr>
+                    <tr onclick="seleccionarRegistro();">
                         <td>5</td>
                         <td>5</td>
                         <td>5</td>
@@ -143,7 +155,7 @@
                         <td>5</td>
                         <td>5</td>                        
                     </tr>
-                    <tr>
+                    <tr onclick="seleccionarRegistro();">
                         <td>6</td>
                         <td>6</td>
                         <td>6</td>
@@ -152,7 +164,7 @@
                         <td>6</td>
                         <td>6</td>                        
                     </tr>
-                    <tr>
+                    <tr onclick="seleccionarRegistro();">
                         <td>7</td>
                         <td>7</td>
                         <td>7</td>
