@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "e/CVcTHbi/38CgI+tKPVog4zKxypYmPPiPCtcKuv4cBXmRti0GegEUNkwKrtWoAl+vhSIBp1d8WwrQchy7JdXg==",
+  "dgSpecHash": "QR2TuqiyUL46C+D+KHCVqFiupJ80sjYS5FYHeRm2Qz5goSDpvbFFey2PvPFSjzbpYXrMS6M3R5csHiAKspm2RQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\CASA\\Downloads\\Programs\\BikeStore\\BikeStore.App\\BikeStore.App.Dominio\\BikeStore.App.Dominio.csproj",
+  "projectFilePath": "C:\\Users\\pcuser\\Desktop\\BACKUP BRIAN\\Mision Tic 2022 Programador\\CSharp\\BikeStore\\BikeStore.App\\BikeStore.App.Dominio\\BikeStore.App.Dominio.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\CASA\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
-    "C:\\Users\\CASA\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+    "C:\\Users\\pcuser\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\pcuser\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
   ],
   "logs": []
 }
