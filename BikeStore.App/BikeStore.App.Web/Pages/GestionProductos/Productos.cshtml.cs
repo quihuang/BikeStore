@@ -27,17 +27,17 @@ namespace BikeStore.App.Web.Pages
 
             // video 02/09 min 2:52:16
             // llenamos la variable listadoProducto a traves del método GetAllProducto()
-            listadoProducto = _repositorioProducto.GetAllProducto().ToList(); // al final se usa el método ToList para convertir a Lista el IEnumerable que genera el método GetAllProducto.
+            listadoProducto = _repositorioProducto.GetAllProductos().ToList(); // al final se usa el método ToList para convertir a Lista el IEnumerable que genera el método GetAllProductos.
         }
 
         // video 02/09 min 2:09:20
-        // Método para capturar el Post del formulario
+        // // Método para capturar el Post del formulario
         public void OnPost(){
             // aquí se debe poner entre [] el nombre de cada campo del formulario
             var nombre = Request.Form["nombre"];
             var descripcion = Request.Form["descripcion"];
 
-            // Creamos el objeto Producto y le pasamos los datos del formulario
+            // // Creamos el objeto Producto y le pasamos los datos del formulario
             var producto = new Producto{
                 Nombre = nombre,
                 Descripcion = descripcion

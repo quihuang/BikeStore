@@ -18,8 +18,12 @@ namespace BikeStore.App.Persistencia
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder){
             if(!optionsBuilder.IsConfigured){
                 optionsBuilder
-                // .UseSqlServer("Server=HP-PAVILION-GAM; Database=BikeStoresDB; Integrated Security=True;");
-                .UseSqlServer("Data Source = (localdb)\\MSSQLLocalDB; Initial Catalog = BikeStoresDB");
+                .UseSqlServer("Server=HP-PAVILION-GAM; Database=BikeStoresDB; Integrated Security=True;");
+                // .UseSqlServer("Data Source = (localdb)\\MSSQLLocalDB; Initial Catalog = BikeStoresDB");
+                // No borrar: los dos comandos para crear la migración con Entity Framework:
+                // dotnet ef migrations add BikeStoreDB --startup-project ..\BikeStore.App.Consola\
+                // dotnet ef database update --startup-project ..\BikeStore.App.Consola\
+                // Nota: si es una nueva migración, primero debe borrar el contenido de la carpeta Migrations que está dentro de BikeStore.App.Persistencia
             }
         }
     }

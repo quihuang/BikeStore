@@ -15,7 +15,7 @@ namespace BikeStore.App.Persistencia
         }
 
         // Método para buscar todos los registros
-        IEnumerable<Producto> IRepositorioProducto.GetAllProducto(){
+        IEnumerable<Producto> IRepositorioProducto.GetAllProductos(){
              return _appContext.Productos;
         }
 

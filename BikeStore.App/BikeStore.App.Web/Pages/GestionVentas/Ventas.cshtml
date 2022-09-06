@@ -40,34 +40,34 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col">
-                            <form method="post">                             
+                            <form method="post">
                                 <div class="form-group">
-                                    <label for="nombre">Cantidad Producto</label>
-                                    <input type="number" name="" id="nombre" class="form-control"
+                                    <label for="cantidadProducto">Cantidad Producto</label>
+                                    <input type="number" name="cantidadProducto" id="cantidadProducto" class="form-control"
                                         placeholder="Ingrese la cantidad del producto" aria-describedby="helpId" minlength="3"
                                         maxlength="50">
                                 </div>
                                 <div class="form-group">
-                                    <label for="fecha">Valor Venta</label>
-                                    <input type="number" name="nombre" id="nombre" class="form-control"
+                                    <label for="valorVenta">Valor Venta</label>
+                                    <input type="number" name="valorVenta" id="valorVenta" class="form-control"
                                         placeholder=" Ingrese el Valor Venta" aria-describedby="helpId"
                                         minlength="3" maxlength="50">
                                 </div>
                                 <div class="form-group">
-                                    <label for="fecha">Trabajador</label>
-                                    <input type="text" name="nombre" id="nombre" class="form-control"
+                                    <label for="trabajador">Trabajador</label>
+                                    <input type="text" name="trabajador" id="trabajador" class="form-control"
                                         placeholder="Ingrese el nombre del Trabajador" aria-describedby="helpId"
                                         minlength="3" maxlength="50">
                                 </div>
                                 <div class="form-group">
-                                    <label for="fecha">Cliente</label>
-                                    <input type="text" name="nombre" id="nombre" class="form-control"
+                                    <label for="cliente">Cliente</label>
+                                    <input type="text" name="cliente" id="cliente" class="form-control"
                                         placeholder="Ingrese el nombre del Cliente" aria-describedby="helpId"
                                         minlength="3" maxlength="50">
                                 </div>
                                 <div class="form-group">
-                                    <label for="fecha">Inventario</label>
-                                    <input type="number" name="nombre" id="nombre" class="form-control"
+                                    <label for="inventario">Inventario</label>
+                                    <input type="number" name="inventario" id="inventario" class="form-control"
                                         placeholder="Ingrese la cantidad de productos en el Inventario" aria-describedby="helpId"
                                         minlength="3" maxlength="50">
                                 </div>
@@ -100,38 +100,38 @@
                         <div class="col">
                             <form method="post"> 
                                 <div class="form-group">
-                                    <label for="fecha">Fecha</label>
-                                    <input type="text" name="nombre" id="nombre" class="form-control"
+                                    <label for="fechaFacturaVenta">Fecha</label>
+                                    <input type="text" name="fechaFacturaVenta" id="fechaFacturaVenta" class="form-control"
                                         placeholder="Ingrese el nombre del Cliente" aria-describedby="helpId"
                                         minlength="3" maxlength="50" value="12/09/2022" disabled>
                                 </div>  
                                 <div class="form-">
-                                    <label for="trabajador">Cliente</label>
-                                    <input type="text" name="nombre" id="nombre" class="form-control"
+                                    <label for="clienteFacturaVenta">Cliente</label>
+                                    <input type="text" name="clienteFacturaVenta" id="clienteFacturaVenta" class="form-control"
                                         placeholder="Ingrese el nombre del Cliente" aria-describedby="helpId"
                                         minlength="3" maxlength="50" value="Pepito Perez" disabled>
                                 </div>  
                                 <div class="form-group">
-                                    <label for="fecha">Vendedor</label>
-                                    <input type="text" name="nombre" id="nombre" class="form-control"
+                                    <label for="vendedorFacturaVenta">Vendedor</label>
+                                    <input type="text" name="vendedorFacturaVenta" id="vendedorFacturaVenta" class="form-control"
                                         placeholder="Ingrese el nombre del Trabajador" aria-describedby="helpId"
                                         minlength="3" maxlength="50" value="Paula Diaz" disabled>
                                 </div>
                                  <div class="form-group">
-                                    <label for="fecha">Producto</label>
-                                    <input type="text" name="nombre" id="nombre" class="form-control"
+                                    <label for="productoFacturaVenta">Producto</label>
+                                    <input type="text" name="productoFacturaVenta" id="productoFacturaVenta" class="form-control"
                                         placeholder="Ingrese la cantidad de productos en el Inventario" aria-describedby="helpId"
                                         minlength="3" maxlength="50" value="Bicicleta Gris X" disabled>
                                 </div>                          
                                 <div class="form-group">
-                                    <label for="nombre">CantidadProducto</label>
-                                    <input type="number" name="" id="nombre" class="form-control"
+                                    <label for="cantidadProductoFacturaVenta">Cantidad de Productos</label>
+                                    <input type="number" name="cantidadProductoFacturaVenta" id="cantidadProductoFacturaVenta" class="form-control"
                                         placeholder="Ingrese la cantidad del producto" aria-describedby="helpId" minlength="3"
                                         maxlength="50" value="2" disabled>
                                 </div>
                                 <div class="form-group">
-                                    <label for="fecha">Valor Venta</label>
-                                    <input type="text" name="nombre" id="nombre" class="form-control"
+                                    <label for="valorVentaFacturaVenta">Valor Venta</label>
+                                    <input type="number" name="valorVentaFacturaVenta" id="valorVentaFacturaVenta" class="form-control"
                                         placeholder=" Ingrese el Valor Venta" aria-describedby="helpId"
                                         minlength="3" maxlength="50" value="$ 1.200.000" disabled>
                                 </div>
@@ -177,7 +177,18 @@
                     </tr>
                 </tfoot>
                 <tbody>
-                    <tr onclick="seleccionarRegistro();">
+                    @foreach(var item in Model.listadoVenta){
+                        <tr onclick="seleccionarRegistro();">
+                        <td>@item.Id</td>
+                        <td>@item.Fecha</td>
+                        <td>@item.CantidadProducto</td>
+                        <td>@item.ValorVenta</td>
+                        <td>@item.Trabajador</td>
+                        <td>@item.Cliente</td>
+                        <td>@item.Inventario</td>
+                    </tr>
+                    }
+                    @* <tr onclick="seleccionarRegistro();">
                         <td>1</td>
                         <td>1</td>
                         <td>1</td>
@@ -239,7 +250,7 @@
                         <td>7</td>
                         <td>7</td>
                         <td>7</td>                        
-                    </tr>
+                    </tr> *@
                 </tbody>
             </table>
         </div>
