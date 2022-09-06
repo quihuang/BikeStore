@@ -44,3 +44,13 @@ C:\Users\CASA\Downloads\Programs\BikeStore\BikeStore.App\BikeStore.App.Dominio\o
 C:\Users\CASA\Downloads\Programs\BikeStore\BikeStore.App\BikeStore.App.Dominio\obj\Debug\netstandard2.0\BikeStore.App.Dominio.csproj.CoreCompileInputs.cache
 C:\Users\CASA\Downloads\Programs\BikeStore\BikeStore.App\BikeStore.App.Dominio\obj\Debug\netstandard2.0\BikeStore.App.Dominio.dll
 C:\Users\CASA\Downloads\Programs\BikeStore\BikeStore.App\BikeStore.App.Dominio\obj\Debug\netstandard2.0\BikeStore.App.Dominio.pdb
+C:\BikeStore\BikeStore.App\BikeStore.App.Dominio\bin\Debug\netstandard2.0\BikeStore.App.Dominio.deps.json
+C:\BikeStore\BikeStore.App\BikeStore.App.Dominio\bin\Debug\netstandard2.0\BikeStore.App.Dominio.dll
+C:\BikeStore\BikeStore.App\BikeStore.App.Dominio\bin\Debug\netstandard2.0\BikeStore.App.Dominio.pdb
+C:\BikeStore\BikeStore.App\BikeStore.App.Dominio\obj\Debug\netstandard2.0\BikeStore.App.Dominio.csproj.AssemblyReference.cache
+C:\BikeStore\BikeStore.App\BikeStore.App.Dominio\obj\Debug\netstandard2.0\BikeStore.App.Dominio.GeneratedMSBuildEditorConfig.editorconfig
+C:\BikeStore\BikeStore.App\BikeStore.App.Dominio\obj\Debug\netstandard2.0\BikeStore.App.Dominio.AssemblyInfoInputs.cache
+C:\BikeStore\BikeStore.App\BikeStore.App.Dominio\obj\Debug\netstandard2.0\BikeStore.App.Dominio.AssemblyInfo.cs
+C:\BikeStore\BikeStore.App\BikeStore.App.Dominio\obj\Debug\netstandard2.0\BikeStore.App.Dominio.csproj.CoreCompileInputs.cache
+C:\BikeStore\BikeStore.App\BikeStore.App.Dominio\obj\Debug\netstandard2.0\BikeStore.App.Dominio.dll
+C:\BikeStore\BikeStore.App\BikeStore.App.Dominio\obj\Debug\netstandard2.0\BikeStore.App.Dominio.pdb

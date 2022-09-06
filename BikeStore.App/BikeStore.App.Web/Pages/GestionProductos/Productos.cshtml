@@ -40,15 +40,14 @@
                             <form method="post">
                                 <div class="form-group">
                                     <label for="nombre">Nombre</label>
-                                    <input type="number" name="" id="cedula" class="form-control"
+                                    <input type="text" name="nombre" id="nombre" class="form-control"
                                         placeholder="Ingrese el nombre del producto nuevo" aria-describedby="helpId"
-                                        minlength="3" maxlength="50">
+                                        minlength="3" maxlength="200">
                                 </div>
                                 <div class="form-group">
-                                    <label for="nombre">Descripcion</label>
-                                    <input type="text" name="" id="nombre" class="form-control"
-                                        placeholder="Ingrese la descripcion del producto nuevo" aria-describedby="helpId" minlength="3"
-                                        maxlength="50">
+                                    <label for="descripcion">Descripcion</label>
+                                    <input type="text" name="descripcion" id="descripcion" class="form-control"
+                                        placeholder="Ingrese la descripcion del producto nuevo" aria-describedby="helpId" minlength="3"  maxlength="600">
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -84,26 +83,19 @@
                     </tr>
                 </tfoot>
                 <tbody>
-                    <tr onclick="seleccionarRegistro();">
+                    @* Explicacion en el video 02/09 min 2:52:16 *@
+                    @foreach(var item in Model.listadoProducto){
+                        <tr onclick="seleccionarRegistro();">
+                        <td>@item.Id</td>
+                        <td>@item.Nombre</td>
+                        <td>@item.Descripcion</td>
+                    </tr>
+                    }
+                    @* <tr onclick="seleccionarRegistro();">
                         <td>1</td>
-                        <td>Bicicleta marca specialized turbo levo</td>
-                        <td>Ruedas entre 27'5" y 29", dirección puede ajustarse entre 63 y 65,5 grados, Supensión delantera de 160 mm y trasera de 150 mm</td>
-                    </tr>
-                    <tr onclick="seleccionarRegistro();">
-                        <td>2</td>
-                        <td>Bicicleta marca specialized turbo levo</td>
-                        <td>Ruedas entre 27'5" y 29", dirección puede ajustarse entre 63 y 65,5 grados, Supensión delantera de 160 mm y trasera de 150 mm</td>
-                    </tr>
-                    <tr onclick="seleccionarRegistro();">
-                        <td>3</td>
-                        <td>Bicicleta marca specialized turbo levo</td>
-                        <td>Ruedas entre 27'5" y 29", dirección puede ajustarse entre 63 y 65,5 grados, Supensión delantera de 160 mm y trasera de 150 mm</td>
-                    </tr>
-                    <tr onclick="seleccionarRegistro();">
-                        <td>4</td>
-                        <td>Bicicleta marca specialized turbo levo</td>
-                        <td>Ruedas entre 27'5" y 29", dirección puede ajustarse entre 63 y 65,5 grados, Supensión delantera de 160 mm y trasera de 150 mm</td>
-                    </tr>
+                        <td>Bicicleta - dato quemado</td>
+                        <td>Descripcion - dato quemado</td>
+                    </tr> *@
                 </tbody>
             </table>
         </div>
