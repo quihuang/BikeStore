@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "e/CVcTHbi/38CgI+tKPVog4zKxypYmPPiPCtcKuv4cBXmRti0GegEUNkwKrtWoAl+vhSIBp1d8WwrQchy7JdXg==",
+  "dgSpecHash": "PHLC1T5fc1S4bBsPYoP7gXPimFlXWPvEKj71QTtvhRlJdcXciLoSOre4KaWrlGR4RuhBMt+0eyx0Hc6yrFSZfw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\CASA\\Downloads\\Programs\\BikeStore\\BikeStore.App\\BikeStore.App.Dominio\\BikeStore.App.Dominio.csproj",
+  "projectFilePath": "D:\\1. Universidad de Caldas\\BikeStore\\BikeStore.App\\BikeStore.App.Dominio\\BikeStore.App.Dominio.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\CASA\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
-    "C:\\Users\\CASA\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+    "C:\\Users\\quihu\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\quihu\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
   ],
   "logs": []
 }

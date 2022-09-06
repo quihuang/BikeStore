@@ -94,3 +94,15 @@ body {
 .btn-crud {
     margin-right: 5px;
 }
+
+.logo {
+    margin-left: 20px;
+}
+
+.tittlePageLogo {
+    width: 142px !important;
+}
+
+.tittleWelcome {
+    padding-top: 134PX;
+}
