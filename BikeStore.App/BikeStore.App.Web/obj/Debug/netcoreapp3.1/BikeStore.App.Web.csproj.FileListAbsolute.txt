@@ -168,3 +168,6 @@ C:\Users\CASA\Downloads\Programs\BikeStore\BikeStore.App\BikeStore.App.Web\obj\D
 C:\Users\CASA\Downloads\Programs\BikeStore\BikeStore.App\BikeStore.App.Web\obj\Debug\netcoreapp3.1\BikeStore.App.Web.genruntimeconfig.cache
 D:\1. Universidad de Caldas\BikeStore\BikeStore.App\BikeStore.App.Web\obj\Debug\netcoreapp3.1\Razor\Pages\GestionProductos\Productos.cshtml.g.cs
 D:\1. Universidad de Caldas\BikeStore\BikeStore.App\BikeStore.App.Web\obj\Debug\netcoreapp3.1\Razor\Pages\GestionClientes\GestionClientes.cshtml.g.cs
+D:\1. Universidad de Caldas\BikeStore\BikeStore.App\BikeStore.App.Web\obj\Debug\netcoreapp3.1\Razor\Pages\GestionInventario\Inventario.cshtml.g.cs
+D:\1. Universidad de Caldas\BikeStore\BikeStore.App\BikeStore.App.Web\obj\Debug\netcoreapp3.1\Razor\Pages\GestionVentas\Ventas.cshtml.g.cs
+D:\1. Universidad de Caldas\BikeStore\BikeStore.App\BikeStore.App.Web\obj\Debug\netcoreapp3.1\Razor\Pages\Login\Login.cshtml.g.cs

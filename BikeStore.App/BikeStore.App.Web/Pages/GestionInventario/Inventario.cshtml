@@ -12,6 +12,9 @@
     </div>
 
     <div class="containerBottons">
+        <button type="button" id="btn-const" class="btn btn-primary btn-crud" data-toggle="modal" data-target="#modalContancia" hidden>
+            Constancia
+        </button>
         <button type="button" id="btn-delete" class="btn btn-primary btn-crud" hidden>
             Eliminar
         </button>
@@ -23,7 +26,7 @@
         </button>
     </div>
 
-    <!-- Modal -->
+    <!-- Modal Crear y actualizar Inventario -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -70,7 +73,64 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="submit" id="btn-create-modal" class="btn btn-primary">Crear</button>
+                                    <button type="button" id="btn-create-modal" class="btn btn-primary" data-toggle="modal" data-target="#modalContancia">Crear</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contancia de recibido-->
+    <div class="modal fade" id="modalContancia" tabindex="-1" role="dialog" aria-labelledby="modalContancia"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="titleModalContancia">Contancia de recibido</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col">
+                            <form method="post">
+                                <div class="form-group">
+                                    <label for="producto">Producto</label>
+                                    <input type="text" name="producto" id="producto" class="form-control"
+                                        placeholder="Ingrese el nombre del producto" aria-describedby="helpId"
+                                        minlength="3" value="Biciclete Extreme" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="existencias">Existencias</label>
+                                    <input type="number" name="existencias" id="existencias" class="form-control"
+                                        placeholder="Ingrese la cantidad de los productos" aria-describedby="helpId" minlength="3"
+                                        maxlength="50" value="50" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="numerorefcompra">Numero referencia de compra</label>
+                                    <input type="number" name="numerorefcompra" id="numerorefcompra" class="form-control"
+                                        placeholder="Ingrese el numero de referencia de compra" aria-describedby="helpId" minlength="3"
+                                        maxlength="50" value="43001" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="preciouniventa">Precio unitario de venta</label>
+                                    <input type="text" name="preciouniventa" id="preciouniventa" class="form-control"
+                                        placeholder="Ingrese el precio de la unidad de venta" aria-describedby="helpId" minlength="3"
+                                        maxlength="50" value="$ 433.001" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="preciounicompra">Precio unitario de compra</label>
+                                    <input type="text" name="preciounicompra" id="preciounicompra" class="form-control"
+                                        placeholder="Ingrese el precio unidad de compra" aria-describedby="helpId" minlength="3"
+                                        maxlength="50" value="$ 233.001" readonly>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" onclick="imprimir('modalContancia')">Imprimir</button>
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
                                 </div>
                             </form>
                         </div>
@@ -93,8 +153,8 @@
                         <th>Producto</th>
                         <th>Existencias</th>
                         <th>Numero referencia de compra</th>
-                        <th>Precio unidad de venta</th>
-                        <th>Precio unidad de compra</th>
+                        <th>Precio unitario de venta</th>
+                        <th>Precio unitario de compra</th>
                     </tr>
                 </thead>
                 <tfoot>
@@ -103,8 +163,8 @@
                         <th>Producto</th>
                         <th>Existencias</th>
                         <th>Numero referencia de compra</th>
-                        <th>Precio unidad de venta</th>
-                        <th>Precio unidad de compra</th>
+                        <th>Precio unitario de venta</th>
+                        <th>Precio unitario de compra</th>
                     </tr>
                 </tfoot>
                 <tbody>

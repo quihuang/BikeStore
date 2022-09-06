@@ -17,4 +17,14 @@ function crear(text) {
 function seleccionarRegistro() {
     $('#btn-update').removeAttr('hidden');
     $('#btn-delete').removeAttr('hidden');
+    $('#btn-const').removeAttr('hidden');
+}
+
+function imprimir(nombre) {
+    var ficha = document.getElementById(nombre);
+    var ventimp = window.open(' ', 'popimpr');
+    ventimp.document.write(ficha.innerHTML);
+    ventimp.document.close();
+    ventimp.print();
+    ventimp.close();
 }

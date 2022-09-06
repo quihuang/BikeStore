@@ -12,6 +12,9 @@
     </div>
 
     <div class="containerBottons">
+        <button type="button" id="btn-const" class="btn btn-primary btn-crud" data-toggle="modal" data-target="#modalFactura" hidden>
+            Factura Venta
+        </button>
         <button type="button" id="btn-delete" class="btn btn-primary btn-crud" hidden>
             Eliminar
         </button>
@@ -23,7 +26,7 @@
         </button>
     </div>
 
-    <!-- Modal -->
+    <!-- Modal Creacion y actualizacion venta -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -39,7 +42,7 @@
                         <div class="col">
                             <form method="post">                             
                                 <div class="form-group">
-                                    <label for="nombre">CantidadProducto</label>
+                                    <label for="nombre">Cantidad Producto</label>
                                     <input type="number" name="" id="nombre" class="form-control"
                                         placeholder="Ingrese la cantidad del producto" aria-describedby="helpId" minlength="3"
                                         maxlength="50">
@@ -80,6 +83,70 @@
         </div>
     </div>
 
+
+    <!-- Modal Factura venta -->
+    <div class="modal fade" id="modalFactura" tabindex="-1" role="dialog" aria-labelledby="modalFactura"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="titleModal">Factura venta</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col">
+                            <form method="post"> 
+                                <div class="form-group">
+                                    <label for="fecha">Fecha</label>
+                                    <input type="text" name="nombre" id="nombre" class="form-control"
+                                        placeholder="Ingrese el nombre del Cliente" aria-describedby="helpId"
+                                        minlength="3" maxlength="50" value="12/09/2022" disabled>
+                                </div>  
+                                <div class="form-">
+                                    <label for="trabajador">Cliente</label>
+                                    <input type="text" name="nombre" id="nombre" class="form-control"
+                                        placeholder="Ingrese el nombre del Cliente" aria-describedby="helpId"
+                                        minlength="3" maxlength="50" value="Pepito Perez" disabled>
+                                </div>  
+                                <div class="form-group">
+                                    <label for="fecha">Vendedor</label>
+                                    <input type="text" name="nombre" id="nombre" class="form-control"
+                                        placeholder="Ingrese el nombre del Trabajador" aria-describedby="helpId"
+                                        minlength="3" maxlength="50" value="Paula Diaz" disabled>
+                                </div>
+                                 <div class="form-group">
+                                    <label for="fecha">Producto</label>
+                                    <input type="text" name="nombre" id="nombre" class="form-control"
+                                        placeholder="Ingrese la cantidad de productos en el Inventario" aria-describedby="helpId"
+                                        minlength="3" maxlength="50" value="Bicicleta Gris X" disabled>
+                                </div>                          
+                                <div class="form-group">
+                                    <label for="nombre">CantidadProducto</label>
+                                    <input type="number" name="" id="nombre" class="form-control"
+                                        placeholder="Ingrese la cantidad del producto" aria-describedby="helpId" minlength="3"
+                                        maxlength="50" value="2" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label for="fecha">Valor Venta</label>
+                                    <input type="text" name="nombre" id="nombre" class="form-control"
+                                        placeholder=" Ingrese el Valor Venta" aria-describedby="helpId"
+                                        minlength="3" maxlength="50" value="$ 1.200.000" disabled>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" onclick="imprimir('modalFactura')">Imprimir</button>
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="card mb-4">
         <div class="card-header">
             <i class="fas fa-table me-1"></i>
@@ -93,7 +160,7 @@
                         <th>Fecha</th>
                         <th>Cantidad del Producto</th>
                         <th>Valor Venta</th>
-                        <th>Trabajador</th>
+                        <th>Vendedor</th>
                         <th>Cliente</th>
                         <th>Inventario</th>
                     </tr>
@@ -104,7 +171,7 @@
                         <th>Fecha</th>
                         <th>Cantidad del Producto</th>
                         <th>Valor Venta</th>
-                        <th>Trabajador</th>
+                        <th>Vendedor</th>
                         <th>Cliente</th>
                         <th>Inventario</th>                        
                     </tr>
