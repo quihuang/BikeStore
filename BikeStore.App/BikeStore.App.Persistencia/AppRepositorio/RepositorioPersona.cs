@@ -31,14 +31,14 @@ namespace BikeStore.App.Persistencia
 
         int IRepositorioPersona.AddTrabajador(Trabajador Trabajador){
             
-            var TrabajadorLocal = _appContext.Trabajadores.Add(Trabajador);
+            var TrabajadorLocal = _appContext.Trabajadores.Add(Trabajador); // // Pregunta: porque es necesario guardar el resultado del método en la variable "TrabajadorLocal", ya que no se hace nada con esa variable
             var result = _appContext.SaveChanges();
             
             return result;
         }
 
         IEnumerable<Persona> IRepositorioPersona.GetAllPersonasForName (string name) {
-            var persona = _appContext.Personas.Where( p => p.Nombre == name );
+            var persona = _appContext.Personas.Where( p => p.Nombre == name ); // // Pregunta: porque es necesario guardar el resultado del método en la variable "persona", ya que no se hace nada con esa variable
             //var persona = _appContext.Personas.Where( p => p.Nombre.contains(name));
             return persona;
         }

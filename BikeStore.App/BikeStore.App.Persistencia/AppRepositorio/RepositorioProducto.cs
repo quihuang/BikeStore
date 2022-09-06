@@ -33,7 +33,7 @@ namespace BikeStore.App.Persistencia
 
         // Método para Crear un Producto
         int IRepositorioProducto.AddProducto(Producto producto){
-            var productoLocal = _appContext.Productos.Add(producto);
+            _appContext.Productos.Add(producto);
             var result = _appContext.SaveChanges();
             return result;
         }
