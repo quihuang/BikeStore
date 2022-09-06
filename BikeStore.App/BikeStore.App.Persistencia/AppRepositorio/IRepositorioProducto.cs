@@ -12,6 +12,6 @@ namespace BikeStore.App.Persistencia
         IEnumerable<Producto> GetAllProductosForName(string name);
         int AddProducto(Producto Producto);
         int UpdateProducto(Producto Producto);
-        void DeleteProducto(Producto Producto);
+        int DeleteProducto(Producto Producto);
     } 
 }

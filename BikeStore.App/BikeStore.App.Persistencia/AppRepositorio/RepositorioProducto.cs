@@ -5,7 +5,7 @@ using BikeStore.App.Dominio;
 
 namespace BikeStore.App.Persistencia
 {
-    public class RepositorioPersona : IRepositorioProducto
+    public class RepositorioProducto : IRepositorioProducto
     {
 
         private readonly AppContext _appContext;
@@ -25,7 +25,7 @@ namespace BikeStore.App.Persistencia
         }
 
         // Método para buscar por nombre
-        IEnumerable<Producto> IRepositorioProducto.GetAllProductoForName (string name) {
+        IEnumerable<Producto> IRepositorioProducto.GetAllProductosForName (string name) {
             var producto = _appContext.Productos.Where( p => p.Nombre == name );
             //var producto = _appContext.Productos.Where( p => p.Nombre.contains(name));
             return producto;
@@ -33,7 +33,7 @@ namespace BikeStore.App.Persistencia
 
         // Método para Crear un Producto
         int IRepositorioProducto.AddProducto(Producto producto){
-            var productoLocal = _appContext.Producto.Add(producto);
+            var productoLocal = _appContext.Productos.Add(producto);
             var result = _appContext.SaveChanges();
             return result;
         }
