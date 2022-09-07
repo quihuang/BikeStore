@@ -14,16 +14,20 @@ namespace BikeStore.App.Web.Pages
         // video 02/09 min 2:30:20 y en el minuto 2:41:27
         // Instanciar el repositorio, igual como se hizo en la capa Consola
         private IRepositorioVenta _repositorioVenta = new RepositorioVenta( new BikeStore.App.Persistencia.AppContext() );
+        private IRepositorioTrabajador _repositorioTrabajador = new RepositorioTrabajador( new BikeStore.App.Persistencia.AppContext() );
 
         // video 02/09 min 2:49:30
         // crear una variable tipo List que reciba la totalidad de los registros consultados de la DB, debe ser público para que la interface gráfica pueda acceder a él
         public List<Venta> listadoVenta { get; set; }
+        public List<Trabajador> listadoTrabajador { get; set; }
 
         public void OnGet()
         {
             listadoVenta = new List<Venta>(); // se instancia vacío
-
             listadoVenta = _repositorioVenta.GetAllVentas().ToList();
+
+            listadoTrabajador = new List<Trabajador>(); // se instancia vacío
+            listadoTrabajador = _repositorioTrabajador.GetAllTrabajadores().ToList();
         }
 
         // video 02/09 min 2:09:20

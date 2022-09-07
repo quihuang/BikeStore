@@ -55,9 +55,16 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="trabajador">Trabajador</label>
-                                    <input type="text" name="trabajador" id="trabajador" class="form-control"
+                                    @* <input type="text" name="trabajador" id="trabajador" class="form-control"
                                         placeholder="Ingrese el nombre del Trabajador" aria-describedby="helpId"
-                                        minlength="3" maxlength="50">
+                                        minlength="3" maxlength="50"> *@
+                                    <select name="trabajador" class="form-control">
+                                        <option value="">Seleccione un Trabajador</option>
+                                        @foreach (var item in Model.listadoTrabajador)
+                                        {
+                                            <option value="@item.Id">@item.Nombre @item.Apellido id=@item.Id</option>
+                                        }
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="cliente">Cliente</label>
