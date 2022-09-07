@@ -15,7 +15,7 @@ namespace BikeStore.App.Persistencia
         }
 
         // Método para buscar todos los registros
-        IEnumerable<Producto> IRepositorioProducto.GetAllProducto(){
+        IEnumerable<Producto> IRepositorioProducto.GetAllProductos(){
              return _appContext.Productos;
         }
 
@@ -33,7 +33,7 @@ namespace BikeStore.App.Persistencia
 
         // Método para Crear un Producto
         int IRepositorioProducto.AddProducto(Producto producto){
-            var productoLocal = _appContext.Productos.Add(producto);
+            _appContext.Productos.Add(producto);
             var result = _appContext.SaveChanges();
             return result;
         }

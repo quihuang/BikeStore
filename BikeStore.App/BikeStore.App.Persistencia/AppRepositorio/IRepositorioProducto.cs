@@ -7,8 +7,8 @@ namespace BikeStore.App.Persistencia
 {
     public interface IRepositorioProducto
     {
-        IEnumerable<Producto> GetAllProducto();
-        Producto GetProducto(int idProducto);                       // Buscar
+        IEnumerable<Producto> GetAllProductos();
+        Producto GetProducto(int idProducto);
         IEnumerable<Producto> GetAllProductosForName(string name);
         int AddProducto(Producto Producto);
         int UpdateProducto(Producto Producto);
