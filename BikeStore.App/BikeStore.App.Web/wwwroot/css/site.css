@@ -106,3 +106,43 @@ body {
 .tittleWelcome {
     padding-top: 134PX;
 }
+
+.loginbtn {
+    width: 100%;
+    border-radius: 25px !important;
+}
+
+.containerlogin {
+    height: 500px !important;
+    display: flex;
+    flex-direction: row;
+    width: 65% !important;
+    align-items: center;
+    box-shadow: 0 1rem 3rem rgb(0 0 0 / 18%) !important;
+}
+
+.containerloginTwo {
+    height: 75% !important;
+    flex: 1 !important;
+}
+
+.imgpanellogin {}
+
+#layoutAuthentication_content {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+}
+
+.dataLogin {
+    padding: 0px 110px 0px 110px;
+}
+
+.imagenLogin {
+    position: relative;
+    width: 105%;
+    height: 141%;
+    left: -25px;
+    bottom: 87px;
+}
