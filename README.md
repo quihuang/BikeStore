@@ -15,6 +15,7 @@ Entity Framework 5.0
 - sexto paso creamos las clases y todas sus partes ilustradas en el diagrama de clases con sus relaciones para tener una estructura del proyecto 
 - séptimo cada persona se le otorga una responsabilidad y una labor se crean las branch
 - octavo iniciamos el proceso de frontend y creamos nuestro control de usuarios 
+- noveno creamos la parte visual de cada y una de la clases en la aplicacion
 ## Uso ##
 1. Control y manejo de inventario
 2. salida y entrada de mercancías
