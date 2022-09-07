@@ -40,6 +40,7 @@ namespace BikeStore.App.Consola
             // crearPersona();
 
             // crearVenta();
+            prueba_BuscarTrabajador(1);
 
         }
 
@@ -97,7 +98,7 @@ namespace BikeStore.App.Consola
             }
         }
 
-        // Método para Crear Inventario
+        // Método para Crear ConstanciaRecibido
         public static void crearConstanciaRecibido(){
             Trabajador trabajador1 = _repositorioTrabajador.GetTrabajador(1);
             Trabajador trabajador2 = _repositorioTrabajador.GetTrabajador(2);
@@ -431,13 +432,23 @@ namespace BikeStore.App.Consola
 
         }
 
+        public static void prueba_BuscarTrabajador(int id){
+            var trabajador = _repositorioPersona.Buscar(2);
+            if( trabajador != null){
+                Console.WriteLine("Encontró al trabajador");
+                Console.WriteLine("id= ", trabajador.Id, ", Nombre= ", trabajador.Nombre);
+            }else{
+                Console.WriteLine("trabajador no existe");
+            }
+        }
+
         public static void ActualizarTrabajador(int id){
 
-            var trabajador = _repositorioPersona.Buscar(4);
+            var trabajador = _repositorioPersona.Buscar(id);
 
             if( trabajador != null){
 
-                Console.WriteLine("Encontro al trabajador");
+                Console.WriteLine("Encontró al trabajador");
 
                 trabajador.NumeroTelefono = "00000000";
                 trabajador.Apellido = "Guzman";
