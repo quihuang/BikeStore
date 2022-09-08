@@ -86,16 +86,11 @@
                     @* Explicacion en el video 02/09 min 2:52:16 *@
                     @foreach(var item in Model.listadoProducto){
                         <tr onclick="seleccionarRegistro();">
-                        <td>@item.Id</td>
-                        <td>@item.Nombre</td>
-                        <td>@item.Descripcion</td>
-                    </tr>
+                            <td>@item.Id</td>
+                            <td>@item.Nombre</td>
+                            <td>@item.Descripcion</td>
+                        </tr>
                     }
-                    @* <tr onclick="seleccionarRegistro();">
-                        <td>1</td>
-                        <td>Bicicleta - dato quemado</td>
-                        <td>Descripcion - dato quemado</td>
-                    </tr> *@
                 </tbody>
             </table>
         </div>

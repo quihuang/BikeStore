@@ -40,7 +40,7 @@
                         <div class="col">
                             <form method="post">
                                 <div class="form-group">
-                                    <label for="nombre">Cedula</label>
+                                    <label for="cedula">Cedula</label>
                                     <input type="number" name="cedula" id="cedula" class="form-control"
                                         placeholder="Ingrese su numero de cedula" aria-describedby="helpId"
                                         minlength="3" maxlength="50">
@@ -58,10 +58,10 @@
                                         maxlength="50">
                                 </div>
                                 <div class="form-group">
-                                    <label for="apellido">Telefono</label>
-                                    <input type="number" name="telefono" id="telefono" class="form-control"
-                                        placeholder="Ingrese el Telefono" aria-describedby="helpId" minlength="3"
-                                        maxlength="50">
+                                    <label for="numeroTelefono">Número Telefono</label>
+                                    <input type="number" name="numeroTelefono" id="numeroTelefono" class="form-control"
+                                        placeholder="Ingrese el Telefono" aria-describedby="helpId" min="3000000000"
+                                        max="3999999999" step="1">
                                 </div>
                                 <div class="form-group">
                                     <label for="nombreUsuario">Nombre usuario</label>
@@ -79,7 +79,7 @@
                                     <label for="salario">Salario</label>
                                     <input type="number" name="salario" id="salario" class="form-control"
                                         placeholder="Ingrese salario" aria-describedby="helpId" minlength="3"
-                                        maxlength="50">
+                                        maxlength="50"step="100000">
                                 </div>
                                 <div class="form-group">
                                     <label for="rol">rol</label>
@@ -91,7 +91,7 @@
                                     </select>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                                     <button type="submit" id="btn-create-modal" class="btn btn-primary">Crear</button>
                                 </div>
                             </form>
@@ -115,7 +115,7 @@
                         <th>Cedula</th>
                         <th>Nombres</th>
                         <th>Apellidos</th>
-                        <th>Telefono</th>
+                        <th>Número Telefono</th>
                         <th>Nombre de usuario</th>
                         <th>Salario</th>
                         <th>Rol</th>
@@ -127,14 +127,27 @@
                         <th>Cedula</th>
                         <th>Nombres</th>
                         <th>Apellidos</th>
-                        <th>Telefono</th>
+                        <th>Número Telefono</th>
                         <th>Nombre de usuario</th>
                         <th>Salario</th>
                         <th>Rol</th>
                     </tr>
                 </tfoot>
                 <tbody>
-                    <tr onclick="seleccionarRegistro();">
+                    @* Explicacion en el video 02/09 min 2:52:16 *@
+                    @foreach(var item in Model.listadoTrabajador){
+                        <tr onclick="seleccionarRegistro();">
+                            <td>@item.Id</td>
+                            <td>@item.Cedula</td>
+                            <td>@item.Nombre</td>
+                            <td>@item.Apellido</td>
+                            <td>@item.NumeroTelefono</td>
+                            <td>@item.NombreUsuario</td>
+                            <td>@item.Salario</td>
+                            <td>@item.Rol</td>
+                        </tr>
+                    }
+                    @* <tr onclick="seleccionarRegistro();">
                         <td>1</td>
                         <td>113425634</td>
                         <td>Fernando</td>
@@ -193,7 +206,7 @@
                         <td>Guz123</td>
                         <td>$1,320,800</td>
                         <td>Jefe Operativo</td>
-                    </tr>
+                    </tr> *@
                 </tbody>
             </table>
         </div>
