@@ -20,6 +20,7 @@ namespace BikeStore.App.Consola
         {
             // crearCliente();
 
+            // ObtenerTodosTrabajadores();
             // crearTrabajador();
             // ActualizarTrabajador();
             // EliminarTrabajador(4);
@@ -40,8 +41,19 @@ namespace BikeStore.App.Consola
             // crearPersona();
 
             // crearVenta();
-            prueba_BuscarTrabajador(1);
+            // prueba_BuscarTrabajador(1);
 
+        }
+
+        // Método buscar todos los trabajadores
+        public static void ObtenerTodosTrabajadores(){
+
+            var listado = _repositorioTrabajador.GetAllTrabajadores();
+
+            foreach (var item in listado)
+            {
+                Console.WriteLine("Id: " + item.Id + ", Nombre: " + item.Nombre + ", Discriminador: " + item.Discriminator + ", Salario: " + item.Salario);
+            }
         }
 
         // Método para Crear Venta

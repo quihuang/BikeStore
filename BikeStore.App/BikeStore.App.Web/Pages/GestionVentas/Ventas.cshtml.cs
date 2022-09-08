@@ -23,9 +23,11 @@ namespace BikeStore.App.Web.Pages
 
         public void OnGet()
         {
+            // Método para listar todas las Ventas y mostrarlas en la tabla
             listadoVenta = new List<Venta>(); // se instancia vacío
             listadoVenta = _repositorioVenta.GetAllVentas().ToList();
 
+            // Método para listar los trabajadores y mostrarlos en una lista desplegable en la ventana Modal de Crear Venta
             listadoTrabajador = new List<Trabajador>(); // se instancia vacío
             listadoTrabajador = _repositorioTrabajador.GetAllTrabajadores().ToList();
         }

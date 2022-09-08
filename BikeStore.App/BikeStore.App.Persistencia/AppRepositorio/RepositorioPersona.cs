@@ -43,7 +43,7 @@ namespace BikeStore.App.Persistencia
 
         // Método para buscar Persona por nombre
         IEnumerable<Persona> IRepositorioPersona.GetAllPersonasForName (string name) {
-            var persona = _appContext.Personas.Where( p => p.Nombre == name ); // // Pregunta: porque es necesario guardar el resultado del método en la variable "persona", ya que no se hace nada con esa variable
+            var persona = _appContext.Personas.Where( p => p.Nombre == name ); 
             //var persona = _appContext.Personas.Where( p => p.Nombre.contains(name));
             return persona;
         }
