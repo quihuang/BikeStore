@@ -56,7 +56,7 @@
                                 <div class="form-group">
                                     <label for="trabajador">Trabajador</label>
                                     <select name="trabajador" class="form-control">
-                                        <option value="">Seleccione un Trabajador</option>
+                                        <option selected>Seleccionar...</option>
                                         @foreach (var trabajador in Model.listadoTrabajador)
                                         {
                                             <option value="@trabajador.Id">@trabajador.Nombre @trabajador.Apellido id=@trabajador.Id</option>
@@ -66,7 +66,7 @@
                                 <div class="form-group">
                                     <label for="cliente">Cliente</label>
                                     <select name="cliente" class="form-control">
-                                        <option value="">Seleccione un Cliente</option>
+                                        <option selected>Seleccionar...</option>
                                         @foreach (var cliente in Model.listadoCliente)
                                         {
                                             <option value="@cliente.Id">@cliente.Nombre @cliente.Apellido id=@cliente.Id</option>
@@ -80,7 +80,7 @@
                                         minlength="3" maxlength="50">
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                                     <button type="submit" id="btn-create-modal" class="btn btn-primary">Crear</button>
                                 </div>
                             </form>

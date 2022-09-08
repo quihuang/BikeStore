@@ -44,7 +44,7 @@
                                 <div class="form-group">
                                     <label for="producto">Producto</label>
                                         <select name="producto" class="form-control">
-                                        <option value="">Seleccione un Producto</option>
+                                        <option selected>Seleccionar...</option>
                                         @foreach (var producto in Model.listadoProducto)
                                         {
                                             <option value="@producto.Id">@producto.Nombre id=@producto.Id</option>
@@ -76,7 +76,7 @@
                                         maxlength="50">
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                                     <button type="button" id="btn-create-modal" class="btn btn-primary" data-toggle="modal" data-target="#modalContancia">Crear</button>
                                 </div>
                             </form>

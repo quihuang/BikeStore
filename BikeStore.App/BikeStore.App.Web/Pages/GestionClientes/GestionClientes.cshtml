@@ -41,46 +41,40 @@
                         <div class="col">
                             <form method="post">
                                 <div class="form-group">
-                                    <label for="nombre">Cedula</label>
-                                    <input type="number" name="" id="cedula" class="form-control"
+                                    <label for="cedula">Cédula</label>
+                                    <input type="number" name="cedula" id="cedula" class="form-control"
                                         placeholder="Ingrese su numero de cedula" aria-describedby="helpId"
                                         minlength="3" maxlength="50">
                                 </div>
                                 <div class="form-group">
                                     <label for="nombre">Nombres</label>
-                                    <input type="text" name="" id="nombre" class="form-control"
+                                    <input type="text" name="nombre" id="nombre" class="form-control"
                                         placeholder="Ingrese el nombre" aria-describedby="helpId" minlength="3"
                                         maxlength="50">
                                 </div>
                                 <div class="form-group">
                                     <label for="apellido">Apellidos</label>
-                                    <input type="text" name="" id="apellido" class="form-control"
+                                    <input type="text" name="apellido" id="apellido" class="form-control"
                                         placeholder="Ingrese el apellido" aria-describedby="helpId" minlength="3"
                                         maxlength="50">
                                 </div>
                                 <div class="form-group">
-                                    <label for="apellido">Telefono</label>
-                                    <input type="number" name="" id="telefono" class="form-control"
-                                        placeholder="Ingrese el Telefono" aria-describedby="helpId" minlength="3"
-                                        maxlength="50">
+                                    <label for="numeroTelefono">Número de Teléfono</label>
+                                    <input type="tel" name="numeroTelefono" id="numeroTelefono" class="form-control"
+                                        placeholder="Ingrese el Telefono" aria-describedby="helpId" min="3000000000"
+                                        max="3999999999" step="1">
                                 </div>
                                 <div class="form-group">
                                     <label for="email">Email</label>
-                                    <input type="text" name="email" id="nombreUsuario" class="form-control"
+                                    <input type="email" name="email" id="email" class="form-control"
                                         placeholder="Ingrese el email" aria-describedby="helpId" minlength="3"
                                         maxlength="50">
                                 </div>
                                 <div class="form-group">
-                                    <label for="direccion">Direccion</label>
-                                    <input type="password" name="direccion" id="contraseña" class="form-control"
+                                    <label for="direccion">Dirección</label>
+                                    <input type="text" name="direccion" id="direccion" class="form-control"
                                         placeholder="Ingrese direccion" aria-describedby="helpId" minlength="3"
                                         maxlength="50">
-                                </div>
-                                <div class="form-group" hidden>
-                                    <label for="rol">rol</label>
-                                    <select class="form-select form-control" aria-label="Default select example">
-                                        <option value="1" selected>Cliente</option>
-                                    </select>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -104,10 +98,10 @@
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Cedula</th>
+                        <th>Cédula</th>
                         <th>Nombres</th>
                         <th>Apellidos</th>
-                        <th>Telefono</th>
+                        <th>Número de Teléfono</th>
                         <th>Email</th>
                         <th>Dirección</th>
                     </tr>
@@ -115,16 +109,28 @@
                 <tfoot>
                     <tr>
                          <th>Id</th>
-                        <th>Cedula</th>
+                        <th>Cédula</th>
                         <th>Nombres</th>
                         <th>Apellidos</th>
-                        <th>Telefono</th>
+                        <th>Número de Teléfono</th>
                         <th>Email</th>
                         <th>Dirección</th>
                     </tr>
                 </tfoot>
                 <tbody>
-                    <tr onclick="seleccionarRegistro();">
+                    @* Explicacion en el video 02/09 min 2:52:16 *@
+                    @foreach(var item in Model.listadoCliente){
+                        <tr onclick="seleccionarRegistro();">
+                            <td>@item.Id</td>
+                            <td>@item.Cedula</td>
+                            <td>@item.Nombre</td>
+                            <td>@item.Apellido</td>
+                            <td>@item.NumeroTelefono</td>
+                            <td>@item.Email</td>
+                            <td>@item.Direccion</td>
+                        </tr>
+                    }
+                    @* <tr onclick="seleccionarRegistro();">
                         <td>1</td>
                         <td>91912323</td>
                         <td>Alejandro</td>
@@ -204,7 +210,7 @@
                         <td>3145654531</td>
                         <td>martinez@fdsfsf.com</td>
                         <td>KR 9 N #122-122</td>
-                    </tr>
+                    </tr> *@
                 </tbody>
             </table>
         </div>

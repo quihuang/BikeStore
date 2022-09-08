@@ -13,9 +13,8 @@ namespace BikeStore.App.Web
     {
         // video 02/09 min 2:30:20 y en el minuto 2:41:27
         // Instanciar el repositorio, igual como se hizo en la capa Consola
-        private IRepositorioPersona _repositorioPersona = new RepositorioPersona( new Persistencia.AppContext() );
         private IRepositorioTrabajador _repositorioTrabajador = new RepositorioTrabajador( new Persistencia.AppContext() );
-        private IRepositorioUsuario _repositorioUsuario = new RepositorioUsuario( new Persistencia.AppContext() );
+
 
         // video 02/09 min 2:49:30
         // crear una variable tipo List que reciba la totalidad de los registros consultados de la DB, debe ser público para que la interface gráfica pueda acceder a él
@@ -29,10 +28,6 @@ namespace BikeStore.App.Web
             // debo inicializar el objeto listadoProducto dentro de OnGet para que lo pueda interpretar
             listadoTrabajador = new List<Trabajador>(); // se instancia vacío
             listadoTrabajador = _repositorioTrabajador.GetAllTrabajadores().ToList();
-            // listadoPersona = new List<Persona>(); // se instancia vacío
-            // listadoPersona = _repositorioPersona.GetAllPersonas().ToList();
-            // listadoUsuario = new List<Usuario>(); // se instancia vacío
-            // listadoUsuario = _repositorioUsuario.GetAllUsuarios().ToList();
         }
 
         // // Método para capturar el Post del formulario
