@@ -55,22 +55,23 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="trabajador">Trabajador</label>
-                                    @* <input type="text" name="trabajador" id="trabajador" class="form-control"
-                                        placeholder="Ingrese el nombre del Trabajador" aria-describedby="helpId"
-                                        minlength="3" maxlength="50"> *@
                                     <select name="trabajador" class="form-control">
                                         <option value="">Seleccione un Trabajador</option>
-                                        @foreach (var item in Model.listadoTrabajador)
+                                        @foreach (var trabajador in Model.listadoTrabajador)
                                         {
-                                            <option value="@item.Id">@item.Nombre @item.Apellido id=@item.Id</option>
+                                            <option value="@trabajador.Id">@trabajador.Nombre @trabajador.Apellido id=@trabajador.Id</option>
                                         }
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="cliente">Cliente</label>
-                                    <input type="text" name="cliente" id="cliente" class="form-control"
-                                        placeholder="Ingrese el nombre del Cliente" aria-describedby="helpId"
-                                        minlength="3" maxlength="50">
+                                    <select name="cliente" class="form-control">
+                                        <option value="">Seleccione un Cliente</option>
+                                        @foreach (var cliente in Model.listadoCliente)
+                                        {
+                                            <option value="@cliente.Id">@cliente.Nombre @cliente.Apellido id=@cliente.Id</option>
+                                        }
+                                        </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="inventario">Inventario</label>
@@ -195,69 +196,6 @@
                         <td>@item.Inventario</td>
                     </tr>
                     }
-                    @* <tr onclick="seleccionarRegistro();">
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                    </tr>
-                    <tr onclick="seleccionarRegistro();">
-                        <td>2</td>
-                        <td>2</td>
-                        <td>2</td>
-                        <td>2</td>
-                        <td>2</td>
-                        <td>2</td>
-                        <td>2</td>
-                    </tr>
-                    <tr onclick="seleccionarRegistro();">
-                        <td>3</td>
-                        <td>3</td>
-                        <td>3</td>
-                        <td>3</td>
-                        <td>3</td>
-                        <td>3</td>
-                        <td>3</td>                        
-                    </tr>
-                    <tr onclick="seleccionarRegistro();">                    
-                        <td>4</td>
-                        <td>4</td>
-                        <td>4</td>
-                        <td>4</td>
-                        <td>4</td>
-                        <td>4</td>
-                        <td>4</td>                        
-                    </tr>                    
-                    <tr onclick="seleccionarRegistro();">
-                        <td>5</td>
-                        <td>5</td>
-                        <td>5</td>
-                        <td>5</td>
-                        <td>5</td>
-                        <td>5</td>
-                        <td>5</td>                        
-                    </tr>
-                    <tr onclick="seleccionarRegistro();">
-                        <td>6</td>
-                        <td>6</td>
-                        <td>6</td>
-                        <td>6</td>
-                        <td>6</td>
-                        <td>6</td>
-                        <td>6</td>                        
-                    </tr>
-                    <tr onclick="seleccionarRegistro();">
-                        <td>7</td>
-                        <td>7</td>
-                        <td>7</td>
-                        <td>7</td>
-                        <td>7</td>
-                        <td>7</td>
-                        <td>7</td>                        
-                    </tr> *@
                 </tbody>
             </table>
         </div>

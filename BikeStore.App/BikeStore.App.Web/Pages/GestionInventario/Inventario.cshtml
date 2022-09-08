@@ -43,9 +43,13 @@
                             <form method="post">
                                 <div class="form-group">
                                     <label for="producto">Producto</label>
-                                    <input type="text" name="producto" id="producto" class="form-control"
-                                        placeholder="Ingrese el nombre del producto" aria-describedby="helpId"
-                                        minlength="3">
+                                        <select name="producto" class="form-control">
+                                        <option value="">Seleccione un Producto</option>
+                                        @foreach (var producto in Model.listadoProducto)
+                                        {
+                                            <option value="@producto.Id">@producto.Nombre id=@producto.Id</option>
+                                        }
+                                        </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="existencias">Existencias</label>
@@ -168,54 +172,16 @@
                     </tr>
                 </tfoot>
                 <tbody>
-                    <tr onclick="seleccionarRegistro();">
-                        <td>1</td>
-                        <td>producto1</td>
-                        <td>9</td>
-                        <td>333</td>
-                        <td>150,000</td>
-                        <td>100,000</td>
+                    @foreach(var item in Model.listadoInventario){
+                        <tr onclick="seleccionarRegistro();">
+                        <td>@item.Id</td>
+                        <td>@item.Producto</td>
+                        <td>@item.Existencias</td>
+                        <td>@item.NumeroRefCompra</td>
+                        <td>@item.PrecioUniVenta</td>
+                        <td>@item.PrecioUniCompra</td>
                     </tr>
-                    <tr onclick="seleccionarRegistro();">
-                        <td>2</td>
-                        <td>producto1</td>
-                        <td>9</td>
-                        <td>333</td>
-                        <td>150,000</td>
-                        <td>100,000</td>
-                    </tr>
-                    <tr onclick="seleccionarRegistro();">
-                        <td>3</td>
-                        <td>producto1</td>
-                        <td>9</td>
-                        <td>333</td>
-                        <td>150,000</td>
-                        <td>100,000</td>
-                    </tr>
-                    <tr onclick="seleccionarRegistro();">
-                        <td>4</td>
-                        <td>producto1</td>
-                        <td>9</td>
-                        <td>333</td>
-                        <td>150,000</td>
-                        <td>100,000</td>
-                    </tr>
-                    <tr onclick="seleccionarRegistro();">
-                        <td>5</td>
-                        <td>producto1</td>
-                        <td>9</td>
-                        <td>333</td>
-                        <td>150,000</td>
-                        <td>100,000</td>
-                    </tr>
-                    <tr onclick="seleccionarRegistro();"s>
-                        <td>6</td>
-                        <td>producto1</td>
-                        <td>9</td>
-                        <td>333</td>
-                        <td>150,000</td>
-                        <td>100,000</td>
-                    </tr>
+                    }
                 </tbody>
             </table>
         </div>
