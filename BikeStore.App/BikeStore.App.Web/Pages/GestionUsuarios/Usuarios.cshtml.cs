@@ -39,8 +39,8 @@ namespace BikeStore.App.Web
             var numeroTelefono = Request.Form["numeroTelefono"];
             var nombreUsuario = Request.Form["nombreUsuario"];
             var contraseña = Request.Form["contraseña"];
-            var salario = Request.Form["salario"];
             var rol = Request.Form["rol"];
+            var salario = Request.Form["salario"];
 
             // // Creamos el objeto y le pasamos los datos del formulario
             var trabajador = new Trabajador{
@@ -50,9 +50,11 @@ namespace BikeStore.App.Web
                 NumeroTelefono = numeroTelefono,
                 NombreUsuario = nombreUsuario,
                 Contraseña = contraseña,
+                Rol = int.Parse(rol),
                 Salario = int.Parse(salario),
-                Rol = int.Parse(rol)
             };
+
+            Console.WriteLine("Cedula = " + trabajador.Cedula + "Nombre= " + trabajador.Nombre + "Apellido =" + trabajador.Apellido + "NumeroTelefono = " + trabajador.NumeroTelefono + "NombreUsuario =" + trabajador.NombreUsuario + "Contraseña =" + trabajador.Contraseña + "Rol =" + trabajador.Rol + "Salario =" + trabajador.Salario);
 
             // video 02/09 min 2:23:15
             // llamamos el método del Repositorio y le pasamos por parámetro el objeto que acabamos de crear, y el resultado del método lo almacenamos en la variable result.
