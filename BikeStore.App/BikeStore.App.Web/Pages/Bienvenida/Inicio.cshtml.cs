@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace BikeStore.App.Web.Pages
 {
-    public class LoginModel : PageModel
+    public class InicioModel : PageModel
     {
         public void OnGet()
         {

@@ -1,7 +1,8 @@
 ﻿@page
 @model BikeStore.App.Web.Pages.InventarioModel
 @{
-        ViewData["Title"] = "Gestion Inventario";
+    Layout = "_Layout";
+    ViewData["Title"] = "Gestion Inventario";
 }
 <div class="container-fluid px-4">
 
@@ -77,7 +78,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                    <button type="button" id="btn-create-modal" class="btn btn-primary" data-toggle="modal" data-target="#modalContancia">Crear</button>
+                                    <button type="submit" id="btn-create-modal" class="btn btn-primary" data-toggle="modal" data-target="#modalContancia">Crear</button>
                                 </div>
                             </form>
                         </div>
