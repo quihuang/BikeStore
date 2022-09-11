@@ -16,6 +16,7 @@ Entity Framework 5.0
 - séptimo cada persona se le otorga una responsabilidad y una labor se crean las branch
 - octavo iniciamos el proceso de frontend y creamos nuestro control de usuarios 
 - noveno creamos la parte visual de cada y una de la clases en la aplicacion
+- decimo creamos el CRUD y empezamos a relacionar todo el backend
 ## Uso ##
 1. Control y manejo de inventario
 2. salida y entrada de mercancías
