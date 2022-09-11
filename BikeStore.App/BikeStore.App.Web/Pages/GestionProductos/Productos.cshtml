@@ -39,26 +39,26 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col">
-                            <form method="post">
+                            <form method="post" class="needs-validation" novalidate>
                                 <div class="form-group">
                                     <label for="nombre">Nombre</label>
                                     <input type="text" name="nombre" id="nombre" class="form-control"
                                         placeholder="Ingrese el nombre del producto nuevo" aria-describedby="helpId"
-                                        minlength="3" maxlength="200">
+                                        minlength="3" maxlength="200" required>
                                     <div class="invalid-feedback">
-                                      Por favor ingrese el Nombre del producto.
+                                        Por favor ingrese el Nombre del producto.
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="descripcion">Descripcion</label>
                                     <input type="text" name="descripcion" id="descripcion" class="form-control"
-                                        placeholder="Ingrese la descripcion del producto nuevo" aria-describedby="helpId" minlength="3"  maxlength="600">
+                                        placeholder="Ingrese la descripcion del producto nuevo" aria-describedby="helpId" minlength="3"  maxlength="600" required>
                                     <div class="invalid-feedback">
-                                      Por favor ingrese la descripción del producto.
+                                        Por favor ingrese la descripción del producto.
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                    <button type="reset" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                                     <button type="submit" id="btn-create-modal" class="btn btn-primary">Crear</button>
                                 </div>
                             </form>
@@ -76,7 +76,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="titleModal">Actualizar de Productos</h5>
+                    <h5 class="modal-title" id="titleModal">Actualizar Producto</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -84,24 +84,24 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col">
-                            <form method="post" action="" id="formEditar">
+                            <form method="post" action="" id="formEditar"  class="needs-validation" novalidate>
                                 @Html.AntiForgeryToken()
                                 <input type="text" name="IdProducto" id="IdProducto" class="form-control" aria-describedby="helpId" hidden>
                                 <div class="form-group">
                                     <label for="nombreProducto">Nombre</label>
                                     <input type="text" name="nombreProducto" id="nombreProducto" class="form-control"
                                         placeholder="Ingrese el nombre del producto nuevo" aria-describedby="helpId"
-                                        minlength="3" maxlength="200">
+                                        minlength="3" maxlength="200" required>
                                     <div class="invalid-feedback">
-                                      Por favor ingrese el Nombre del producto.
+                                        Por favor ingrese el Nombre del producto.
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="descripcionProducto">Descripcion</label>
                                     <input type="text" name="descripcionProducto" id="descripcionProducto" class="form-control"
-                                        placeholder="Ingrese la descripcion del producto nuevo" aria-describedby="helpId" minlength="3"  maxlength="600">
+                                        placeholder="Ingrese la descripcion del producto nuevo" aria-describedby="helpId" minlength="3"  maxlength="600" required>
                                     <div class="invalid-feedback">
-                                      Por favor ingrese la descripción del producto.
+                                        Por favor ingrese la descripción del producto.
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -116,6 +116,7 @@
         </div>
     </div>
     
+    <!-- Tabla general -->
     <div class="card mb-4">
         <div class="card-header">
             <i class="fas fa-table me-1"></i>
@@ -140,7 +141,7 @@
                 <tbody>
                     @* Explicacion en el video 02/09 min 2:52:16 *@
                     @foreach(var item in Model.listadoProducto){
-                        <tr onclick="seleccionarRegistroProducto('@item.Id','@item.Nombre','@item.Descripcion');">
+                        <tr onclick="seleccionarRegistroProducto(this,'@item.Id','@item.Nombre','@item.Descripcion');">
                             <td>@item.Id</td>
                             <td>@item.Nombre</td>
                             <td>@item.Descripcion</td>

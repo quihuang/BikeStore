@@ -45,37 +45,37 @@
                                     <label for="cedula">Cédula</label>
                                     <input type="number" name="cedula" id="cedula" class="form-control"
                                         placeholder="Ingrese su numero de cedula" aria-describedby="helpId"
-                                        minlength="3" maxlength="50">
+                                        minlength="3" maxlength="50" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="nombre">Nombres</label>
-                                    <input type="text" name="nombre" id="nombre" class="form-control"
+                                    <input type="text" name="nombre" id="nombre" class="form-control" onkeypress="return Solo_Texto(event);"
                                         placeholder="Ingrese el nombre" aria-describedby="helpId" minlength="3"
-                                        maxlength="50">
+                                        maxlength="50" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="apellido">Apellidos</label>
                                     <input type="text" name="apellido" id="apellido" class="form-control"
                                         placeholder="Ingrese el apellido" aria-describedby="helpId" minlength="3"
-                                        maxlength="50">
+                                        maxlength="50" onkeypress="return Solo_Texto(event);" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="numeroTelefono">Número de Teléfono</label>
-                                    <input type="tel" name="numeroTelefono" id="numeroTelefono" class="form-control"
+                                    <input type="number" name="numeroTelefono" id="numeroTelefono" class="form-control"
                                         placeholder="Ingrese el Telefono" aria-describedby="helpId" min="3000000000"
-                                        max="3999999999" step="1">
+                                        max="3999999999" step="1" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="email">Email</label>
                                     <input type="email" name="email" id="email" class="form-control"
                                         placeholder="Ingrese el email" aria-describedby="helpId" minlength="3"
-                                        maxlength="50">
+                                        maxlength="50" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="direccion">Dirección</label>
                                     <input type="text" name="direccion" id="direccion" class="form-control"
                                         placeholder="Ingrese direccion" aria-describedby="helpId" minlength="3"
-                                        maxlength="50">
+                                        maxlength="50" required>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -131,87 +131,6 @@
                             <td>@item.Direccion</td>
                         </tr>
                     }
-                    @* <tr onclick="seleccionarRegistro();">
-                        <td>1</td>
-                        <td>91912323</td>
-                        <td>Alejandro</td>
-                        <td>Martinez</td>
-                        <td>3145654531</td>
-                        <td>martinez@fdsfsf.com</td>
-                        <td>KR 9 N #122-122</td>
-                    </tr>
-                    <tr onclick="seleccionarRegistro();">
-                        <td>2</td>
-                        <td>91912323</td>
-                        <td>Alejandro</td>
-                        <td>Martinez</td>
-                        <td>3145654531</td>
-                        <td>martinez@fdsfsf.com</td>
-                        <td>KR 9 N #122-122</td>
-                    </tr onclick="seleccionarRegistro();">
-                    <tr>
-                        <td>3</td>
-                        <td>91912323</td>
-                        <td>Alejandro</td>
-                        <td>Martinez</td>
-                        <td>3145654531</td>
-                        <td>martinez@fdsfsf.com</td>
-                        <td>KR 9 N #122-122</td>
-                    </tr>
-                    <tr onclick="seleccionarRegistro();">
-                        <td>4</td>
-                        <td>91912323</td>
-                        <td>Alejandro</td>
-                        <td>Martinez</td>
-                        <td>3145654531</td>
-                        <td>martinez@fdsfsf.com</td>
-                        <td>KR 9 N #122-122</td>
-                    </tr>
-                    <tr onclick="seleccionarRegistro();">
-                        <td>5</td>
-                        <td>91912323</td>
-                        <td>Alejandro</td>
-                        <td>Martinez</td>
-                        <td>3145654531</td>
-                        <td>martinez@fdsfsf.com</td>
-                        <td>KR 9 N #122-122</td>
-                    </tr>
-                    <tr onclick="seleccionarRegistro();">
-                        <td>6</td>
-                        <td>91912323</td>
-                        <td>Alejandro</td>
-                        <td>Martinez</td>
-                        <td>3145654531</td>
-                        <td>martinez@fdsfsf.com</td>
-                        <td>KR 9 N #122-122</td>
-                    </tr>
-                    <tr onclick="seleccionarRegistro();">
-                        <td>7</td>
-                        <td>91912323</td>
-                        <td>Alejandro</td>
-                        <td>Martinez</td>
-                        <td>3145654531</td>
-                        <td>martinez@fdsfsf.com</td>
-                        <td>KR 9 N #122-122</td>
-                    </tr>
-                    <tr onclick="seleccionarRegistro();">
-                        <td>8</td>
-                        <td>91912323</td>
-                        <td>Alejandro</td>
-                        <td>Martinez</td>
-                        <td>3145654531</td>
-                        <td>martinez@fdsfsf.com</td>
-                        <td>KR 9 N #122-122</td>
-                    </tr>
-                    <tr onclick="seleccionarRegistro();">
-                        <td>9</td>
-                        <td>91912323</td>
-                        <td>Alejandro</td>
-                        <td>Martinez</td>
-                        <td>3145654531</td>
-                        <td>martinez@fdsfsf.com</td>
-                        <td>KR 9 N #122-122</td>
-                    </tr> *@
                 </tbody>
             </table>
         </div>

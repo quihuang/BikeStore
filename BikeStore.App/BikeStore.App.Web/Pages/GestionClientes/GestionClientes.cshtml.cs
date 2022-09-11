@@ -28,7 +28,7 @@ namespace BikeStore.App.Web.Pages
         }
 
         // // Método para capturar el Post del formulario
-        public void OnPost(){
+        public IActionResult OnPost(){
 
             var cedula = Request.Form["cedula"];
             var nombre = Request.Form["nombre"];
@@ -55,6 +55,7 @@ namespace BikeStore.App.Web.Pages
             }else{
                 Console.WriteLine("Se creó con éxito el Usuario");
             }
+            return RedirectToPage("./GestionClientes");
         }
     }
 }

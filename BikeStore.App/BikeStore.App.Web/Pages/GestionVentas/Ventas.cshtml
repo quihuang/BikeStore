@@ -3,6 +3,7 @@
 @{
     Layout = "_Layout";
     ViewData["Title"] = "Gestion Ventas";
+    ViewData["script"] = "Ventas.js"; 
 }
 <div class="container-fluid px-4">
 
@@ -19,7 +20,7 @@
         <button type="button" id="btn-delete" class="btn btn-primary btn-crud" hidden>
             Eliminar
         </button>
-        <button type="button" id="btn-update" class="btn btn-primary btn-crud" data-toggle="modal" data-target="#exampleModal" onclick="editar('Ventas');" hidden>
+        <button type="button" id="btn-update" class="btn btn-primary btn-crud" data-toggle="modal" data-target="#ModalActualizar" onclick="editar('Ventas');" hidden>
             Editar
         </button>
         <button type="button" id="btn-create" class="btn btn-primary " data-toggle="modal" data-target="#exampleModal" onclick="crear('Ventas');">
@@ -27,7 +28,7 @@
         </button>
     </div>
 
-    <!-- Modal Creacion y actualizacion venta -->
+    <!-- Modal Creacion Venta -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -41,26 +42,26 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col">
-                            <form method="post">
+                            <form method="post" class="needs-validation" novalidate>
                                 <div class="form-group">
                                     <label for="cantidadProducto">Cantidad Producto</label>
                                     <input type="number" name="cantidadProducto" id="cantidadProducto" class="form-control"
                                         placeholder="Ingrese la cantidad del producto" aria-describedby="helpId" minlength="3"
-                                        maxlength="50">
+                                        maxlength="50" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="valorVenta">Valor Venta</label>
                                     <input type="number" name="valorVenta" id="valorVenta" class="form-control"
                                         placeholder=" Ingrese el Valor Venta" aria-describedby="helpId"
-                                        minlength="3" maxlength="50">
+                                        minlength="3" maxlength="50" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="trabajador">Trabajador</label>
-                                    <select name="trabajador" class="form-control">
+                                    <select name="trabajador" class="form-control" required>
                                         <option selected>Seleccionar...</option>
                                         @foreach (var trabajador in Model.listadoTrabajador)
                                         {
-                                            <option value="@trabajador.Id">@trabajador.Nombre @trabajador.Apellido id=@trabajador.Id</option>
+                                            <option value="@trabajador.Id">@trabajador.Nombre @trabajador.Apellido</option>
                                         }
                                     </select>
                                 </div>
@@ -70,18 +71,34 @@
                                         <option selected>Seleccionar...</option>
                                         @foreach (var cliente in Model.listadoCliente)
                                         {
-                                            <option value="@cliente.Id">@cliente.Nombre @cliente.Apellido id=@cliente.Id</option>
+                                            <option value="@cliente.Id">@cliente.Nombre @cliente.Apellido</option>
                                         }
                                         </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="inventario">Inventario</label>
-                                    <input type="number" name="inventario" id="inventario" class="form-control"
-                                        placeholder="Ingrese la cantidad de productos en el Inventario" aria-describedby="helpId"
-                                        minlength="3" maxlength="50">
+                                    <label for="inventario">Producto</label>
+                                    <select name="inventario" id="inventario" class="form-control">
+                                        <option>Seleccionar...</option>
+                                        @* @foreach (var inventario in Model.listadoInventario)
+                                        {
+                                            
+                                            var x = Serialization
+
+                                            var jsonString = new x.JavaScriptSerializer();
+                                            var jsonStringResult = jsonString.Serialize(inventario.Producto);
+
+                                            Console.WriteLine("inventario Producto: " + jsonStringResult + ";");
+                                             @foreach (var productos in Model.listadoProductos){
+
+                                                @if(inventario.Producto == productos.Id){<option value="@inventario.Id">@productos.Nombre</option>}
+                                               
+                                            } 
+                                            
+                                        }*@
+                                    </select>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                    <button type="reset" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                                     <button type="submit" id="btn-create-modal" class="btn btn-primary">Crear</button>
                                 </div>
                             </form>
@@ -92,6 +109,82 @@
         </div>
     </div>
 
+    <!-- Modal actualizacion venta -->
+    <div class="modal fade" id="ModalActualizar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="titleModal">Actualizar Venta</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col">
+                            <form method="post" action="" id="formEditar" class="needs-validation" novalidate>
+                                @Html.AntiForgeryToken()
+                                <input type="text" name="idVentaUpdate" id="idVentaUpdate" class="form-control" aria-describedby="helpId" hidden>
+                                <div class="form-group">
+                                    <label for="cantidadProductoUpdate">Cantidad Producto</label>
+                                    <input type="number" name="cantidadProductoUpdate" id="cantidadProductoUpdate" class="form-control"
+                                        placeholder="Ingrese la cantidad del producto" aria-describedby="helpId" minlength="3"
+                                        maxlength="50" required>
+                                    <div class="invalid-feedback">
+                                        Por favor ingrese la cantidad de la Venta.
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="valorVentaUpdate">Valor Venta</label>
+                                    <input type="number" name="valorVentaUpdate" id="valorVentaUpdate" class="form-control"
+                                        placeholder=" Ingrese el Valor Venta" aria-describedby="helpId"
+                                        minlength="3" maxlength="50" required>
+                                    <div class="invalid-feedback">
+                                        Por favor ingrese el Valor Venta.
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="trabajadorVentaUpdate">Trabajador</label>
+                                    <select name="trabajadorVentaUpdate" id="trabajadorVentaUpdate" class="form-control" required>
+                                        <option>Seleccionar...</option>
+                                        @foreach (var trabajador in Model.listadoTrabajador)
+                                        {
+                                            <option value="@trabajador.Id">@trabajador.Nombre @trabajador.Apellido id=@trabajador.Id</option>
+                                        }
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="clienteVentaUpdate">Cliente</label>
+                                    <select name="clienteVentaUpdate" id="clienteVentaUpdate" class="form-control">
+                                        <option>Seleccionar...</option>
+                                        @foreach (var cliente in Model.listadoCliente)
+                                        {
+                                            <option value="@cliente.Id">@cliente.Nombre @cliente.Apellido</option>
+                                        }
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inventarioVentaUpdate">Producto</label>
+                                    <select name="inventarioVentaUpdate" id="inventarioVentaUpdate" class="form-control">
+                                        <option>Seleccionar...</option>
+                                        @* @foreach (var inventario in Model.listadoInventario)
+                                        {
+                                            <option value="@inventario.Id" asp-route-Id="@inventario.Id">@inventario.Producto</option>
+                                        } *@
+                                    </select>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="reset" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                    <button type="button" id="btn-update-modal-pro" class="btn btn-primary">Crear</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Modal Factura venta -->
     <div class="modal fade" id="modalFactura" tabindex="-1" role="dialog" aria-labelledby="modalFactura"
@@ -156,6 +249,7 @@
         </div>
     </div>
 
+    <!-- Tabla general -->
     <div class="card mb-4">
         <div class="card-header">
             <i class="fas fa-table me-1"></i>
@@ -166,35 +260,36 @@
                 <thead>
                     <tr>
                         <th>ID</th>
+                        <th>Producto</th> 
                         <th>Fecha</th>
                         <th>Cantidad del Producto</th>
                         <th>Valor Venta</th>
                         <th>Vendedor</th>
                         <th>Cliente</th>
-                        <th>Inventario</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
                         <th>ID</th>
+                        <th>Producto</th> 
                         <th>Fecha</th>
                         <th>Cantidad del Producto</th>
                         <th>Valor Venta</th>
                         <th>Vendedor</th>
                         <th>Cliente</th>
-                        <th>Inventario</th>                        
                     </tr>
                 </tfoot>
                 <tbody>
                     @foreach(var item in Model.listadoVenta){
-                        <tr onclick="seleccionarRegistro();">
+                        <tr onclick="seleccionarRegistroVentas(this,'@item.Id','@item.CantidadProducto','@item.ValorVenta','@item.Trabajador','@item.Cliente','@item.Inventario');">
                         <td>@item.Id</td>
+                        <td>@item.Inventario</td>
                         <td>@item.Fecha</td>
                         <td>@item.CantidadProducto</td>
                         <td>@item.ValorVenta</td>
                         <td>@item.Trabajador</td>
                         <td>@item.Cliente</td>
-                        <td>@item.Inventario</td>
+                        
                     </tr>
                     }
                 </tbody>

@@ -1,4 +1,5 @@
 using System;
+//using System.Web.Script.Serialization;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -6,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using BikeStore.App.Dominio;
 using BikeStore.App.Persistencia;
-
+//dotnet add reference ..\System.Web.Script.Serialization\
 namespace BikeStore.App.Web.Pages
 {
     public class VentasModel : PageModel
@@ -16,12 +17,17 @@ namespace BikeStore.App.Web.Pages
         private IRepositorioVenta _repositorioVenta = new RepositorioVenta( new BikeStore.App.Persistencia.AppContext() );
         private IRepositorioTrabajador _repositorioTrabajador = new RepositorioTrabajador( new BikeStore.App.Persistencia.AppContext() );
         private IRepositorioCliente _repositorioCliente = new RepositorioCliente( new BikeStore.App.Persistencia.AppContext() );
+        private IRepositorioInventario _repositorioInventario = new RepositorioInventario( new BikeStore.App.Persistencia.AppContext() );
+        private IRepositorioProducto _repositorioProducto = new RepositorioProducto( new BikeStore.App.Persistencia.AppContext() );
 
         // video 02/09 min 2:49:30
         // crear una variable tipo List que reciba la totalidad de los registros consultados de la DB, debe ser público para que la interface gráfica pueda acceder a él
         public List<Venta> listadoVenta { get; set; }
         public List<Trabajador> listadoTrabajador { get; set; }
         public List<Cliente> listadoCliente { get; set; }
+        public List<Inventario> listadoInventario { get; set; }
+        public Producto producto { get; set; }
+        public List<Producto> listadoProductos { get; set; }
         DateTime fechaActual = DateTime.Now;
 
         public void OnGet()
@@ -37,6 +43,21 @@ namespace BikeStore.App.Web.Pages
             // Método para listar los trabajadores y mostrarlos en una lista desplegable en la ventana Modal de Crear Venta
             listadoCliente = new List<Cliente>();
             listadoCliente = _repositorioCliente.GetAllClientes().ToList();
+
+            listadoInventario = new List<Inventario>();
+            listadoInventario = _repositorioInventario.GetAllInventarios().ToList();
+
+            listadoProductos = new List<Producto>();
+            listadoProductos = _repositorioProducto.GetAllProductos().ToList();;
+
+             foreach (var inventario in listadoInventario)
+            {                               
+                // var jsonString = new JavaScriptSerializer();
+                // var jsonStringResult = jsonString.Serialize(inventario.Producto);
+                
+                Console.WriteLine("inventario Producto: " + inventario + ";");                           
+            }
+
 
         }
 

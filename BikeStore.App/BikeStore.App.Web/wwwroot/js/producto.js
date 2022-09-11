@@ -24,7 +24,28 @@ $().ready(function() {
             .fail(function(error) {
                 alert(error);
             });
-
     });
-
 });
+
+
+function seleccionarRegistroProducto(e, id, nombre, descripcion) {
+
+    var selectedRow = $(e);
+    var selectedRowGlobal = $(selectedRow[0].parentElement);
+    selectedRowGlobal = selectedRowGlobal.find(".selected");
+
+    if (selectedRowGlobal.find(".selected")) {
+        selectedRowGlobal.removeClass("selected");
+    }
+
+    selectedRow.addClass("selected");
+
+    $('#btn-update').removeAttr('hidden');
+    $('#btn-delete').removeAttr('hidden');
+    $('#btn-const').removeAttr('hidden');
+
+    document.getElementById("IdProducto").value = id;
+    document.getElementById("nombreProducto").value = nombre;
+    document.getElementById("descripcionProducto").value = descripcion;
+
+}

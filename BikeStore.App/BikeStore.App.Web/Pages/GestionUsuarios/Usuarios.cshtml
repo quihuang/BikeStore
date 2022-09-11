@@ -2,7 +2,8 @@
 @model BikeStore.App.Web.UsuariosModel
 @{
     Layout = "_Layout";
-    ViewData["Title"] = "Gestion Trabajadores";
+    ViewData["Title"] = "Gestion Usuarios";
+    ViewData["script"] = "Usuario.js"; 
 }
 
 <div class="container-fluid px-4">
@@ -145,7 +146,7 @@
                             <td>@item.NumeroTelefono</td>
                             <td>@item.NombreUsuario</td>
                             <td>@item.Salario</td>
-                            <td>@item.Rol</td>
+                            @if (item.Rol == 1){ <td>Comercial</td>}else if(item.Rol == 2){<td>Jefe Operativo</td>}else if(item.Rol == 3){<td>Bodeguero</td>}  
                         </tr>
                     }
                 </tbody>
