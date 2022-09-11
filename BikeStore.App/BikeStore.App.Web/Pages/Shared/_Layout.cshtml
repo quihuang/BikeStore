@@ -10,7 +10,6 @@
     <meta name="author" content="" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
-    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <link href="~/lib/css/styles.css" rel="stylesheet" />
 
 </head>
@@ -112,6 +111,12 @@
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
     <script src="~/lib/js/datatables-simple-demo.js"></script>
 
+    @{
+        if(ViewData["script"] != null){
+            <script src='~/js/@ViewData["script"]'></script>  
+        }
+    }  
+    
     @RenderSection("Scripts", required: false)
     @await RenderSectionAsync("Scripts", required: false)
 </body>

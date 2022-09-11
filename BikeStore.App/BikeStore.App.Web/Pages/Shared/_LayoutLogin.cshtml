@@ -33,6 +33,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
     <script src="~/../lib/js/scripts.js"></script>
+
+    @{
+        if(ViewData["script"] != null){
+            <script src='~/js/@ViewData["script"]' asp-append-version="true"></script>    
+        }
+    }
     
     @RenderSection("Scripts", required: false)
     @await RenderSectionAsync("Scripts", required: false)

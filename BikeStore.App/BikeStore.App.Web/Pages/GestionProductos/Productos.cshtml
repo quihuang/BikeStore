@@ -3,6 +3,7 @@
 @{
     Layout = "_Layout";
     ViewData["Title"] = "Gestion Productos";
+    ViewData["script"] = "producto.js"; 
 }
 <div class="container-fluid px-4">
 
@@ -16,7 +17,7 @@
         <button type="button" id="btn-delete" class="btn btn-primary btn-crud" hidden>
             Eliminar
         </button>
-        <button type="button" id="btn-update" class="btn btn-primary btn-crud" data-toggle="modal" data-target="#exampleModal" onclick="editar('Productos');" hidden>
+        <button type="button" id="btn-update" class="btn btn-primary btn-crud" data-toggle="modal" data-target="#ModalActualizar" onclick="editar('Productos');" hidden>
             Editar
         </button>
         <button type="button" id="btn-create" class="btn btn-primary " data-toggle="modal" data-target="#exampleModal" onclick="crear('Productos');">
@@ -24,7 +25,7 @@
         </button>
     </div>
 
-    <!-- Modal -->
+    <!-- Modal Crear -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -44,15 +45,68 @@
                                     <input type="text" name="nombre" id="nombre" class="form-control"
                                         placeholder="Ingrese el nombre del producto nuevo" aria-describedby="helpId"
                                         minlength="3" maxlength="200">
+                                    <div class="invalid-feedback">
+                                      Por favor ingrese el Nombre del producto.
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="descripcion">Descripcion</label>
                                     <input type="text" name="descripcion" id="descripcion" class="form-control"
                                         placeholder="Ingrese la descripcion del producto nuevo" aria-describedby="helpId" minlength="3"  maxlength="600">
+                                    <div class="invalid-feedback">
+                                      Por favor ingrese la descripción del producto.
+                                    </div>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                                     <button type="submit" id="btn-create-modal" class="btn btn-primary">Crear</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal Actualizar -->
+    <div class="modal fade" id="ModalActualizar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="titleModal">Actualizar de Productos</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col">
+                            <form method="post" action="" id="formEditar">
+                                @Html.AntiForgeryToken()
+                                <input type="text" name="IdProducto" id="IdProducto" class="form-control" aria-describedby="helpId" hidden>
+                                <div class="form-group">
+                                    <label for="nombreProducto">Nombre</label>
+                                    <input type="text" name="nombreProducto" id="nombreProducto" class="form-control"
+                                        placeholder="Ingrese el nombre del producto nuevo" aria-describedby="helpId"
+                                        minlength="3" maxlength="200">
+                                    <div class="invalid-feedback">
+                                      Por favor ingrese el Nombre del producto.
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="descripcionProducto">Descripcion</label>
+                                    <input type="text" name="descripcionProducto" id="descripcionProducto" class="form-control"
+                                        placeholder="Ingrese la descripcion del producto nuevo" aria-describedby="helpId" minlength="3"  maxlength="600">
+                                    <div class="invalid-feedback">
+                                      Por favor ingrese la descripción del producto.
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="reset" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                    <button type="button" id="btn-update-modal-pro" class="btn btn-primary">Actualizar</button>
                                 </div>
                             </form>
                         </div>
@@ -86,7 +140,7 @@
                 <tbody>
                     @* Explicacion en el video 02/09 min 2:52:16 *@
                     @foreach(var item in Model.listadoProducto){
-                        <tr onclick="seleccionarRegistro();">
+                        <tr onclick="seleccionarRegistroProducto('@item.Id','@item.Nombre','@item.Descripcion');">
                             <td>@item.Id</td>
                             <td>@item.Nombre</td>
                             <td>@item.Descripcion</td>

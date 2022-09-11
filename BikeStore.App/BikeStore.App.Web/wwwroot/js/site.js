@@ -9,15 +9,34 @@ function editar(text) {
 }
 
 function crear(text) {
+
+    document.getElementById("nombre").value = "";
+    document.getElementById("descripcion").value = "";
+
     document.getElementById("titleModal").innerHTML = "Registro " + text;
     document.getElementById("btn-create-modal").innerHTML = "Crear";
 
 }
 
 function seleccionarRegistro() {
+
     $('#btn-update').removeAttr('hidden');
     $('#btn-delete').removeAttr('hidden');
     $('#btn-const').removeAttr('hidden');
+
+}
+
+
+function seleccionarRegistroProducto(id, nombre, descripcion) {
+
+    $('#btn-update').removeAttr('hidden');
+    $('#btn-delete').removeAttr('hidden');
+    $('#btn-const').removeAttr('hidden');
+
+    document.getElementById("IdProducto").value = id;
+    document.getElementById("nombreProducto").value = nombre;
+    document.getElementById("descripcionProducto").value = descripcion;
+
 }
 
 function imprimir(nombre) {
