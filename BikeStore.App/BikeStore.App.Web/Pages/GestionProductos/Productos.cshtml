@@ -86,7 +86,7 @@
                         <div class="col">
                             <form method="post" action="" id="formEditar"  class="needs-validation" novalidate>
                                 @Html.AntiForgeryToken()
-                                <input type="text" name="IdProducto" id="IdProducto" class="form-control" aria-describedby="helpId" hidden>
+                                <input type="number" name="IdProducto" id="IdProducto" class="form-control" aria-describedby="helpId" hidden>
                                 <div class="form-group">
                                     <label for="nombreProducto">Nombre</label>
                                     <input type="text" name="nombreProducto" id="nombreProducto" class="form-control"
@@ -138,8 +138,8 @@
                         <th>Descripcion</th>
                     </tr>
                 </tfoot>
+                @* Explicacion en el video 02/09 min 2:52:16 *@
                 <tbody>
-                    @* Explicacion en el video 02/09 min 2:52:16 *@
                     @foreach(var item in Model.listadoProducto){
                         <tr onclick="seleccionarRegistroProducto(this,'@item.Id','@item.Nombre','@item.Descripcion');">
                             <td>@item.Id</td>

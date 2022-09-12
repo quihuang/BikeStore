@@ -9,7 +9,6 @@ namespace BikeStore.App.Persistencia
     {
         IEnumerable<Inventario> GetAllInventarios();
         Inventario GetInventario(int idInventario);
-        IEnumerable<Inventario> GetAllInventariosForProducto(Producto producto);
         int AddInventario(Inventario Inventario);
         int UpdateInventario(Inventario Inventario);
         int DeleteInventario(Inventario Inventario);

@@ -83,6 +83,7 @@ namespace BikeStore.App.Web.Pages
         {
             //Console.WriteLine("producto ID " + producto.Id + "producto name " + producto.Nombre + "producto description" + producto.Descripcion);
             Console.WriteLine("producto :" + producto + ";");
+            Console.WriteLine("PRODUCTOS.cs: Para ver su contenido se imprime el objeto producto: " + "\nproducto Id: " + producto.Id + "\nproducto Nombre: " + producto.Nombre + "\nproducto Description: " + producto.Descripcion);
 
             var productoResult = _repositorioProducto.GetProducto( producto.Id );
 

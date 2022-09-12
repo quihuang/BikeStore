@@ -25,11 +25,7 @@ namespace BikeStore.App.Persistencia
         }
 
         // Método para buscar por objeto tipo Cliente
-        IEnumerable<Venta> IRepositorioVenta.GetAllVentasForCliente (Cliente cliente) {
-            var venta = _appContext.Venta.Where( p => p.Cliente == cliente );
-            //var venta = _appContext.Venta.Where( p => p.Nombre.contains(name));
-            return venta;
-        }
+        
 
         // Método para Crear un Venta
         int IRepositorioVenta.AddVenta(Venta venta){

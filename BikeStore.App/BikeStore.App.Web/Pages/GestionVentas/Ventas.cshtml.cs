@@ -67,8 +67,8 @@ namespace BikeStore.App.Web.Pages
         {
             // aquí se debe poner entre [] el nombre de cada campo del formulario
             var Fecha = fechaActual;
-            // var cantidadProducto = Request.Form["cantidadProducto"]; // ! Error: al capturar el dato, lo recibe string
-            // var valorVenta = Request.Form["valorVenta"]; // ! Error: al capturar el dato, lo recibe string
+            var cantidadProducto = Request.Form["cantidadProducto"]; // ! Error: al capturar el dato, lo recibe string
+            var valorVenta = Request.Form["valorVenta"]; // ! Error: al capturar el dato, lo recibe string
             var trabajador = Request.Form["trabajador"];
             var cliente = Request.Form["cliente"];
             var inventario = Request.Form["inventario"];
@@ -76,11 +76,11 @@ namespace BikeStore.App.Web.Pages
             // // Creamos el objeto Venta y le pasamos los datos del formulario
             var venta = new Venta
             {
-                // CantidadProducto = cantidadProducto, // ! Error: debe ser un Entero
-                // ValorVenta = valorVenta,    // ! Error: debe ser un Entero
-                // Trabajador = trabajador,    // ! Error: debe ser un tipo Objeto
-                // Cliente = cliente,       // ! Error: debe ser un tipo Objeto
-                // Inventario = inventario  // ! Error: debe ser un tipo Objeto
+               CantidadProducto = int.Parse(cantidadProducto), // ! Error: debe ser un Entero
+               ValorVenta = int.Parse(valorVenta),    // ! Error: debe ser un Entero
+               TrabajadorId = int.Parse(trabajador),    // ! Error: debe ser un tipo Objeto
+               ClienteId = int.Parse(cliente),       // ! Error: debe ser un tipo Objeto
+               InventarioId = int.Parse(inventario)  // ! Error: debe ser un tipo Objeto
             };
 
             // video 02/09 min 2:23:15

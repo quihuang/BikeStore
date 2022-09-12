@@ -79,22 +79,9 @@
                                     <label for="inventario">Producto</label>
                                     <select name="inventario" id="inventario" class="form-control">
                                         <option>Seleccionar...</option>
-                                        @* @foreach (var inventario in Model.listadoInventario)
-                                        {
-                                            
-                                            var x = Serialization
-
-                                            var jsonString = new x.JavaScriptSerializer();
-                                            var jsonStringResult = jsonString.Serialize(inventario.Producto);
-
-                                            Console.WriteLine("inventario Producto: " + jsonStringResult + ";");
-                                             @foreach (var productos in Model.listadoProductos){
-
-                                                @if(inventario.Producto == productos.Id){<option value="@inventario.Id">@productos.Nombre</option>}
-                                               
-                                            } 
-                                            
-                                        }*@
+                                            @foreach (var productos in Model.listadoProductos){
+                                                <option value="@productos.Id">@productos.Nombre</option>
+                                            }
                                     </select>
                                 </div>
                                 <div class="modal-footer">
@@ -150,7 +137,7 @@
                                         <option>Seleccionar...</option>
                                         @foreach (var trabajador in Model.listadoTrabajador)
                                         {
-                                            <option value="@trabajador.Id">@trabajador.Nombre @trabajador.Apellido id=@trabajador.Id</option>
+                                            <option value="@trabajador.Id">@trabajador.Nombre @trabajador.Apellido</option>
                                         }
                                     </select>
                                 </div>
@@ -168,10 +155,16 @@
                                     <label for="inventarioVentaUpdate">Producto</label>
                                     <select name="inventarioVentaUpdate" id="inventarioVentaUpdate" class="form-control">
                                         <option>Seleccionar...</option>
-                                        @* @foreach (var inventario in Model.listadoInventario)
+                                        @foreach (var inventario in Model.listadoInventario)
                                         {
-                                            <option value="@inventario.Id" asp-route-Id="@inventario.Id">@inventario.Producto</option>
-                                        } *@
+                                            @foreach (var productos in Model.listadoProductos){
+
+                                                @if(inventario.ProductoId == productos.Id){<option value="@inventario.Id" selected>@productos.Nombre</option>}
+                                                @if(inventario.ProductoId != productos.Id){<option value="@inventario.Id">@productos.Nombre</option>}
+                                               
+                                            } 
+                                            
+                                        }
                                     </select>
                                 </div>
                                 <div class="modal-footer">
@@ -281,14 +274,21 @@
                 </tfoot>
                 <tbody>
                     @foreach(var item in Model.listadoVenta){
-                        <tr onclick="seleccionarRegistroVentas(this,'@item.Id','@item.CantidadProducto','@item.ValorVenta','@item.Trabajador','@item.Cliente','@item.Inventario');">
+                        <tr onclick="seleccionarRegistroVentas(this,'@item.Id','@item.CantidadProducto','@item.ValorVenta','@item.TrabajadorId','@item.ClienteId','@item.InventarioId');">
                         <td>@item.Id</td>
-                        <td>@item.Inventario</td>
+                        @foreach (var productos in Model.listadoProductos){
+                            @if(@item.InventarioId == productos.Id){<td>@productos.Nombre</td>}
+                        }   
                         <td>@item.Fecha</td>
                         <td>@item.CantidadProducto</td>
-                        <td>@item.ValorVenta</td>
-                        <td>@item.Trabajador</td>
-                        <td>@item.Cliente</td>
+                        <td>$ @item.ValorVenta</td>
+                        @foreach (var trabajador in Model.listadoTrabajador){
+                            @if(@item.TrabajadorId == trabajador.Id){<td>@trabajador.Nombre</td>}
+                        }
+                        @foreach (var cliente in Model.listadoCliente){
+                            @if(@item.ClienteId == cliente.Id){<td>@cliente.Nombre</td>}
+                        }     
+                       
                         
                     </tr>
                     }

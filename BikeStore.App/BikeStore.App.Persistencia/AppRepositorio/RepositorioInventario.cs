@@ -24,13 +24,6 @@ namespace BikeStore.App.Persistencia
             return _appContext.Inventarios.Find(id);
         }
 
-        // Método para buscar por Producto
-        IEnumerable<Inventario> IRepositorioInventario.GetAllInventariosForProducto (Producto producto) {
-            var inventario = _appContext.Inventarios.Where( p => p.Producto == producto );
-            //var inventario = _appContext.Inventarios.Where( p => p.Nombre.contains(name));
-            return inventario;
-        }
-
         // Método para Crear un Inventario
         int IRepositorioInventario.AddInventario(Inventario inventario){
             _appContext.Inventarios.Add(inventario);
