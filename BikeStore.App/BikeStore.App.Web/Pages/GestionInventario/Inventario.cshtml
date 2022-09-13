@@ -3,6 +3,7 @@
 @{
     Layout = "_Layout";
     ViewData["Title"] = "Gestion Inventario";
+    ViewData["script"] = "Inventario.js"; 
 }
 <div class="container-fluid px-4">
 
@@ -13,27 +14,27 @@
     </div>
 
     <div class="containerBottons">
-        <button type="button" id="btn-const" class="btn btn-primary btn-crud" data-toggle="modal" data-target="#modalContancia" hidden>
+        <button type="button" id="btn-const" class="btn btn-primary btn-crud" data-toggle="modal" data-target="#ModalContancia" hidden>
             Constancia
         </button>
         <button type="button" id="btn-delete" class="btn btn-primary btn-crud" hidden>
             Eliminar
         </button>
-        <button type="button" id="btn-update" class="btn btn-primary btn-crud" data-toggle="modal" data-target="#exampleModal" onclick="editar('Trabajador');" hidden>
+        <button type="button" id="btn-update" class="btn btn-primary btn-crud" data-toggle="modal" data-target="#ModalActualizar" onclick="editar('Trabajador');" hidden>
             Editar
         </button>
-        <button type="button" id="btn-create" class="btn btn-primary " data-toggle="modal" data-target="#exampleModal" onclick="crear('Trabajador');">
+        <button type="button" id="btn-create" class="btn btn-primary " data-toggle="modal" data-target="#ModalCrear" onclick="crear('Trabajador');">
             Crear
         </button>
     </div>
 
-    <!-- Modal Crear y actualizar Inventario -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <!-- ModalCrear -->
+    <div class="modal fade" id="ModalCrear" tabindex="-1" role="dialog" aria-labelledby="ModalCrearLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="titleModal">Registro de Inventario</h5>
+                    <h5 class="modal-title" id="titleModal">Registrar Inventario</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -41,44 +42,51 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col">
-                            <form method="post">
+                            <form method="post" class="needs-validation" novalidate>
                                 <div class="form-group">
                                     <label for="producto">Producto</label>
-                                        <select name="producto" class="form-control">
-                                        <option selected>Seleccionar...</option>
+                                        <select name="producto" class="form-control" required>
+                                        <option value="" selected>Seleccionar...</option> @* value toca dejarlo vacío para que se pueda hacer la verificación *@
                                         @foreach (var producto in Model.listadoProducto)
                                         {
                                             <option value="@producto.Id">@producto.Nombre id=@producto.Id</option>
                                         }
                                         </select>
+                                        <div class="invalid-feedback">
+                                        Seleccionar un producto.
+                                        </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="existencias">Existencias</label>
-                                    <input type="number" name="existencias" id="existencias" class="form-control"
-                                        placeholder="Ingrese la cantidad de los productos" aria-describedby="helpId" minlength="3"
-                                        maxlength="50">
+                                    <input type="number" name="existencias" id="existencias" class="form-control" onkeypress="return Solo_Numeros(event);" placeholder="Ingrese el número de existencias del producto" aria-describedby="invalid-feedback" minlength="3" maxlength="50" required>
+                                    <div class="invalid-feedback">
+                                        Ingrese el número de existencias del producto.
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="numerorefcompra">Numero referencia de compra</label>
-                                    <input type="number" name="numerorefcompra" id="numerorefcompra" class="form-control"
-                                        placeholder="Ingrese el numero de referencia de compra" aria-describedby="helpId" minlength="3"
-                                        maxlength="50">
+                                    <input type="number" name="numerorefcompra" id="numerorefcompra" class="form-control" onkeypress="return Solo_Numeros(event);" placeholder="Ingrese el numero de referencia de compra" aria-describedby="invalid-feedback" minlength="3"maxlength="50" required>
+                                    <div class="invalid-feedback">
+                                        Ingrese el número de referencia de compra.
+                                    </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="preciouniventa">Precio unidad de venta</label>
-                                    <input type="number" name="preciouniventa" id="preciouniventa" class="form-control"
-                                        placeholder="Ingrese el precio de la unidad de venta" aria-describedby="helpId" minlength="3"
-                                        maxlength="50">
+                                    <label for="preciouniventa">Precio de venta por unidad</label>
+                                    <input type="number" name="preciouniventa" id="preciouniventa" class="form-control" onkeypress="return Solo_Numeros(event);" placeholder="Ingrese el precio de venta por unidad" aria-describedby="invalid-feedback" minlength="3" maxlength="50" required>
+                                    <div class="invalid-feedback">
+                                        Ingrese el precio de venta por unidad.
+                                    </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="preciounicompra">Precio unidad de compra</label>
-                                    <input type="number" name="preciounicompra" id="preciounicompra" class="form-control"
-                                        placeholder="Ingrese el precio unidad de compra" aria-describedby="helpId" minlength="3"
-                                        maxlength="50">
+                                    <label for="preciounicompra">Precio de compra por unidad</label>
+                                    <input type="number" name="preciounicompra" id="preciounicompra" class="form-control" onkeypress="return Solo_Numeros(event);" placeholder="Ingrese el precio unidad de compra" aria-describedby="invalid-feedback" minlength="3" maxlength="50" required>
+                                    <div class="invalid-feedback">
+                                        Ingrese el precio de compra por unidad.
+                                    </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                    <button type="submit" id="btn-create-modal" class="btn btn-primary" data-toggle="modal" data-target="#modalContancia">Crear</button>
+                                    <button type="reset" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                    <button type="submit" id="btn-create-modal" class="btn btn-primary">Crear</button>
                                 </div>
                             </form>
                         </div>
@@ -88,8 +96,84 @@
         </div>
     </div>
 
-    <!-- Contancia de recibido-->
-    <div class="modal fade" id="modalContancia" tabindex="-1" role="dialog" aria-labelledby="modalContancia"
+    <!-- ModalActualizar -->
+    <div class="modal fade" id="ModalActualizar" tabindex="-1" role="dialog" aria-labelledby="ModalActualizarLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="titleModal">Registrar Inventario</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col">
+                            <form method="post" action="" id="formEditar" class="needs-validation" novalidate>
+                                @Html.AntiForgeryToken()
+                                <input type="number" name="idUpdate" id="idUpdate" class="form-control" aria-describedby="invalid-feedback" hidden>
+                                <div class="form-group">
+                                    <label for="productoUpdate">Producto</label>
+                                        <select name="productoUpdate" id="productoUpdate" class="form-control" required>
+                                        <option value="">Seleccionar...</option>
+                                        @foreach (var inventario in Model.listadoInventario)
+                                        {
+                                            foreach (var productos in Model.listadoProducto)
+                                            {
+                                                if(inventario.ProductoId == productos.Id){<option value="@inventario.Id" selected>@productos.Nombre</option>}
+                                                if(inventario.ProductoId != productos.Id){<option value="@inventario.Id">@productos.Nombre</option>}
+                                                
+                                            }
+                                        }
+                                        </select>
+                                        <div class="invalid-feedback">
+                                        Seleccionar un producto.
+                                        </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="existenciasUpdate">Existencias</label>
+                                    <input type="number" name="existenciasUpdate" id="existenciasUpdate" class="form-control" onkeypress="return Solo_Numeros(event);" placeholder="Ingrese el número de existencias del producto" aria-describedby="invalid-feedback" minlength="3" maxlength="50" required>
+                                    <div class="invalid-feedback">
+                                        Ingrese el número de existencias del producto.
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="numeroRefCompraUpdate">Numero referencia de compra</label>
+                                    <input type="number" name="numeroRefCompraUpdate" id="numeroRefCompraUpdate" class="form-control" onkeypress="return Solo_Numeros(event);" placeholder="Ingrese el numero de referencia de compra" aria-describedby="invalid-feedback" minlength="3"maxlength="50" required>
+                                    <div class="invalid-feedback">
+                                        Ingrese el número de referencia de compra.
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="precioUniVentaUpdate">Precio de venta por unidad</label>
+                                    <input type="number" name="precioUniVentaUpdate" id="precioUniVentaUpdate" class="form-control" onkeypress="return Solo_Numeros(event);" placeholder="Ingrese el precio de venta por unidad" aria-describedby="invalid-feedback" minlength="3" maxlength="50" required>
+                                    <div class="invalid-feedback">
+                                        Ingrese el precio de venta por unidad.
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="precioUniCompraUpdate">Precio de compra por unidad</label>
+                                    <input type="number" name="precioUniCompraUpdate" id="precioUniCompraUpdate" class="form-control" onkeypress="return Solo_Numeros(event);" placeholder="Ingrese el precio unidad de compra" aria-describedby="invalid-feedback" minlength="3" maxlength="50" required>
+                                    <div class="invalid-feedback">
+                                        Ingrese el precio de compra por unidad.
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="reset" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                    <button type="button" id="btn-update-modal" class="btn btn-primary">Actualizar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ModalContancia -->
+    <div class="modal fade" id="ModalContancia" tabindex="-1" role="dialog" aria-labelledby="ModalContanciaLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -105,37 +189,27 @@
                             <form method="post">
                                 <div class="form-group">
                                     <label for="producto">Producto</label>
-                                    <input type="text" name="producto" id="producto" class="form-control"
-                                        placeholder="Ingrese el nombre del producto" aria-describedby="helpId"
-                                        minlength="3" value="Biciclete Extreme" readonly>
+                                    <input type="text" name="producto" id="producto" class="form-control" aria-describedby="placeholder" placeholder="Los valores deben ser cargados automáticamente" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label for="existencias">Existencias</label>
-                                    <input type="number" name="existencias" id="existencias" class="form-control"
-                                        placeholder="Ingrese la cantidad de los productos" aria-describedby="helpId" minlength="3"
-                                        maxlength="50" value="50" readonly>
+                                    <input type="number" name="existencias" id="existencias" class="form-control" aria-describedby="placeholder" placeholder="Los valores deben ser cargados automáticamente" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label for="numerorefcompra">Numero referencia de compra</label>
-                                    <input type="number" name="numerorefcompra" id="numerorefcompra" class="form-control"
-                                        placeholder="Ingrese el numero de referencia de compra" aria-describedby="helpId" minlength="3"
-                                        maxlength="50" value="43001" readonly>
+                                    <input type="number" name="numerorefcompra" id="numerorefcompra" class="form-control" aria-describedby="placeholder" placeholder="Los valores deben ser cargados automáticamente" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label for="preciouniventa">Precio unitario de venta</label>
-                                    <input type="text" name="preciouniventa" id="preciouniventa" class="form-control"
-                                        placeholder="Ingrese el precio de la unidad de venta" aria-describedby="helpId" minlength="3"
-                                        maxlength="50" value="$ 433.001" readonly>
+                                    <input type="text" name="preciouniventa" id="preciouniventa" class="form-control" aria-describedby="placeholder" placeholder="Los valores deben ser cargados automáticamente" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label for="preciounicompra">Precio unitario de compra</label>
-                                    <input type="text" name="preciounicompra" id="preciounicompra" class="form-control"
-                                        placeholder="Ingrese el precio unidad de compra" aria-describedby="helpId" minlength="3"
-                                        maxlength="50" value="$ 233.001" readonly>
+                                    <input type="text" name="preciounicompra" id="preciounicompra" class="form-control" aria-describedby="placeholder" placeholder="Los valores deben ser cargados automáticamente" readonly>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" onclick="imprimir('modalContancia')">Imprimir</button>
-                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                                    <button type="reset" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                    <button type="button" class="btn btn-primary" onclick="imprimir('ModalContancia')">Imprimir</button>
                                 </div>
                             </form>
                         </div>
@@ -145,6 +219,7 @@
         </div>
     </div>
 
+    <!-- Tabla general -->
     <div class="card mb-4">
         <div class="card-header">
             <i class="fas fa-table me-1"></i>
@@ -174,7 +249,7 @@
                 </tfoot>
                 <tbody>
                     @foreach(var item in Model.listadoInventario){
-                        <tr onclick="seleccionarRegistro();">
+                        <tr onclick="seleccionarRegistroTabla(this,'@item.Id','@item.ProductoId','@item.Existencias','@item.NumeroRefCompra','@item.PrecioUniVenta','@item.PrecioUniCompra');">
                         <td>@item.Id</td>
                         <td>@item.ProductoId</td>
                         <td>@item.Existencias</td>

@@ -1,12 +1,12 @@
 $().ready(function() {
 
-    $("#btn-update-modal-pro").click(function() {
+    $("#btn-update-modal").click(function() {
 
         debugger;
 
         /* Enviar petición AJAX datos JSON */
-        var producto = { "Id": $("#IdProducto").val(), "Nombre": $("#nombreProducto").val(), "Descripcion": $("#descripcionProducto").val() };
-
+        var producto = { "Id": $("#IdUpdate").val(), "Nombre": $("#nombreUpdate").val(), "Descripcion": $("#descripcionUpdate").val() };
+        
         $.ajax({
                 type: "POST",
                 url: "/GestionProductos/Productos?handler=UpdateJson",
@@ -28,7 +28,7 @@ $().ready(function() {
 });
 
 
-function seleccionarRegistroProducto(e, id, nombre, descripcion) {
+function seleccionarRegistroTabla(e, id, nombre, descripcion) {
 
     var selectedRow = $(e);
     var selectedRowGlobal = $(selectedRow[0].parentElement);
@@ -42,10 +42,9 @@ function seleccionarRegistroProducto(e, id, nombre, descripcion) {
 
     $('#btn-update').removeAttr('hidden');
     $('#btn-delete').removeAttr('hidden');
-    $('#btn-const').removeAttr('hidden');
 
-    document.getElementById("IdProducto").value = id;
-    document.getElementById("nombreProducto").value = nombre;
-    document.getElementById("descripcionProducto").value = descripcion;
+    document.getElementById("IdUpdate").value = id;
+    document.getElementById("nombreUpdate").value = nombre;
+    document.getElementById("descripcionUpdate").value = descripcion;
 
 }

@@ -18,21 +18,21 @@
         <button type="button" id="btn-delete" class="btn btn-primary btn-crud" hidden>
             Eliminar
         </button>
-        <button type="button" id="btn-update" class="btn btn-primary btn-crud" data-toggle="modal" data-target="#exampleModal" onclick="editar('Trabajador');" hidden>
+        <button type="button" id="btn-update" class="btn btn-primary btn-crud" data-toggle="modal" data-target="#ModalActualizar" onclick="editar('Trabajador');" hidden>
             Editar
         </button>
-        <button type="button" id="btn-create" class="btn btn-primary " data-toggle="modal" data-target="#exampleModal" onclick="crear('Trabajador');">
+        <button type="button" id="btn-create" class="btn btn-primary " data-toggle="modal" data-target="#ModalCrear" onclick="crear('Trabajador');">
             Crear
         </button>
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <!-- ModalCrear -->
+    <div class="modal fade" id="ModalCrear" tabindex="-1" role="dialog" aria-labelledby="ModalCrearLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="titleModal">Registro Trabajadores</h5>
+                    <h5 class="modal-title" id="titleModal">Registrar Trabajador</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -40,60 +40,71 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col">
-                            <form method="post">
+                            <form method="post" class="needs-validation" novalidate>
                                 <div class="form-group">
                                     <label for="cedula">Cédula</label>
-                                    <input type="number" name="cedula" id="cedula" class="form-control"
-                                        placeholder="Ingrese su numero de cedula" aria-describedby="helpId"
-                                        minlength="3" maxlength="50">
+                                    <input type="number" name="cedula" id="cedula" class="form-control" onkeypress="return Solo_Numeros(event);" placeholder="Ingrese su numero de cedula" aria-describedby="invalid-feedback" minlength="3" maxlength="50" required>
+                                    <div class="invalid-feedback">
+                                        Ingrese el número de la cédula.
+                                    </div>                                
                                 </div>
                                 <div class="form-group">
                                     <label for="nombre">Nombres</label>
-                                    <input type="text" name="nombre" id="nombre" class="form-control"
-                                        placeholder="Ingrese el nombre" aria-describedby="helpId" minlength="3"
-                                        maxlength="50">
+                                    <input type="text" name="nombre" id="nombre" class="form-control" onkeypress="return Solo_Texto(event);" placeholder="Ingrese el nombre" aria-describedby="invalid-feedback" minlength="3" maxlength="50" required>
+                                    <div class="invalid-feedback">
+                                        Ingrese el nombre.
+                                    </div>                                
                                 </div>
                                 <div class="form-group">
                                     <label for="apellido">Apellidos</label>
-                                    <input type="text" name="apellido" id="apellido" class="form-control"
-                                        placeholder="Ingrese el apellido" aria-describedby="helpId" minlength="3"
-                                        maxlength="50">
+                                    <input type="text" name="apellido" id="apellido" class="form-control" onkeypress="return Solo_Texto(event);" placeholder="Ingrese el apellido" aria-describedby="invalid-feedback" minlength="3" maxlength="50" required>
+                                    <div class="invalid-feedback">
+                                        Ingrese el apellido.
+                                    </div>  
                                 </div>
                                 <div class="form-group">
                                     <label for="numeroTelefono">Número de Teléfono</label>
-                                    <input type="tel" name="numeroTelefono" id="numeroTelefono" class="form-control"
-                                        placeholder="Ingrese el Telefono" aria-describedby="helpId" min="3000000000"
-                                        max="3999999999" step="1">
+                                    <input type="number" name="numeroTelefono" id="numeroTelefono" class="form-control" onkeypress="return Solo_Numeros(event);" placeholder="Ingrese el Telefono" aria-describedby="invalid-feedback" min="3000000000" max="3999999999" step="1" required>
+                                    <div class="invalid-feedback">
+                                        Ingrese el número de teléfono.
+                                    </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="nombreUsuario">Nombre usuario</label>
-                                    <input type="text" name="nombreUsuario" id="nombreUsuario" class="form-control"
-                                        placeholder="Ingrese el Nombre usuario" aria-describedby="helpId" minlength="3"
-                                        maxlength="50">
+                                    <label for="nombreUsuario">Nombre de Usuario</label>
+                                    <input type="text" name="nombreUsuario" id="nombreUsuario" class="form-control" onkeypress="return Solo_Texto(event);" placeholder="Ingrese el Nombre usuario" aria-describedby="invalid-feedback" minlength="3" maxlength="50" required>
+                                    <div class="invalid-feedback">
+                                    Ingrese el nombre de usuario.
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="contraseña">Contraseña</label>
-                                    <input type="password" name="contraseña" id="contraseña" class="form-control"
-                                        placeholder="Ingrese contraseña" aria-describedby="helpId" minlength="3"
-                                        maxlength="50">
+                                    <input type="password" name="contraseña" id="contraseña" class="form-control" onkeypress="return Solo_TextoEnriquesido(event);" placeholder="Ingrese contraseña" aria-describedby="invalid-feedback" minlength="3" maxlength="50" required>
+                                    <div class="invalid-feedback">
+                                    Ingrese una contraseña fuerte.
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="salario">Salario</label>
-                                    <input type="number" name="salario" id="salario" class="form-control"
-                                        placeholder="Ingrese salario" aria-describedby="helpId" minlength="3"
-                                        maxlength="50"step="1">
+                                    <input type="number" name="salario" id="salario" class="form-control" onkeypress="return Solo_Numeros(event);" placeholder="Ingrese salario" aria-describedby="invalid-feedback" minlength="3" maxlength="50"step="1" required>
+                                    <div class="invalid-feedback">
+                                    Ingrese un número con el salario.
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="rol">Rol</label>
-                                    <select class="form-select form-control" aria-label="Default select example">
-                                        <option selected>Seleccionar...</option>
+                                    <select class="form-select form-control" aria-label="Default select example" required>
+                                        <option value="" selected>Seleccionar...</option> @* value toca dejarlo vacío para que se pueda hacer la verificación *@
+                                        @* como mejora a futuro se podria hacer de forma dinamica consultando la base de datos *@
                                         <option value="1">Comercial</option>
                                         <option value="2">Jefe Operativo</option>
                                         <option value="3">Bodeguero</option>
                                     </select>
+                                    <div class="invalid-feedback">
+                                    Seleccionar un rol...
+                                    </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                    <button type="reset" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                                     <button type="submit" id="btn-create-modal" class="btn btn-primary">Crear</button>
                                 </div>
                             </form>
@@ -104,6 +115,97 @@
         </div>
     </div>
 
+    <!-- ModalActualizar -->
+    <div class="modal fade" id="ModalActualizar" tabindex="-1" role="dialog" aria-labelledby="ModalActualizarLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="titleModal">Actualizar Trabajador</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col">
+                            <form method="post" action="" id="formEditar" class="needs-validation" novalidate>
+                                @Html.AntiForgeryToken()
+                                <div class="form-group">
+                                    <label for="cedula">Cédula</label>
+                                    <input type="number" name="cedula" id="cedula" class="form-control" onkeypress="return Solo_Numeros(event);" placeholder="Ingrese su numero de cedula" aria-describedby="invalid-feedback" minlength="3" maxlength="50" required>
+                                    <div class="invalid-feedback">
+                                        Ingrese el número de la cédula.
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="nombre">Nombres</label>
+                                    <input type="text" name="nombre" id="nombre" class="form-control" onkeypress="return Solo_Texto(event);" placeholder="Ingrese el nombre" aria-describedby="invalid-feedback" minlength="3" maxlength="50" required>
+                                    <div class="invalid-feedback">
+                                        Ingrese el nombre.
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="apellido">Apellidos</label>
+                                    <input type="text" name="apellido" id="apellido" class="form-control" onkeypress="return Solo_Texto(event);" placeholder="Ingrese el apellido" aria-describedby="invalid-feedback" minlength="3" maxlength="50" required>
+                                    <div class="invalid-feedback">
+                                        Ingrese el apellido.
+                                    </div>  
+                                </div>
+                                <div class="form-group">
+                                    <label for="numeroTelefono">Número de Teléfono</label>
+                                    <input type="number" name="numeroTelefono" id="numeroTelefono" class="form-control" onkeypress="return Solo_Numeros(event);" placeholder="Ingrese el Telefono" aria-describedby="invalid-feedback" min="3000000000" max="3999999999" step="1" required>
+                                    <div class="invalid-feedback">
+                                        Ingrese el número de teléfono.
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="nombreUsuario">Nombre de Usuario</label>
+                                    <input type="text" name="nombreUsuario" id="nombreUsuario" class="form-control" onkeypress="return Solo_Texto(event);" placeholder="Ingrese el Nombre usuario" aria-describedby="invalid-feedback" minlength="3" maxlength="50" required>
+                                    <div class="invalid-feedback">
+                                    Ingrese el nombre de usuario.
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contraseña">Contraseña</label>
+                                    <input type="password" name="contraseña" id="contraseña" class="form-control" onkeypress="return Solo_TextoEnriquesido(event);" placeholder="Ingrese contraseña" aria-describedby="invalid-feedback" minlength="3" maxlength="50" required>
+                                    <div class="invalid-feedback">
+                                    Ingrese una contraseña fuerte.
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="salario">Salario</label>
+                                    <input type="number" name="salario" id="salario" class="form-control" onkeypress="return Solo_Numeros(event);" placeholder="Ingrese salario" aria-describedby="invalid-feedback" minlength="3" maxlength="50"step="1" required>
+                                    <div class="invalid-feedback">
+                                    Ingrese un número con el salario.
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="rol">Rol</label>
+                                    <select class="form-select form-control" aria-label="Default select example" required>
+                                        <option value="" selected>Seleccionar...</option> @* value toca dejarlo vacío para que se pueda hacer la verificación *@
+                                        @* como mejora a futuro se podria hacer de forma dinamica consultando la base de datos *@
+                                        <option value="1">Comercial</option>
+                                        <option value="2">Jefe Operativo</option>
+                                        <option value="3">Bodeguero</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                    Seleccionar un rol...
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="reset" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                    <button type="submit" id="btn-update-modal" class="btn btn-primary">Actualizar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tabla general -->
     <div class="card mb-4">
         <div class="card-header">
             <i class="fas fa-table me-1"></i>

@@ -50,12 +50,12 @@ namespace BikeStore.App.Web.Pages
             listadoProductos = new List<Producto>();
             listadoProductos = _repositorioProducto.GetAllProductos().ToList();;
 
-             foreach (var inventario in listadoInventario)
+            foreach (var inventario in listadoInventario)
             {                               
                 // var jsonString = new JavaScriptSerializer();
                 // var jsonStringResult = jsonString.Serialize(inventario.Producto);
                 
-                Console.WriteLine("inventario Producto: " + inventario + ";");                           
+                Console.WriteLine("VENTAS: ver atributos Producto en ListadoInventario: " + inventario + ";");                           
             }
 
 

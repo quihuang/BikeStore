@@ -37,13 +37,12 @@ namespace BikeStore.App.Web.Pages
             // al final se usa el método ToList para convertir a Lista el IEnumerable que genera el método GetAllProductos.
 
             listadoProducto = _repositorioProducto.GetAllProductos().ToList();
-
-            if(ViewData["mensaje"] != null)
+            
+            if(ViewData["mensaje"] != null){
                 mensaje = ViewData["mensaje"].ToString();
-            else
+            } else {
                 mensaje = "";
-
-
+            }
         }
 
 
@@ -65,25 +64,28 @@ namespace BikeStore.App.Web.Pages
             // video 02/09 min 2:23:15
             // llamamos el método del Repositorio y le pasamos por parámetro el objeto que acabamos de crear, y el resultado del método lo almacenamos en la variable result.
             var result = _repositorioProducto.AddProducto(producto);
+
+            // video del 09/09 min 2:53:00
             if( result > 0){
+                //TODO Mostrar este mensaje por alert en el Front
                 Console.WriteLine("Se creó con éxito el producto");
-                return RedirectToPage("./Productos");
+                mensaje = "Se creó con éxito el producto";
+                
+                Page(); // retorna la misma página donde está
             }else{
+                //TODO Mostrar este mensaje por alert en el Front
                 Console.WriteLine("No se creó con éxito el producto");
+                mensaje = "No se creó con éxito el producto";
+
+                RedirectToPage("Error");
             }
-
-            return RedirectToPage("./Productos");
-            
-            // TODO validar los datos que se reciben desde el front, pueden ser con condicionales, bootstrap o expresiones regulares
-            // TODO Mostrara al Front el resultado de la operación
-
+            return Content(mensaje);
         }
 
         public IActionResult OnPostUpdateJson([FromBody]Producto producto)
         {
-            //Console.WriteLine("producto ID " + producto.Id + "producto name " + producto.Nombre + "producto description" + producto.Descripcion);
-            Console.WriteLine("producto :" + producto + ";");
             Console.WriteLine("PRODUCTOS.cs: Para ver su contenido se imprime el objeto producto: " + "\nproducto Id: " + producto.Id + "\nproducto Nombre: " + producto.Nombre + "\nproducto Description: " + producto.Descripcion);
+            Console.WriteLine("PRODUCTOS.cs: Para ver su contenido se imprime el objeto producto: " + producto + ";");
 
             var productoResult = _repositorioProducto.GetProducto( producto.Id );
 
@@ -94,7 +96,7 @@ namespace BikeStore.App.Web.Pages
                 productoResult.Nombre = producto.Nombre;
                 productoResult.Descripcion = producto.Descripcion;
                 //personaResult.Genero = (persona.Genero == "0" ? Genero.Femenino : Genero.Masculino);
-            
+
                 var result = _repositorioProducto.UpdateProducto(productoResult);
 
                 if( result > 0){
@@ -104,7 +106,7 @@ namespace BikeStore.App.Web.Pages
                 }
 
             }else{
-                mensaje = "La persona a actualizar no existe";
+                mensaje = "el producto a actualizar no existe";
             }
 
             //return new JsonResult(persona);
@@ -112,6 +114,5 @@ namespace BikeStore.App.Web.Pages
             return Content(mensaje);
 
         } 
-        
     }
 }

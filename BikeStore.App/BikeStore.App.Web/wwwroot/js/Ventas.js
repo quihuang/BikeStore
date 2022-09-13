@@ -1,9 +1,41 @@
+// 1. Capturar los registros de una fila en la tabla, para pasarlos al ModalActualizar
+function seleccionarRegistroTabla(e, id, cantidadProducto, valorVenta, trabajador, cliente, inventario, fecha) {
+
+    var selectedRow = $(e);
+    var selectedRowGlobal = $(selectedRow[0].parentElement);
+    selectedRowGlobal = selectedRowGlobal.find(".selected");
+
+    if (selectedRowGlobal.find(".selected")) {
+        selectedRowGlobal.removeClass("selected");
+    }
+
+    selectedRow.addClass("selected");
+
+    $('#btn-update').removeAttr('hidden');
+    $('#btn-delete').removeAttr('hidden');
+    $('#btn-const').removeAttr('hidden');
+
+    // esto es para mostrar los valores en el ModalActualizar
+    document.getElementById("idUpdate").value = id;
+    document.getElementById("cantidadProductoUpdate").value = cantidadProducto;
+    document.getElementById("valorVentaUpdate").value = valorVenta;
+    document.getElementById("trabajadorUpdate").value = trabajador;
+    document.getElementById("clienteUpdate").value = cliente;
+    document.getElementById("inventarioUpdate").value = inventario;
+    document.getElementById("fechaUpdate").value = fecha;
+}
+
 $().ready(function() {
 
-    $("#btn-update-modal-pro").click(function() {
+    $("#btn-update-modal").click(function() {
 
         // Enviar petición AJAX datos JSON
-        var venta = { "IdVentaUpdate": $("#idVentaUpdate").val(), "CantidadProductoUpdate": $("#cantidadProductoUpdate").val(), "ValorVentaUpdate": $("#valorVentaUpdate").val(), "TrabajadorVentaUpdate": $("#trabajadorVentaUpdate").val(), "ClienteVentaUpdate": $("#clienteVentaUpdate").val(), "InventarioVentaUpdate": $("#inventarioVentaUpdate").val() };
+        var venta = { "Id": $("#idUpdate").val(), 
+        "Inventario": $("#inventarioUpdate").val(), 
+        "CantidadProducto": $("#cantidadProductoUpdate").val(), 
+        "ValorVenta": $("#valorVentaUpdate").val(), 
+        "Trabajador": $("#trabajadorUpdate").val(), 
+        "Cliente": $("#clienteUpdate").val() };
 
         $.ajax({
                 type: "POST",
@@ -24,27 +56,3 @@ $().ready(function() {
             });
     });
 });
-
-function seleccionarRegistroVentas(e, id, cantidadProducto, valorVenta, trabajador, cliente, inventario) {
-
-    var selectedRow = $(e);
-    var selectedRowGlobal = $(selectedRow[0].parentElement);
-    selectedRowGlobal = selectedRowGlobal.find(".selected");
-
-    if (selectedRowGlobal.find(".selected")) {
-        selectedRowGlobal.removeClass("selected");
-    }
-
-    selectedRow.addClass("selected");
-
-    $('#btn-update').removeAttr('hidden');
-    $('#btn-delete').removeAttr('hidden');
-    $('#btn-const').removeAttr('hidden');
-
-    document.getElementById("idVentaUpdate").value = id;
-    document.getElementById("cantidadProductoUpdate").value = cantidadProducto;
-    document.getElementById("valorVentaUpdate").value = valorVenta;
-    document.getElementById("trabajadorVentaUpdate").value = trabajador;
-    document.getElementById("clienteVentaUpdate").value = cliente;
-    document.getElementById("inventarioVentaUpdate").value = inventario;
-}
