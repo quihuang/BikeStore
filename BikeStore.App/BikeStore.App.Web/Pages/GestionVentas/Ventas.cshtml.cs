@@ -66,7 +66,7 @@ namespace BikeStore.App.Web.Pages
         public void OnPost()
         {
             // aquí se debe poner entre [] el nombre de cada campo del formulario
-            var Fecha = fechaActual;
+            var fecha = fechaActual;
             var cantidadProducto = Request.Form["cantidadProducto"]; // ! Error: al capturar el dato, lo recibe string
             var valorVenta = Request.Form["valorVenta"]; // ! Error: al capturar el dato, lo recibe string
             var trabajador = Request.Form["trabajador"];
@@ -76,6 +76,7 @@ namespace BikeStore.App.Web.Pages
             // // Creamos el objeto Venta y le pasamos los datos del formulario
             var venta = new Venta
             {
+               Fecha = fecha,
                CantidadProducto = int.Parse(cantidadProducto), // ! Error: debe ser un Entero
                ValorVenta = int.Parse(valorVenta),    // ! Error: debe ser un Entero
                TrabajadorId = int.Parse(trabajador),    // ! Error: debe ser un tipo Objeto
