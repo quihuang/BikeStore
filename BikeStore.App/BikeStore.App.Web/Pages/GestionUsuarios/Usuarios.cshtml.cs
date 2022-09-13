@@ -21,7 +21,7 @@ namespace BikeStore.App.Web
         public List<Trabajador> listadoTrabajador { get; set; }
         // public List<Persona> listadoPersona { get; set; }
         // public List<Usuario> listadoUsuario { get; set; }
-        
+
         public void OnGet()
         {
             // video 02/09 min 2:50:22
@@ -30,9 +30,11 @@ namespace BikeStore.App.Web
             listadoTrabajador = _repositorioTrabajador.GetAllTrabajadores().ToList();
         }
 
+        // video 02/09 min 2:09:20
         // // Método para capturar el Post del formulario
-        public void OnPost(){
+        public IActionResult OnPost(){
 
+            // aquí se debe poner entre [] el nombre de cada campo del formulario
             var cedula = Request.Form["cedula"];
             var nombre = Request.Form["nombre"];
             var apellido = Request.Form["apellido"];
@@ -54,15 +56,24 @@ namespace BikeStore.App.Web
                 Salario = int.Parse(salario),
             };
 
-            Console.WriteLine("Cedula = " + trabajador.Cedula + "Nombre= " + trabajador.Nombre + "Apellido =" + trabajador.Apellido + "NumeroTelefono = " + trabajador.NumeroTelefono + "NombreUsuario =" + trabajador.NombreUsuario + "Contraseña =" + trabajador.Contraseña + "Rol =" + trabajador.Rol + "Salario =" + trabajador.Salario);
+            // Impresion por consola para verificar el objeto trabajador
+            Console.WriteLine("USUARIOS: ver atributos \nCedula = " + trabajador.Cedula + "Nombre= " + trabajador.Nombre + "Apellido =" + trabajador.Apellido + "NumeroTelefono = " + trabajador.NumeroTelefono + "NombreUsuario =" + trabajador.NombreUsuario + "Contraseña =" + trabajador.Contraseña + "Rol =" + trabajador.Rol + "Salario =" + trabajador.Salario);
 
             // video 02/09 min 2:23:15
             // llamamos el método del Repositorio y le pasamos por parámetro el objeto que acabamos de crear, y el resultado del método lo almacenamos en la variable result.
             var result = _repositorioTrabajador.AddTrabajador(trabajador);
+
+            // video del 09/09 min 2:53:00
             if( result > 0){
+                //TODO Mostrar este mensaje por alert en el Front
                 Console.WriteLine("Se creó con éxito el Usuario");
+
+                return Page(); // retorna la misma página donde está
             }else{
+                //TODO Mostrar este mensaje por alert en el Front
                 Console.WriteLine("Se creó con éxito el Usuario");
+
+                return RedirectToPage("./Usuarios");
             }
         }
     }
