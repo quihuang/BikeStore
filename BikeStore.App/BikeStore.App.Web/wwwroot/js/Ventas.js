@@ -1,5 +1,5 @@
 // 1. Capturar los registros de una fila en la tabla, para pasarlos al ModalActualizar
-function seleccionarRegistroTabla(e, id, cantidadProducto, valorVenta, trabajador, cliente, inventario, fecha) {
+function seleccionarRegistroTabla(e, id, inventarioId, fecha, cantidadProducto, valorVenta, trabajadorId, clienteId) {
 
     var selectedRow = $(e);
     var selectedRowGlobal = $(selectedRow[0].parentElement);
@@ -11,18 +11,18 @@ function seleccionarRegistroTabla(e, id, cantidadProducto, valorVenta, trabajado
 
     selectedRow.addClass("selected");
 
-    $('#btn-update').removeAttr('hidden');
-    $('#btn-delete').removeAttr('hidden');
     $('#btn-const').removeAttr('hidden');
+    $('#btn-delete').removeAttr('hidden');
+    $('#btn-update').removeAttr('hidden');
 
     // esto es para mostrar los valores en el ModalActualizar
     document.getElementById("idUpdate").value = id;
+    document.getElementById("inventarioUpdate").value = inventarioId;
+    document.getElementById("fechaUpdate").value = fecha;
     document.getElementById("cantidadProductoUpdate").value = cantidadProducto;
     document.getElementById("valorVentaUpdate").value = valorVenta;
-    document.getElementById("trabajadorUpdate").value = trabajador;
-    document.getElementById("clienteUpdate").value = cliente;
-    document.getElementById("inventarioUpdate").value = inventario;
-    document.getElementById("fechaUpdate").value = fecha;
+    document.getElementById("trabajadorUpdate").value = trabajadorId;
+    document.getElementById("clienteUpdate").value = clienteId;
 }
 
 // 2. Luego de modificar los campos en el ModalActualizar, al dar clic en el botón Actualizar se envia a la DB
@@ -33,7 +33,7 @@ $().ready(function() {
         // debugger;
 
         // Enviar petición AJAX datos JSON
-        var venta = {
+        var paquete = {
             "Id": $("#idUpdate").val(),
             "Inventario": $("#inventarioUpdate").val(),
             "CantidadProducto": $("#cantidadProductoUpdate").val(),
@@ -50,7 +50,7 @@ $().ready(function() {
                 headers: {
                     "RequestVerificationToken": $('input:hidden[name="__RequestVerificationToken"]').val()
                 },
-                data: JSON.stringify(venta),
+                data: JSON.stringify(paquete),
             })
             .done(function(result) {
                 alert(result);
@@ -62,16 +62,17 @@ $().ready(function() {
     });
 });
 
-// función para limpiar el modal de Crear
 function crear(text) {
 
+    // limpia los inputs el modal de Crear
     document.getElementById("inventario").value = "";
     document.getElementById("cantidadProducto").value = "";
     document.getElementById("valorVenta").value = "";
     document.getElementById("trabajador").value = "";
     document.getElementById("cliente").value = "";
 
+    // añade un titulo al modal de CREAR reamplazando el texto mostrado
     document.getElementById("titleModal").innerHTML = "Registro " + text;
-    document.getElementById("btn-create-modal").innerHTML = "Crear";
 
+    document.getElementById("btn-create-modal").innerHTML = "Crear";
 }

@@ -47,7 +47,13 @@
                                     <label for="inventario">Producto</label>
                                     <select name="inventario" id="inventario" class="form-control" required>
                                         <option value="" selected>Seleccionar...</option>
-                                        XDXXXXX
+                                        @* PENDIENTE POR ARREGLAR *@
+                                        @foreach (var inventario in Model.listadoInventario)
+                                        {
+                                            @foreach (var productos in Model.listadoProductos){
+                                                @if(inventario.ProductoId == productos.Id){<option value="@inventario.Id">@productos.Nombre</option>}
+                                            } 
+                                        }
                                     </select>
                                     <div class="invalid-feedback">
                                     Seleccionar un producto del inventario...
@@ -129,7 +135,7 @@
                                 <div class="form-group">
                                     <label for="inventarioUpdate">Producto</label>
                                     <select name="inventarioUpdate" id="inventarioUpdate" class="form-control" required>
-                                        <option value="">Seleccionar...</option> 
+                                        <option value="">Seleccionar...</option>
                                         @foreach (var inventario in Model.listadoInventario)
                                         {
                                             @foreach (var productos in Model.listadoProductos){
@@ -278,8 +284,9 @@
                 <tbody>
                         @foreach(var item in Model.listadoVenta)
                         {
-                        <tr onclick="seleccionarRegistroTabla(this,'@item.Id','@item.CantidadProducto','@item.ValorVenta','@item.TrabajadorId','@item.ClienteId','@item.InventarioId', '@item.Fecha');">
+                        <tr onclick="seleccionarRegistroTabla(this,'@item.Id','@item.InventarioId', '@item.Fecha','@item.CantidadProducto','@item.ValorVenta','@item.TrabajadorId','@item.ClienteId');">
                         <td>@item.Id</td>
+                        @* PENDIENTE POR ARREGLAR *@
                         @foreach (var productos in Model.listadoProductos){
                             @if(@item.InventarioId == productos.Id){<td>@productos.Nombre</td>}
                         }   

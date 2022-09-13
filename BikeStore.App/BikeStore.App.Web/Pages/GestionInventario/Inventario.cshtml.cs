@@ -21,16 +21,27 @@ namespace BikeStore.App.Web.Pages
 
         public void OnGet()
         {
-            // Método para listar todo el Inventario y mostrarlo en la tabla
+            // video 02/09 min 2:50:22
+            // debo inicializar el objeto listado____ dentro de OnGet para que lo pueda interpretar
             listadoInventario = new List<Inventario>(); // se instancia vacío
+
+            // llenamos la variable listado____ a traves del método GetAll____()
+            // al final se usa el método ToList para convertir a Lista el IEnumerable que genera el método GetAll____.
             listadoInventario = _repositorioInventario.GetAllInventarios().ToList();
             
             // Método para listar los Productos y mostrarlos en una lista desplegable en la ventana Modal
             listadoProducto = new List<Producto>(); // se instancia vacío
             listadoProducto = _repositorioProducto.GetAllProductos().ToList();
+
+            // PARA MOSTRAR UN MENSAJE - PENDIENTE POR PROBAR
+            if(ViewData["mensaje"] != null){
+                mensaje = ViewData["mensaje"].ToString();
+            } else {
+                mensaje = "";
+            }
         }
 
-        // // Método para capturar el Post del formulario CREAR
+        // // METODO PARA POST DE CREAR
         public IActionResult OnPost()
         {
             // aquí se debe poner entre [] el nombre de cada campo del formulario
@@ -40,7 +51,7 @@ namespace BikeStore.App.Web.Pages
             var precioUniVenta = Request.Form["preciouniventa"];
             var precioUniCompra = Request.Form["preciounicompra"];
 
-            // Creamos el objeto Inventario y le pasamos los datos del formulario
+            // Creamos el objeto y le pasamos los datos del formulario
             var inventario = new Inventario{
                 ProductoId = int.Parse(producto),
                 Existencias = int.Parse(existencias),
@@ -52,31 +63,29 @@ namespace BikeStore.App.Web.Pages
             // video 02/09 min 2:23:15
             // llamamos el método del Repositorio y le pasamos por parámetro el objeto que acabamos de crear, y el resultado del método lo almacenamos en la variable result.
             var result = _repositorioInventario.AddInventario(inventario);
+
+            // video del 09/09 min 2:53:00
             if( result > 0){
                 //TODO Mostrar este mensaje por alert en el Front
-                // Console.WriteLine("Se creó con éxito el registro en el Inventario");
-                mensaje = "Se creó con éxito el registro en el Inventario";
-                
-                Page(); // retorna la misma página donde está
-
+                Console.WriteLine("Creación realizada con éxito");
+                mensaje = "Creación realizada con éxito";
             }else{
                 //TODO Mostrar este mensaje por alert en el Front
-                // Console.WriteLine("Falló el método para crear el registro en el Inventario");
-                mensaje = "Falló el método para crear el registro en el Inventario";
-
-                RedirectToPage("./Inventario");
+                Console.WriteLine("Falla en el método de creación");
+                mensaje = "Falla en el método de creación";
             }
-            //return Content(mensaje);
-            return RedirectToPage("./Inventario");
+            return Content(mensaje);
         }
 
-        // // Método para capturar el Post del formulario ACTUALIZAR
+        // METODO PARA POST DE ACTUALIZAR MEDIANTE AJAX CON DATOS CRUDOS
+        public IActionResult OnPostUpdate()
+        {
+            return Content("Se ejecuto el consumo del metodo Update via ajax con datos crudos");
+        }
+
+        // // METODO PARA POST DE ACTUALIZAR MEDIANTE AJAX CON JSON
         public IActionResult OnPostUpdateJson([FromBody]Inventario inventario)
         {
-            // @item.Id','@item.Producto','@item.Existencias','@item.NumeroRefCompra','@item.PrecioUniVenta','@item.PrecioUniCompra'
-            Console.WriteLine("INVENTARIO.cs: Para ver su contenido se imprime el objeto inventario: " + "inventario Id: " + inventario.Id + ", inventario Producto: " + inventario.ProductoId + ", inventario Existencias: " + inventario.Existencias + ", inventario NumeroRefCompra: " + inventario.NumeroRefCompra + ", inventario PrecioUniVenta: " + inventario.PrecioUniVenta + ", inventario PrecioUniCompra: " + inventario.PrecioUniCompra);
-            Console.WriteLine("INVENTARIO.cs: Para ver su contenido se imprime el objeto inventario :" + inventario + " ;");
-
             var inventarioResult = _repositorioInventario.GetInventario( inventario.Id );
 
             var mensaje = "";
@@ -85,6 +94,9 @@ namespace BikeStore.App.Web.Pages
 
                 inventarioResult.ProductoId = inventario.ProductoId;
                 inventarioResult.Existencias = inventario.Existencias;
+                inventarioResult.NumeroRefCompra = inventario.NumeroRefCompra;
+                inventarioResult.PrecioUniVenta = inventario.PrecioUniVenta;
+                inventarioResult.PrecioUniCompra = inventario.PrecioUniCompra;
 
                 var result = _repositorioInventario.UpdateInventario(inventarioResult);
 
@@ -95,13 +107,12 @@ namespace BikeStore.App.Web.Pages
                 }
 
             }else{
-                mensaje = "El inventario a actualizar no existe";
+                mensaje = "La consulta no encontró ningún registro";
             }
 
             //return new JsonResult(persona);
 
             return Content(mensaje);
-
         }
     }
 }

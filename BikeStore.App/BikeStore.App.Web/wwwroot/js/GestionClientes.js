@@ -11,9 +11,8 @@ function seleccionarRegistroTabla(e, id, cedula, nombre, apellido, numeroTelefon
 
     selectedRow.addClass("selected");
 
-    $('#btn-update').removeAttr('hidden');
     $('#btn-delete').removeAttr('hidden');
-    $('#btn-const').removeAttr('hidden');
+    $('#btn-update').removeAttr('hidden');
 
     // esto es para mostrar los valores en el ModalActualizar
     document.getElementById("idUpdate").value = id;
@@ -31,7 +30,7 @@ $().ready(function() {
     $("#btn-update-modal").click(function() {
 
         // Enviar petición AJAX datos JSON
-        var venta = {
+        var paquete = {
             "Id": $("#idUpdate").val(),
             "Cedula": $("#cedulaUpdate").val(),
             "Nombre": $("#nombreUpdate").val(),
@@ -49,7 +48,7 @@ $().ready(function() {
                 headers: {
                     "RequestVerificationToken": $('input:hidden[name="__RequestVerificationToken"]').val()
                 },
-                data: JSON.stringify(venta),
+                data: JSON.stringify(paquete),
             })
             .done(function(result) {
                 alert(result);
@@ -61,9 +60,9 @@ $().ready(function() {
     });
 });
 
-// función para limpiar el modal de Crear
 function crear(text) {
 
+    // limpia los inputs el modal de Crear
     document.getElementById("cedula").value = "";
     document.getElementById("nombre").value = "";
     document.getElementById("apellido").value = "";
@@ -71,7 +70,8 @@ function crear(text) {
     document.getElementById("email").value = "";
     document.getElementById("direccion").value = "";
 
+    // añade un titulo al modal de CREAR reamplazando el texto mostrado
     document.getElementById("titleModal").innerHTML = "Registro " + text;
-    document.getElementById("btn-create-modal").innerHTML = "Crear";
 
+    document.getElementById("btn-create-modal").innerHTML = "Crear";
 }
