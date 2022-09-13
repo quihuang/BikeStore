@@ -112,7 +112,7 @@
                         <div class="col">
                             <form method="post" action="" id="formEditar" class="needs-validation" novalidate>
                                 @Html.AntiForgeryToken()
-                                <input type="number" name="IdUpdate" id="IdUpdate" class="form-control" readonly hidden>
+                                <input type="number" name="idUpdate" id="idUpdate" class="form-control" readonly hidden>
                                 <div class="form-group">
                                     <label for="cedulaUpdate">Cédula</label>
                                     <input type="number" name="cedulaUpdate" id="cedulaUpdate" class="form-control" onkeypress="return Solo_Numeros(event);" placeholder="Ingrese su numero de cedula" aria-describedby="invalid-feedback" minlength="3" maxlength="50" required>
@@ -197,10 +197,10 @@
                         <th>Dirección</th>
                     </tr>
                 </tfoot>
+                @* Explicacion en el video 02/09 min 2:52:16 *@
                 <tbody>
-                    @* Explicacion en el video 02/09 min 2:52:16 *@
                     @foreach(var item in Model.listadoCliente){
-                        <tr onclick="seleccionarRegistroTabla();">
+                        <tr onclick="seleccionarRegistroTabla(this,'@item.Id','@item.Cedula','@item.Nombre','@item.Apellido','@item.NumeroTelefono','@item.Email', '@item.Direccion');">
                             <td>@item.Id</td>
                             <td>@item.Cedula</td>
                             <td>@item.Nombre</td>

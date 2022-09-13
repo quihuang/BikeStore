@@ -31,26 +31,6 @@ function editar(text) {
     document.getElementById("btn-create-modal").innerHTML = "Actualizar";
 }
 
-function crear(text) {
-
-    document.getElementById("nombre").value = "";
-    document.getElementById("descripcion").value = "";
-
-    document.getElementById("titleModal").innerHTML = "Registro " + text;
-    document.getElementById("btn-create-modal").innerHTML = "Crear";
-
-}
-
-function seleccionarRegistro() {
-
-    $('#btn-update').removeAttr('hidden');
-    $('#btn-delete').removeAttr('hidden');
-    $('#btn-const').removeAttr('hidden');
-
-}
-
-
-
 function imprimir(nombre) {
     var ficha = document.getElementById(nombre);
     var ventimp = window.open(' ', 'popimpr');

@@ -66,7 +66,8 @@ namespace BikeStore.App.Web.Pages
 
                 RedirectToPage("./Inventario");
             }
-            return Content(mensaje);
+            //return Content(mensaje);
+            return RedirectToPage("./Inventario");
         }
 
         // // Método para capturar el Post del formulario ACTUALIZAR

@@ -238,10 +238,10 @@
                         <th>Rol</th>
                     </tr>
                 </tfoot>
+                @* Explicacion en el video 02/09 min 2:52:16 *@
                 <tbody>
-                    @* Explicacion en el video 02/09 min 2:52:16 *@
                     @foreach(var item in Model.listadoTrabajador){
-                        <tr onclick="seleccionarRegistroTabla();">
+                        <tr onclick="seleccionarRegistroTabla(this,'@item.Id','@item.Cedula','@item.Nombre','@item.Apellido','@item.NumeroTelefono','@item.NombreUsuario','@item.Salario','@item.Rol');">
                             <td>@item.Id</td>
                             <td>@item.Cedula</td>
                             <td>@item.Nombre</td>
@@ -249,7 +249,7 @@
                             <td>@item.NumeroTelefono</td>
                             <td>@item.NombreUsuario</td>
                             <td>@item.Salario</td>
-                            @if (item.Rol == 1){ <td>Comercial</td>}else if(item.Rol == 2){<td>Jefe Operativo</td>}else if(item.Rol == 3){<td>Bodeguero</td>}  
+                            @if (item.Rol == 1){ <td>Comercial</td>}else if(item.Rol == 2){<td>Jefe Operativo</td>}else if(item.Rol == 3){<td>Bodeguero</td>}
                         </tr>
                     }
                 </tbody>

@@ -36,7 +36,7 @@ $().ready(function() {
 
         $.ajax({
                 type: "POST",
-                url: "/GestionProductos/Productos?handler=UpdateJson",
+                url: "/GestionInventario/Inventario?handler=UpdateJson",
                 contentType: "application/json; charset=utf-8",
                 dataType: "html",
                 headers: {
@@ -53,3 +53,17 @@ $().ready(function() {
             });
     });
 });
+
+// función para limpiar el modal de Crear
+function crear(text) {
+
+    document.getElementById("producto").value = "";
+    document.getElementById("existencias").value = "";
+    document.getElementById("numerorefcompra").value = "";
+    document.getElementById("preciouniventa").value = "";
+    document.getElementById("preciounicompra").value = "";
+
+    document.getElementById("titleModal").innerHTML = "Registro " + text;
+    document.getElementById("btn-create-modal").innerHTML = "Crear";
+
+}

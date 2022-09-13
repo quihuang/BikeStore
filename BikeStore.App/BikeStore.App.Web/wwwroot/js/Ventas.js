@@ -25,17 +25,22 @@ function seleccionarRegistroTabla(e, id, cantidadProducto, valorVenta, trabajado
     document.getElementById("fechaUpdate").value = fecha;
 }
 
+// 2. Luego de modificar los campos en el ModalActualizar, al dar clic en el botón Actualizar se envia a la DB
 $().ready(function() {
 
     $("#btn-update-modal").click(function() {
 
+        // debugger;
+
         // Enviar petición AJAX datos JSON
-        var venta = { "Id": $("#idUpdate").val(), 
-        "Inventario": $("#inventarioUpdate").val(), 
-        "CantidadProducto": $("#cantidadProductoUpdate").val(), 
-        "ValorVenta": $("#valorVentaUpdate").val(), 
-        "Trabajador": $("#trabajadorUpdate").val(), 
-        "Cliente": $("#clienteUpdate").val() };
+        var venta = {
+            "Id": $("#idUpdate").val(),
+            "Inventario": $("#inventarioUpdate").val(),
+            "CantidadProducto": $("#cantidadProductoUpdate").val(),
+            "ValorVenta": $("#valorVentaUpdate").val(),
+            "Trabajador": $("#trabajadorUpdate").val(),
+            "Cliente": $("#clienteUpdate").val()
+        };
 
         $.ajax({
                 type: "POST",
@@ -56,3 +61,17 @@ $().ready(function() {
             });
     });
 });
+
+// función para limpiar el modal de Crear
+function crear(text) {
+
+    document.getElementById("inventario").value = "";
+    document.getElementById("cantidadProducto").value = "";
+    document.getElementById("valorVenta").value = "";
+    document.getElementById("trabajador").value = "";
+    document.getElementById("cliente").value = "";
+
+    document.getElementById("titleModal").innerHTML = "Registro " + text;
+    document.getElementById("btn-create-modal").innerHTML = "Crear";
+
+}

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using BikeStore.App.Dominio;
 using BikeStore.App.Persistencia;
+using System.Collections;
 //dotnet add reference ..\System.Web.Script.Serialization\
 namespace BikeStore.App.Web.Pages
 {
@@ -29,6 +30,8 @@ namespace BikeStore.App.Web.Pages
         public Producto producto { get; set; }
         public List<Producto> listadoProductos { get; set; }
         DateTime fechaActual = DateTime.Now;
+        ArrayList repetidos = new ArrayList();
+        public String htmlConcat;
 
         public void OnGet()
         {
@@ -48,22 +51,35 @@ namespace BikeStore.App.Web.Pages
             listadoInventario = _repositorioInventario.GetAllInventarios().ToList();
 
             listadoProductos = new List<Producto>();
-            listadoProductos = _repositorioProducto.GetAllProductos().ToList();;
+            listadoProductos = _repositorioProducto.GetAllProductos().ToList();
 
-            foreach (var inventario in listadoInventario)
-            {                               
-                // var jsonString = new JavaScriptSerializer();
-                // var jsonStringResult = jsonString.Serialize(inventario.Producto);
+            foreach (var productos in listadoProductos)
+            {
                 
-                // Console.WriteLine("VENTAS: ver atributos Producto en ListadoInventario: " + inventario + ";");                           
+                foreach (var inventario in listadoInventario)
+                {
+                   repetidos.Add(productos.Nombre);
+                } 
             }
-
+            foreach (var productos in listadoProductos)
+            {
+                foreach (var inventario in listadoInventario)
+                {
+                    foreach(var repetido in repetidos){
+                        if(repetido.Equals(productos.Nombre)){
+                            continue;
+                        }else{
+                            Console.WriteLine("<option value='"+inventario.Id+"'>"+productos.Nombre+"</option>");
+                        }
+                    }
+                } 
+            }
 
         }
 
         // video 02/09 min 2:09:20
         // // Método para capturar el Post del formulario
-        public void OnPost()
+        public IActionResult OnPost()
         {
             // aquí se debe poner entre [] el nombre de cada campo del formulario
             var fecha = fechaActual;
@@ -72,6 +88,13 @@ namespace BikeStore.App.Web.Pages
             var trabajador = Request.Form["trabajador"];
             var cliente = Request.Form["cliente"];
             var inventario = Request.Form["inventario"];
+
+             Console.WriteLine("fecha : "+ fecha);
+             Console.WriteLine("cantidadProducto : " + cantidadProducto);
+             Console.WriteLine("valorVenta : " + valorVenta);
+             Console.WriteLine("trabajador : " + trabajador);
+             Console.WriteLine("cliente : " + cliente);
+             Console.WriteLine("inventario : " + inventario);
 
             // // Creamos el objeto Venta y le pasamos los datos del formulario
             var venta = new Venta
@@ -92,6 +115,8 @@ namespace BikeStore.App.Web.Pages
             }else{
                 Console.WriteLine("Falló el registro de la venta");
             }
+
+            return RedirectToPage("./Ventas");
         }
     }
 }

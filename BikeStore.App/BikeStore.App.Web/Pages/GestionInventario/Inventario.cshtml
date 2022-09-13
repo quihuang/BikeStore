@@ -119,11 +119,10 @@
                                         <option value="">Seleccionar...</option>
                                         @foreach (var inventario in Model.listadoInventario)
                                         {
-                                            foreach (var productos in Model.listadoProducto)
-                                            {
-                                                if(inventario.ProductoId == productos.Id){<option value="@inventario.Id" selected>@productos.Nombre</option>}
-                                                if(inventario.ProductoId != productos.Id){<option value="@inventario.Id">@productos.Nombre</option>}
-                                            }
+                                            @foreach (var productos in Model.listadoProducto){
+                                                @if(inventario.ProductoId == productos.Id){<option value="@inventario.Id" selected>@productos.Nombre</option>}
+                                                @if(inventario.ProductoId != productos.Id){<option value="@inventario.Id">@productos.Nombre</option>}
+                                            } 
                                         }
                                         </select>
                                         <div class="invalid-feedback">
@@ -246,13 +245,14 @@
                         <th>Precio unitario de compra</th>
                     </tr>
                 </tfoot>
+                @* Explicacion en el video 02/09 min 2:52:16 *@
                 <tbody>
                     @foreach(var item in Model.listadoInventario){
                         <tr onclick="seleccionarRegistroTabla(this,'@item.Id','@item.ProductoId','@item.Existencias','@item.NumeroRefCompra','@item.PrecioUniVenta','@item.PrecioUniCompra');">
                         <td>@item.Id</td>
                         @foreach (var productos in Model.listadoProducto)
                         {
-                            @if(item.ProductoId == productos.Id){<td>(@item.ProductoId) @productos.Nombre</td>}
+                            @if(item.ProductoId == productos.Id){<td>@productos.Nombre</td>}
                         }
                         <td>@item.Existencias</td>
                         <td>@item.NumeroRefCompra</td>
