@@ -45,11 +45,11 @@
                             <form method="post" class="needs-validation" novalidate>
                                 <div class="form-group">
                                     <label for="producto">Producto</label>
-                                        <select name="producto" class="form-control" required>
-                                        <option value="" selected>Seleccionar...</option> @* value toca dejarlo vacío para que se pueda hacer la verificación *@
+                                        <select name="producto" id="producto" class="form-control" required>
+                                        <option value="" selected>Seleccionar...</option>
                                         @foreach (var producto in Model.listadoProducto)
                                         {
-                                            <option value="@producto.Id">@producto.Nombre id=@producto.Id</option>
+                                            <option value="@producto.Id">@producto.Nombre</option>
                                         }
                                         </select>
                                         <div class="invalid-feedback">
@@ -112,7 +112,7 @@
                         <div class="col">
                             <form method="post" action="" id="formEditar" class="needs-validation" novalidate>
                                 @Html.AntiForgeryToken()
-                                <input type="number" name="idUpdate" id="idUpdate" class="form-control" aria-describedby="invalid-feedback" hidden>
+                                <input type="number" name="idUpdate" id="idUpdate" class="form-control" readonly hidden>
                                 <div class="form-group">
                                     <label for="productoUpdate">Producto</label>
                                         <select name="productoUpdate" id="productoUpdate" class="form-control" required>
@@ -123,7 +123,6 @@
                                             {
                                                 if(inventario.ProductoId == productos.Id){<option value="@inventario.Id" selected>@productos.Nombre</option>}
                                                 if(inventario.ProductoId != productos.Id){<option value="@inventario.Id">@productos.Nombre</option>}
-                                                
                                             }
                                         }
                                         </select>
@@ -251,7 +250,10 @@
                     @foreach(var item in Model.listadoInventario){
                         <tr onclick="seleccionarRegistroTabla(this,'@item.Id','@item.ProductoId','@item.Existencias','@item.NumeroRefCompra','@item.PrecioUniVenta','@item.PrecioUniCompra');">
                         <td>@item.Id</td>
-                        <td>@item.ProductoId</td>
+                        @foreach (var productos in Model.listadoProducto)
+                        {
+                            @if(item.ProductoId == productos.Id){<td>(@item.ProductoId) @productos.Nombre</td>}
+                        }
                         <td>@item.Existencias</td>
                         <td>@item.NumeroRefCompra</td>
                         <td>@item.PrecioUniVenta</td>

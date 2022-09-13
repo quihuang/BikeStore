@@ -112,44 +112,45 @@
                         <div class="col">
                             <form method="post" action="" id="formEditar" class="needs-validation" novalidate>
                                 @Html.AntiForgeryToken()
+                                <input type="number" name="IdUpdate" id="IdUpdate" class="form-control" readonly hidden>
                                 <div class="form-group">
-                                    <label for="cedula">Cédula</label>
-                                    <input type="number" name="cedula" id="cedula" class="form-control" onkeypress="return Solo_Numeros(event);" placeholder="Ingrese su numero de cedula" aria-describedby="invalid-feedback" minlength="3" maxlength="50" required>
+                                    <label for="cedulaUpdate">Cédula</label>
+                                    <input type="number" name="cedulaUpdate" id="cedulaUpdate" class="form-control" onkeypress="return Solo_Numeros(event);" placeholder="Ingrese su numero de cedula" aria-describedby="invalid-feedback" minlength="3" maxlength="50" required>
                                     <div class="invalid-feedback">
                                         Ingrese el número de la cédula.
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="nombre">Nombres</label>
-                                    <input type="text" name="nombre" id="nombre" class="form-control" onkeypress="return Solo_Texto(event);" placeholder="Ingrese el nombre" aria-describedby="invalid-feedback" minlength="3" maxlength="50" required>
+                                    <label for="nombreUpdate">Nombres</label>
+                                    <input type="text" name="nombreUpdate" id="nombreUpdate" class="form-control" onkeypress="return Solo_Texto(event);" placeholder="Ingrese el nombre" aria-describedby="invalid-feedback" minlength="3" maxlength="50" required>
                                     <div class="invalid-feedback">
                                         Ingrese el Nombre.
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="apellido">Apellidos</label>
-                                    <input type="text" name="apellido" id="apellido" class="form-control" onkeypress="return Solo_Texto(event);" placeholder="Ingrese el apellido" aria-describedby="invalid-feedback" minlength="3" maxlength="50" required>
+                                    <label for="apellidoUpdate">Apellidos</label>
+                                    <input type="text" name="apellidoUpdate" id="apellidoUpdate" class="form-control" onkeypress="return Solo_Texto(event);" placeholder="Ingrese el apellido" aria-describedby="invalid-feedback" minlength="3" maxlength="50" required>
                                     <div class="invalid-feedback">
                                         Ingrese el Apellido.
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="numeroTelefono">Número de Teléfono</label>
-                                    <input type="number" name="numeroTelefono" id="numeroTelefono" class="form-control" onkeypress="return Solo_Numeros(event);" placeholder="Ingrese el Telefono" aria-describedby="invalid-feedback" min="3000000000" max="3999999999" step="1" required>
+                                    <label for="numeroTelefonoUpdate">Número de Teléfono</label>
+                                    <input type="number" name="numeroTelefonoUpdate" id="numeroTelefonoUpdate" class="form-control" onkeypress="return Solo_Numeros(event);" placeholder="Ingrese el Telefono" aria-describedby="invalid-feedback" min="3000000000" max="3999999999" step="1" required>
                                         <div class="invalid-feedback">
                                         Ingrese el número de teléfono.
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <input type="email" name="email" id="email" class="form-control" onkeypress="return Solo_Email(event);" placeholder="Ingrese el email" aria-describedby="invalid-feedback" minlength="3" maxlength="50" required>
+                                    <label for="emailUpdate">Email</label>
+                                    <input type="emailUpdate" name="emailUpdate" id="emailUpdate" class="form-control" onkeypress="return Solo_Email(event);" placeholder="Ingrese el email" aria-describedby="invalid-feedback" minlength="3" maxlength="50" required>
                                     <div class="invalid-feedback">
                                         Ingrese el email.
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="direccion">Dirección</label>
-                                    <input type="text" name="direccion" id="direccion" class="form-control" onkeypress="return Solo_TextoEnriquesido(event);" placeholder="Ingrese direccion" aria-describedby="invalid-feedback" minlength="3" maxlength="50" required>
+                                    <label for="direccionUpdate">Dirección</label>
+                                    <input type="text" name="direccionUpdate" id="direccionUpdate" class="form-control" onkeypress="return Solo_TextoEnriquesido(event);" placeholder="Ingrese direccion" aria-describedby="invalid-feedback" minlength="3" maxlength="50" required>
                                     <div class="invalid-feedback">
                                         Ingrese la dirección.
                                     </div>
@@ -199,7 +200,7 @@
                 <tbody>
                     @* Explicacion en el video 02/09 min 2:52:16 *@
                     @foreach(var item in Model.listadoCliente){
-                        <tr onclick="seleccionarRegistro();">
+                        <tr onclick="seleccionarRegistroTabla();">
                             <td>@item.Id</td>
                             <td>@item.Cedula</td>
                             <td>@item.Nombre</td>

@@ -3,7 +3,7 @@
 @{
     Layout = "_Layout";
     ViewData["Title"] = "Gestion Usuarios";
-    ViewData["script"] = "Usuario.js"; 
+    ViewData["script"] = "Usuarios.js"; 
 }
 
 <div class="container-fluid px-4">
@@ -92,8 +92,8 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="rol">Rol</label>
-                                    <select class="form-select form-control" aria-label="Default select example" required>
-                                        <option value="" selected>Seleccionar...</option> @* value toca dejarlo vacío para que se pueda hacer la verificación *@
+                                    <select name="rol" id="rol" class="form-select form-control" aria-label="Default select example" required>
+                                        <option value="" selected>Seleccionar...</option>
                                         @* como mejora a futuro se podria hacer de forma dinamica consultando la base de datos *@
                                         <option value="1">Comercial</option>
                                         <option value="2">Jefe Operativo</option>
@@ -131,59 +131,60 @@
                         <div class="col">
                             <form method="post" action="" id="formEditar" class="needs-validation" novalidate>
                                 @Html.AntiForgeryToken()
+                                <input type="number" name="IdUpdate" id="IdUpdate" class="form-control" readonly hidden>
                                 <div class="form-group">
-                                    <label for="cedula">Cédula</label>
-                                    <input type="number" name="cedula" id="cedula" class="form-control" onkeypress="return Solo_Numeros(event);" placeholder="Ingrese su numero de cedula" aria-describedby="invalid-feedback" minlength="3" maxlength="50" required>
+                                    <label for="cedulaUpdate">Cédula</label>
+                                    <input type="number" name="cedulaUpdate" id="cedulaUpdate" class="form-control" onkeypress="return Solo_Numeros(event);" placeholder="Ingrese su numero de cedula" aria-describedby="invalid-feedback" minlength="3" maxlength="50" required>
                                     <div class="invalid-feedback">
                                         Ingrese el número de la cédula.
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="nombre">Nombres</label>
-                                    <input type="text" name="nombre" id="nombre" class="form-control" onkeypress="return Solo_Texto(event);" placeholder="Ingrese el nombre" aria-describedby="invalid-feedback" minlength="3" maxlength="50" required>
+                                    <label for="nombreUpdate">Nombres</label>
+                                    <input type="text" name="nombreUpdate" id="nombreUpdate" class="form-control" onkeypress="return Solo_Texto(event);" placeholder="Ingrese el nombre" aria-describedby="invalid-feedback" minlength="3" maxlength="50" required>
                                     <div class="invalid-feedback">
                                         Ingrese el nombre.
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="apellido">Apellidos</label>
-                                    <input type="text" name="apellido" id="apellido" class="form-control" onkeypress="return Solo_Texto(event);" placeholder="Ingrese el apellido" aria-describedby="invalid-feedback" minlength="3" maxlength="50" required>
+                                    <label for="apellidoUpdate">Apellidos</label>
+                                    <input type="text" name="apellidoUpdate" id="apellidoUpdate" class="form-control" onkeypress="return Solo_Texto(event);" placeholder="Ingrese el apellido" aria-describedby="invalid-feedback" minlength="3" maxlength="50" required>
                                     <div class="invalid-feedback">
                                         Ingrese el apellido.
                                     </div>  
                                 </div>
                                 <div class="form-group">
-                                    <label for="numeroTelefono">Número de Teléfono</label>
-                                    <input type="number" name="numeroTelefono" id="numeroTelefono" class="form-control" onkeypress="return Solo_Numeros(event);" placeholder="Ingrese el Telefono" aria-describedby="invalid-feedback" min="3000000000" max="3999999999" step="1" required>
+                                    <label for="numeroTelefonoUpdate">Número de Teléfono</label>
+                                    <input type="number" name="numeroTelefonoUpdate" id="numeroTelefonoUpdate" class="form-control" onkeypress="return Solo_Numeros(event);" placeholder="Ingrese el Telefono" aria-describedby="invalid-feedback" min="3000000000" max="3999999999" step="1" required>
                                     <div class="invalid-feedback">
                                         Ingrese el número de teléfono.
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="nombreUsuario">Nombre de Usuario</label>
-                                    <input type="text" name="nombreUsuario" id="nombreUsuario" class="form-control" onkeypress="return Solo_Texto(event);" placeholder="Ingrese el Nombre usuario" aria-describedby="invalid-feedback" minlength="3" maxlength="50" required>
+                                    <label for="nombreUsuarioUpdate">Nombre de Usuario</label>
+                                    <input type="text" name="nombreUsuarioUpdate" id="nombreUsuarioUpdate" class="form-control" onkeypress="return Solo_Texto(event);" placeholder="Ingrese el Nombre usuario" aria-describedby="invalid-feedback" minlength="3" maxlength="50" required>
                                     <div class="invalid-feedback">
                                     Ingrese el nombre de usuario.
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="contraseña">Contraseña</label>
-                                    <input type="password" name="contraseña" id="contraseña" class="form-control" onkeypress="return Solo_TextoEnriquesido(event);" placeholder="Ingrese contraseña" aria-describedby="invalid-feedback" minlength="3" maxlength="50" required>
+                                    <label for="contraseñaUpdate">Contraseña</label>
+                                    <input type="password" name="contraseñaUpdate" id="contraseñaUpdate" class="form-control" onkeypress="return Solo_TextoEnriquesido(event);" placeholder="Ingrese contraseña" aria-describedby="invalid-feedback" minlength="3" maxlength="50" required>
                                     <div class="invalid-feedback">
                                     Ingrese una contraseña fuerte.
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="salario">Salario</label>
-                                    <input type="number" name="salario" id="salario" class="form-control" onkeypress="return Solo_Numeros(event);" placeholder="Ingrese salario" aria-describedby="invalid-feedback" minlength="3" maxlength="50"step="1" required>
+                                    <label for="salarioUpdate">Salario</label>
+                                    <input type="number" name="salarioUpdate" id="salarioUpdate" class="form-control" onkeypress="return Solo_Numeros(event);" placeholder="Ingrese salario" aria-describedby="invalid-feedback" minlength="3" maxlength="50"step="1" required>
                                     <div class="invalid-feedback">
                                     Ingrese un número con el salario.
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="rol">Rol</label>
-                                    <select class="form-select form-control" aria-label="Default select example" required>
-                                        <option value="" selected>Seleccionar...</option> @* value toca dejarlo vacío para que se pueda hacer la verificación *@
+                                    <label for="rolUpdate">Rol</label>
+                                    <select name="rolUpdate" id="rolUpdate" class="form-select form-control" aria-label="Default select example" required>
+                                        <option value="">Seleccionar...</option>
                                         @* como mejora a futuro se podria hacer de forma dinamica consultando la base de datos *@
                                         <option value="1">Comercial</option>
                                         <option value="2">Jefe Operativo</option>
@@ -240,7 +241,7 @@
                 <tbody>
                     @* Explicacion en el video 02/09 min 2:52:16 *@
                     @foreach(var item in Model.listadoTrabajador){
-                        <tr onclick="seleccionarRegistro();">
+                        <tr onclick="seleccionarRegistroTabla();">
                             <td>@item.Id</td>
                             <td>@item.Cedula</td>
                             <td>@item.Nombre</td>

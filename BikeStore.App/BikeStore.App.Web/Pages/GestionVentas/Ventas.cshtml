@@ -46,7 +46,7 @@
                                 <div class="form-group">
                                     <label for="inventario">Producto</label>
                                     <select name="inventario" id="inventario" class="form-control" required>
-                                        <option value="">Seleccionar...</option>
+                                        <option value="" selected>Seleccionar...</option>
                                             @foreach (var productos in Model.listadoProductos){
                                                 <option value="@productos.Id">@productos.Nombre</option>
                                             }
@@ -72,7 +72,7 @@
                                 <div class="form-group">
                                     <label for="trabajador">Trabajador</label>
                                     <select name="trabajador" id="trabajador" class="form-control" required>
-                                        <option value="" selected>Seleccionar...</option> @* value toca dejarlo vacío para que se pueda hacer la verificación *@
+                                        <option value="" selected>Seleccionar...</option>
                                         @foreach (var trabajador in Model.listadoTrabajador)
                                         {
                                             <option value="@trabajador.Id">@trabajador.Nombre @trabajador.Apellido</option>
@@ -85,7 +85,7 @@
                                 <div class="form-group">
                                     <label for="cliente">Cliente</label>
                                     <select name="cliente" id="cliente" class="form-control" required>
-                                        <option value="" selected>Seleccionar...</option> @* value toca dejarlo vacío para que se pueda hacer la verificación *@
+                                        <option value="" selected>Seleccionar...</option>
                                         @foreach (var cliente in Model.listadoCliente)
                                         {
                                             <option value="@cliente.Id">@cliente.Nombre @cliente.Apellido</option>
@@ -123,7 +123,7 @@
                         <div class="col">
                             <form method="post" action="" id="formEditar" class="needs-validation" novalidate>
                                 @Html.AntiForgeryToken()
-                                <input type="number" name="idUpdate" id="idUpdate" class="form-control" aria-describedby="invalid-feedback" readonly hidden>
+                                <input type="number" name="idUpdate" id="idUpdate" class="form-control" readonly hidden>
                                 <div class="form-group">
                                     <label for="fechaUpdate">Fecha</label>
                                     <input type="text" name="fechaUpdate" id="fechaUpdate" class="form-control" aria-describedby="Fecha de la venta" readonly required>
@@ -141,7 +141,7 @@
                                         }
                                     </select>
                                     <div class="invalid-feedback">
-                                    Seleccionar un producto del inventario...
+                                        Seleccionar un producto del inventario.
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -168,7 +168,7 @@
                                         }
                                     </select>
                                     <div class="invalid-feedback">
-                                    Seleccionar un trabajador...
+                                        Seleccionar un trabajador.
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -181,7 +181,7 @@
                                         }
                                     </select>
                                     <div class="invalid-feedback">
-                                    Seleccionar un cliente...
+                                        Seleccionar un cliente.
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -280,7 +280,7 @@
                 <tbody>
                         @foreach(var item in Model.listadoVenta)
                         {
-                        <tr onclick="seleccionarRegistroVentas(this,'@item.Id','@item.CantidadProducto','@item.ValorVenta','@item.TrabajadorId','@item.ClienteId','@item.InventarioId', '@item.Fecha');">
+                        <tr onclick="seleccionarRegistroTabla(this,'@item.Id','@item.CantidadProducto','@item.ValorVenta','@item.TrabajadorId','@item.ClienteId','@item.InventarioId', '@item.Fecha');">
                         <td>@item.Id</td>
                         @foreach (var productos in Model.listadoProductos){
                             @if(@item.InventarioId == productos.Id){<td>@productos.Nombre</td>}

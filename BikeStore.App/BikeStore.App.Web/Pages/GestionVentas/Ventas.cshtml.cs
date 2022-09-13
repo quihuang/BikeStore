@@ -55,7 +55,7 @@ namespace BikeStore.App.Web.Pages
                 // var jsonString = new JavaScriptSerializer();
                 // var jsonStringResult = jsonString.Serialize(inventario.Producto);
                 
-                Console.WriteLine("VENTAS: ver atributos Producto en ListadoInventario: " + inventario + ";");                           
+                // Console.WriteLine("VENTAS: ver atributos Producto en ListadoInventario: " + inventario + ";");                           
             }
 
 
