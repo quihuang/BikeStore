@@ -42,5 +42,14 @@ namespace BikeStore.App.Persistencia
             _appContext.Inventarios.Remove(inventario);
             return _appContext.SaveChanges();
         }
+
+        // Metodo para traer los productos que no esten en el inventario
+        IEnumerable<Inventario> IRepositorioInventario.GetAllInventarioProducto () {
+            var productoIds = _appContext.Productos.Select(p => p.Id).ToArray();
+            var inventario = _appContext.Inventarios.Where( x => productoIds.Contains(x.ProductoId) );
+
+            return inventario;
+        }
+    
     }
 }

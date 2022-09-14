@@ -17,6 +17,8 @@ namespace BikeStore.App.Web.Pages
         public List<Inventario> listadoInventario { get; set; }
         public List<Producto> listadoProducto { get; set; }
 
+        public List<Inventario> listadoInvPro {get; set; }
+
         public string mensaje;
 
         public void OnGet()
@@ -32,6 +34,16 @@ namespace BikeStore.App.Web.Pages
             // Método para listar los Productos y mostrarlos en una lista desplegable en la ventana Modal
             listadoProducto = new List<Producto>(); // se instancia vacío
             listadoProducto = _repositorioProducto.GetAllProductos().ToList();
+
+            listadoInvPro = new List<Inventario>();
+            listadoInvPro = _repositorioInventario.GetAllInventarioProducto().ToList();
+
+            foreach(var inventario in listadoInvPro){
+                Console.WriteLine(inventario.ProductoId);
+            }
+
+            
+            
 
             // PARA MOSTRAR UN MENSAJE - PENDIENTE POR PROBAR
             if(ViewData["mensaje"] != null){
@@ -74,7 +86,7 @@ namespace BikeStore.App.Web.Pages
                 Console.WriteLine("Falla en el método de creación");
                 mensaje = "Falla en el método de creación";
             }
-            return Content(mensaje);
+            return RedirectToPage("./Inventario");
         }
 
         // METODO PARA POST DE ACTUALIZAR MEDIANTE AJAX CON DATOS CRUDOS

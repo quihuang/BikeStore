@@ -47,10 +47,19 @@
                                     <label for="producto">Producto</label>
                                         <select name="producto" id="producto" class="form-control" required>
                                         <option value="" selected>Seleccionar...</option>
-                                        @foreach (var producto in Model.listadoProducto)
+                                        @foreach (var inventario in Model.listadoInventario)
                                         {
-                                            <option value="@producto.Id">@producto.Nombre</option>
-                                        }
+                                            foreach (var productos in Model.listadoProducto)
+                                            {
+                                                if( inventario.ProductoId == productos.Id){
+                                                   continue;
+                                                }else{
+                                                     <option value="@productos.Id">@productos.Nombre</option>
+                                                }
+                                                break;
+                                            }
+
+                                        }         
                                         </select>
                                         <div class="invalid-feedback">
                                         Seleccionar un producto.

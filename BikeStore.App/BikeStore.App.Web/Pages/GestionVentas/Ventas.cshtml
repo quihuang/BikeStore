@@ -49,10 +49,15 @@
                                         <option value="" selected>Seleccionar...</option>
                                         @foreach (var inventario in Model.listadoInventario)
                                         {
-                                            @foreach (var productos in Model.listadoProductos){
-                                                @if(inventario.ProductoId != productos.Id){<option value="@inventario.Id">@productos.Nombre</option>}
+                                            foreach (var productos in Model.listadoProductos)
+                                            {
+                                                if( inventario.ProductoId == productos.Id){
+                                                    <option value="@inventario.Id">@productos.Nombre</option>
+                                                }
+
                                             }
-                                        }
+
+                                        }               
                                     </select>
                                     <div class="invalid-feedback">
                                     Seleccionar un producto del inventario...
@@ -285,10 +290,15 @@
                         {
                         <tr onclick="seleccionarRegistroTabla(this,'@item.Id','@item.InventarioId', '@item.Fecha','@item.CantidadProducto','@item.ValorVenta','@item.TrabajadorId','@item.ClienteId');">
                         <td>@item.Id</td>
-                        @* PENDIENTE POR ARREGLAR *@
-                        @foreach (var productos in Model.listadoProductos){
-                            @if(@item.InventarioId == productos.Id){<td>@productos.Nombre</td>}
-                        }   
+                         @foreach (var inventario in Model.listadoInventario)
+                         {
+                             foreach (var productos in Model.listadoProductos)
+                             {
+                                 if( item.InventarioId == inventario.Id && inventario.ProductoId == productos.Id){
+                                    <td>@productos.Nombre</td>
+                                 }
+                             }
+                         }   
                         <td>@item.Fecha</td>
                         <td>@item.CantidadProducto</td>
                         <td>$ @item.ValorVenta</td>

@@ -27,28 +27,21 @@ namespace BikeStore.App.Web.Pages
         public List<Trabajador> listadoTrabajador { get; set; }
         public List<Cliente> listadoCliente { get; set; }
         public List<Inventario> listadoInventario { get; set; }
-        public List<Producto> listadoProductos { get; set; }
         public Producto producto { get; set; }
+        public List<Producto> listadoProductos { get; set; }
         DateTime fechaActual = DateTime.Now;
-        ArrayList repetidos = new ArrayList();
-        public String htmlConcat;
-
-        public string mensaje;
 
         public void OnGet()
         {
-            // video 02/09 min 2:50:22
-            // debo inicializar el objeto listado_____ dentro de OnGet para que lo pueda interpretar
+            // Método para listar todas las Ventas y mostrarlas en la tabla
             listadoVenta = new List<Venta>(); // se instancia vacío
-            
-            // llenamos la variable listado____ a traves del método GetAll____()
-            // al final se usa el método ToList para convertir a Lista el IEnumerable que genera el método GetAll____.
             listadoVenta = _repositorioVenta.GetAllVentas().ToList();
 
-            // Métodos para listar los diferentes objetos y mostrarlos en las listas desplegables en las ventanas Modales
+            // Método para listar los trabajadores y mostrarlos en una lista desplegable en la ventana Modal de Crear Venta
             listadoTrabajador = new List<Trabajador>(); // se instancia vacío
             listadoTrabajador = _repositorioTrabajador.GetAllTrabajadores().ToList();
 
+            // Método para listar los trabajadores y mostrarlos en una lista desplegable en la ventana Modal de Crear Venta
             listadoCliente = new List<Cliente>();
             listadoCliente = _repositorioCliente.GetAllClientes().ToList();
 
@@ -56,41 +49,12 @@ namespace BikeStore.App.Web.Pages
             listadoInventario = _repositorioInventario.GetAllInventarios().ToList();
 
             listadoProductos = new List<Producto>();
-            listadoProductos = _repositorioProducto.GetAllProductos().ToList();
+            listadoProductos = _repositorioProducto.GetAllProductos().ToList();                
 
-            foreach (var productos in listadoProductos)
-            {
-                foreach (var inventario in listadoInventario)
-                {
-                   repetidos.Add(productos.Nombre);
-                   Console.WriteLine("<option value='"+inventario.Id+"'>"+productos.Nombre+"</option>");
-                    repetidos.Add(productos.Nombre);
-                } 
-            }
-            foreach (var productos in listadoProductos)
-            {
-                foreach (var inventario in listadoInventario)
-                {
-                    foreach(var repetido in repetidos){
-                        if(repetido.Equals(productos.Nombre)){
-                            continue;
-                        }else{
-                           
-                        }
-                    }
-                } 
-            }
-
-            // PARA MOSTRAR UN MENSAJE - PENDIENTE POR PROBAR
-            if(ViewData["mensaje"] != null){
-                mensaje = ViewData["mensaje"].ToString();
-            } else {
-                mensaje = "";
-            }
         }
 
         // video 02/09 min 2:09:20
-        // // Método para capturar el Post del formulario CREAR
+        // // Método para capturar el Post del formulario
         public IActionResult OnPost()
         {
             // aquí se debe poner entre [] el nombre de cada campo del formulario
@@ -101,76 +65,34 @@ namespace BikeStore.App.Web.Pages
             var cliente = Request.Form["cliente"];
             var inventario = Request.Form["inventario"];
 
-            Console.WriteLine("\n\nfecha: "+ fecha);
-            Console.WriteLine("cantidadProducto: " + cantidadProducto);
-            Console.WriteLine("valorVenta: " + valorVenta);
-            Console.WriteLine("trabajador: " + trabajador);
-            Console.WriteLine("cliente: " + cliente);
-            Console.WriteLine("inventario: " + inventario);
+             Console.WriteLine("fecha : "+ fecha);
+             Console.WriteLine("cantidadProducto : " + cantidadProducto);
+             Console.WriteLine("valorVenta : " + valorVenta);
+             Console.WriteLine("trabajador : " + trabajador);
+             Console.WriteLine("cliente : " + cliente);
+             Console.WriteLine("inventario : " + inventario);
 
-            // Creamos el objeto y le pasamos los datos del formulario
-            var venta = new Venta{
+            // // Creamos el objeto Venta y le pasamos los datos del formulario
+            var venta = new Venta
+            {
                Fecha = fecha,
-               CantidadProducto = int.Parse(cantidadProducto),
-               ValorVenta = int.Parse(valorVenta),
-               TrabajadorId = int.Parse(trabajador),
-               ClienteId = int.Parse(cliente),
-               InventarioId = int.Parse(inventario)
+               CantidadProducto = int.Parse(cantidadProducto), // ! Error: debe ser un Entero
+               ValorVenta = int.Parse(valorVenta),    // ! Error: debe ser un Entero
+               TrabajadorId = int.Parse(trabajador),    // ! Error: debe ser un tipo Objeto
+               ClienteId = int.Parse(cliente),       // ! Error: debe ser un tipo Objeto
+               InventarioId = int.Parse(inventario)  // ! Error: debe ser un tipo Objeto
             };
 
             // video 02/09 min 2:23:15
             // llamamos el método del Repositorio y le pasamos por parámetro el objeto que acabamos de crear, y el resultado del método lo almacenamos en la variable result.
             var result = _repositorioVenta.AddVenta(venta);
-
-            // video del 09/09 min 2:53:00
             if( result > 0){
-                //ToDo Mostrar este mensaje por alert en el Front
-                Console.WriteLine("Creación realizada con éxito");
-                mensaje = "Creación realizada con éxito";
+                Console.WriteLine("Se creó con éxito el venta");
             }else{
-                //ToDo Mostrar este mensaje por alert en el Front
-                Console.WriteLine("Falla en el método de creación");
-                mensaje = "Falla en el método de creación";
-            }
-            return Content(mensaje);
-        }
-
-        // METODO PARA POST DE ACTUALIZAR MEDIANTE AJAX CON DATOS CRUDOS
-        public IActionResult OnPostUpdate()
-        {
-            return Content("Se ejecuto el consumo del metodo Update via ajax con datos crudos");
-        }
-
-        // // METODO PARA POST DE ACTUALIZAR MEDIANTE AJAX CON JSON
-        public IActionResult OnPostUpdateJson([FromBody]Venta venta)
-        {
-            var ventaResult = _repositorioVenta.GetVenta( venta.Id );
-
-            var mensaje = "";
-
-            if( ventaResult != null){
-
-                ventaResult.CantidadProducto = venta.CantidadProducto;
-                ventaResult.ValorVenta = venta.ValorVenta;
-                ventaResult.TrabajadorId = venta.TrabajadorId;
-                ventaResult.ClienteId = venta.ClienteId;
-                ventaResult.InventarioId = venta.InventarioId;
-
-                var result = _repositorioVenta.UpdateVenta(ventaResult);
-
-                if( result > 0){
-                    mensaje = "Se actualizo correctamente";
-                }else{
-                    mensaje = "No se pudo actualizar";
-                }
-
-            }else{
-                mensaje = "La consulta no encontró ningún registro";
+                Console.WriteLine("Falló el registro de la venta");
             }
 
-            //return new JsonResult(persona);
-
-            return Content(mensaje);
-        } 
+            return RedirectToPage("./Ventas");
+        }
     }
 }
