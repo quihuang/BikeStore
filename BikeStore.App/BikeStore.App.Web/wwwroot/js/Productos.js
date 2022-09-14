@@ -11,11 +11,11 @@ function seleccionarRegistroTabla(e, id, nombre, descripcion) {
 
     selectedRow.addClass("selected");
 
-    $('#btn-update').removeAttr('hidden');
     $('#btn-delete').removeAttr('hidden');
+    $('#btn-update').removeAttr('hidden');
 
     // esto es para mostrar los valores en el ModalActualizar
-    document.getElementById("IdUpdate").value = id;
+    document.getElementById("idUpdate").value = id;
     document.getElementById("nombreUpdate").value = nombre;
     document.getElementById("descripcionUpdate").value = descripcion;
 }
@@ -28,7 +28,10 @@ $().ready(function() {
         // debugger;
 
         /* Enviar petición AJAX datos JSON */
-        var producto = { "Id": $("#IdUpdate").val(), "Nombre": $("#nombreUpdate").val(), "Descripcion": $("#descripcionUpdate").val() };
+        var paquete = { "Id": $("#idUpdate").val(), 
+        "Nombre": $("#nombreUpdate").val(), 
+        "Descripcion": $("#descripcionUpdate").val() 
+        };
 
         $.ajax({
                 type: "POST",
@@ -38,7 +41,7 @@ $().ready(function() {
                 headers: {
                     "RequestVerificationToken": $('input:hidden[name="__RequestVerificationToken"]').val()
                 },
-                data: JSON.stringify(producto),
+                data: JSON.stringify(paquete),
             })
             .done(function(result) {
                 alert(result);
@@ -50,13 +53,14 @@ $().ready(function() {
     });
 });
 
-// función para limpiar el modal de Crear
 function crear(text) {
 
+    // limpia los inputs el modal de Crear
     document.getElementById("nombre").value = "";
     document.getElementById("descripcion").value = "";
 
-    document.getElementById("titleModal").innerHTML = "Registro " + text;
-    document.getElementById("btn-create-modal").innerHTML = "Crear";
+    // añade un titulo al modal de CREAR reamplazando el texto mostrado
+    document.getElementById("titleModal").innerHTML = "Registrar " + text;
 
+    document.getElementById("btn-create-modal").innerHTML = "Crear";
 }

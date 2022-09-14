@@ -74,40 +74,40 @@ namespace BikeStore.App.Consola
             Inventario inventario2 = _repositorioInventario.GetInventario(2);
             Inventario inventario3 = _repositorioInventario.GetInventario(3);
 
-            var venta1 = new Venta{
-                Fecha = dateTime1,
-                CantidadProducto = 1,
-                ValorVenta = 1,
-                Trabajador = trabajador1,
-                Cliente = cliente1,
-                Inventario = inventario1
-            };
-            var venta2 = new Venta{
-                Fecha = dateTime2,
-                CantidadProducto = 2,
-                ValorVenta = 2,
-                Trabajador = trabajador2,
-                Cliente = cliente2,
-                Inventario = inventario2
-            };
-            var venta3 = new Venta{
-                Fecha = dateTime3,
-                CantidadProducto = 3,
-                ValorVenta = 3,
-                Trabajador = trabajador3,
-                Cliente = cliente3,
-                Inventario = inventario3
-            };
+            // var venta1 = new Venta{
+            //     Fecha = dateTime1,
+            //     CantidadProducto = 1,
+            //     ValorVenta = 1,
+            //     Trabajador = trabajador1,
+            //     Cliente = cliente1,
+            //     Inventario = inventario1
+            // };
+            // var venta2 = new Venta{
+            //     Fecha = dateTime2,
+            //     CantidadProducto = 2,
+            //     ValorVenta = 2,
+            //     Trabajador = trabajador2,
+            //     Cliente = cliente2,
+            //     Inventario = inventario2
+            // };
+            // var venta3 = new Venta{
+            //     Fecha = dateTime3,
+            //     CantidadProducto = 3,
+            //     ValorVenta = 3,
+            //     Trabajador = trabajador3,
+            //     Cliente = cliente3,
+            //     Inventario = inventario3
+            // };
 
 
-            var resultInsert1 = _repositorioVenta.AddVenta(venta1);
-            var resultInsert2 = _repositorioVenta.AddVenta(venta2);
-            var resultInsert3 = _repositorioVenta.AddVenta(venta3);
-            if( resultInsert1 > 0){
-                Console.WriteLine("Se a registrado correctamente");
-            }else{
-                Console.WriteLine("ocurrió un error");
-            }
+            // var resultInsert1 = _repositorioVenta.AddVenta(venta1);
+            // var resultInsert2 = _repositorioVenta.AddVenta(venta2);
+            // var resultInsert3 = _repositorioVenta.AddVenta(venta3);
+            // if( resultInsert1 > 0){
+            //     Console.WriteLine("Se a registrado correctamente");
+            // }else{
+            //     Console.WriteLine("ocurrió un error");
+            // }
         }
 
         // Método para Crear ConstanciaRecibido
@@ -162,36 +162,36 @@ namespace BikeStore.App.Consola
             Producto producto2 = _repositorioProducto.GetProducto(2);
             Producto producto3 = _repositorioProducto.GetProducto(3);
 
-            var inventario1 = new Inventario{
-                Producto = producto1,
-                Existencias = 10,
-                NumeroRefCompra = 1,
-                PrecioUniVenta = 150,
-                PrecioUniCompra = 100
-            };
-            var inventario2 = new Inventario{
-                Producto = producto2,
-                Existencias = 20,
-                NumeroRefCompra = 2,
-                PrecioUniVenta = 250,
-                PrecioUniCompra = 200
-            };
-            var inventario3 = new Inventario{
-                Producto = producto3,
-                Existencias = 30,
-                NumeroRefCompra = 3,
-                PrecioUniVenta = 350,
-                PrecioUniCompra = 300
-            };
+            // var inventario1 = new Inventario{
+            //     Producto = producto1,
+            //     Existencias = 10,
+            //     NumeroRefCompra = 1,
+            //     PrecioUniVenta = 150,
+            //     PrecioUniCompra = 100
+            // };
+            // var inventario2 = new Inventario{
+            //     Producto = producto2,
+            //     Existencias = 20,
+            //     NumeroRefCompra = 2,
+            //     PrecioUniVenta = 250,
+            //     PrecioUniCompra = 200
+            // };
+            // var inventario3 = new Inventario{
+            //     Producto = producto3,
+            //     Existencias = 30,
+            //     NumeroRefCompra = 3,
+            //     PrecioUniVenta = 350,
+            //     PrecioUniCompra = 300
+            // };
 
-            var resultInsert1 = _repositorioInventario.AddInventario(inventario1);
-            var resultInsert2 = _repositorioInventario.AddInventario(inventario2);
-            var resultInsert3 = _repositorioInventario.AddInventario(inventario3);
-            if( resultInsert1 > 0){
-                Console.WriteLine("Se a registrado correctamente");
-            }else{
-                Console.WriteLine("ocurrió un error");
-            }
+            // var resultInsert1 = _repositorioInventario.AddInventario(inventario1);
+            // var resultInsert2 = _repositorioInventario.AddInventario(inventario2);
+            // var resultInsert3 = _repositorioInventario.AddInventario(inventario3);
+            // if( resultInsert1 > 0){
+            //     Console.WriteLine("Se a registrado correctamente");
+            // }else{
+            //     Console.WriteLine("ocurrió un error");
+            // }
         }
 
         // Método para Crear Cliente
@@ -333,7 +333,7 @@ namespace BikeStore.App.Consola
                 Apellido = "De Tal",
                 NumeroTelefono = "3001112233",
                 NombreUsuario = "FulanoDeTal",
-                Contraseña = "contraseñaDeFulanodetal123#$.*",
+                Contraseña = "passwordDeFulanodetal123#$.*",
                 Rol = 1,
                 Salario = 11223344
             };
@@ -343,7 +343,7 @@ namespace BikeStore.App.Consola
                 Apellido = "Absalon",
                 NumeroTelefono = "3102223344",
                 NombreUsuario = "SutanoAbsalon",
-                Contraseña = "contraseñaDeSutano123#$.*",
+                Contraseña = "passwordDeSutano123#$.*",
                 Rol = 2,
                 Salario = 55667788
             };
@@ -353,7 +353,7 @@ namespace BikeStore.App.Consola
                 Apellido = "De Arco",
                 NumeroTelefono = "3205556677",
                 NombreUsuario = "JuanaDeArco",
-                Contraseña = "contraseñaDeJuanita123#$.*",
+                Contraseña = "passwordDeJuanita123#$.*",
                 Rol = 3,
                 Salario = 99001122
             };
@@ -363,7 +363,7 @@ namespace BikeStore.App.Consola
                 Apellido = "Perez",
                 NumeroTelefono = "3308889900",
                 NombreUsuario = "PedroPerez",
-                Contraseña = "contraseñaDePedrito123#$.*",
+                Contraseña = "passwordDePedrito123#$.*",
                 Rol = 3,
                 Salario = 33445566
             };

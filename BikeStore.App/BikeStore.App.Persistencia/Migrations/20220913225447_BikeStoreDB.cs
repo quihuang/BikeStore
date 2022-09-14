@@ -8,6 +8,23 @@ namespace BikeStore.App.Persistencia.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Inventarios",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ProductoId = table.Column<int>(type: "int", nullable: false),
+                    Existencias = table.Column<int>(type: "int", nullable: false),
+                    NumeroRefCompra = table.Column<int>(type: "int", nullable: false),
+                    PrecioUniVenta = table.Column<double>(type: "float", nullable: false),
+                    PrecioUniCompra = table.Column<double>(type: "float", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Inventarios", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Personas",
                 columns: table => new
                 {
@@ -45,26 +62,21 @@ namespace BikeStore.App.Persistencia.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Inventarios",
+                name: "Venta",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ProductoId = table.Column<int>(type: "int", nullable: true),
-                    Existencias = table.Column<int>(type: "int", nullable: false),
-                    NumeroRefCompra = table.Column<int>(type: "int", nullable: false),
-                    PrecioUniVenta = table.Column<double>(type: "float", nullable: false),
-                    PrecioUniCompra = table.Column<double>(type: "float", nullable: false)
+                    Fecha = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CantidadProducto = table.Column<int>(type: "int", nullable: false),
+                    ValorVenta = table.Column<int>(type: "int", nullable: false),
+                    TrabajadorId = table.Column<int>(type: "int", nullable: false),
+                    ClienteId = table.Column<int>(type: "int", nullable: false),
+                    InventarioId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Inventarios", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Inventarios_Productos_ProductoId",
-                        column: x => x.ProductoId,
-                        principalTable: "Productos",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                    table.PrimaryKey("PK_Venta", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -96,42 +108,6 @@ namespace BikeStore.App.Persistencia.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Venta",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Fecha = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CantidadProducto = table.Column<int>(type: "int", nullable: false),
-                    ValorVenta = table.Column<int>(type: "int", nullable: false),
-                    TrabajadorId = table.Column<int>(type: "int", nullable: true),
-                    ClienteId = table.Column<int>(type: "int", nullable: true),
-                    InventarioId = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Venta", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Venta_Inventarios_InventarioId",
-                        column: x => x.InventarioId,
-                        principalTable: "Inventarios",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Venta_Personas_ClienteId",
-                        column: x => x.ClienteId,
-                        principalTable: "Personas",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Venta_Personas_TrabajadorId",
-                        column: x => x.TrabajadorId,
-                        principalTable: "Personas",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
             migrationBuilder.CreateIndex(
                 name: "IX_ConstanciaRecibidos_InventarioId",
                 table: "ConstanciaRecibidos",
@@ -141,32 +117,15 @@ namespace BikeStore.App.Persistencia.Migrations
                 name: "IX_ConstanciaRecibidos_TrabajadorId",
                 table: "ConstanciaRecibidos",
                 column: "TrabajadorId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Inventarios_ProductoId",
-                table: "Inventarios",
-                column: "ProductoId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Venta_ClienteId",
-                table: "Venta",
-                column: "ClienteId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Venta_InventarioId",
-                table: "Venta",
-                column: "InventarioId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Venta_TrabajadorId",
-                table: "Venta",
-                column: "TrabajadorId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
                 name: "ConstanciaRecibidos");
+
+            migrationBuilder.DropTable(
+                name: "Productos");
 
             migrationBuilder.DropTable(
                 name: "Venta");
@@ -176,9 +135,6 @@ namespace BikeStore.App.Persistencia.Migrations
 
             migrationBuilder.DropTable(
                 name: "Personas");
-
-            migrationBuilder.DropTable(
-                name: "Productos");
         }
     }
 }

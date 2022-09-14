@@ -42,7 +42,7 @@
                             <form method="post" class="needs-validation" novalidate>
                                 <div class="form-group">
                                     <label for="nombre">Nombre</label>
-                                    <input type="text" name="nombre" id="nombre" class="form-control" onkeypress="return Solo_TextoEnriquesido(event);" placeholder="Ingrese el nombre del producto nuevo" aria-describedby="invalid-feedback"
+                                    <input type="text" name="nombre" id="nombre" class="form-control" onkeypress="return Solo_Texto(event);" placeholder="Ingrese el nombre del producto nuevo" aria-describedby="invalid-feedback"
                                         minlength="3" maxlength="200" required>
                                     <div class="invalid-feedback">
                                         Ingrese el nombre del producto.
@@ -50,7 +50,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="descripcion">Descripcion</label>
-                                    <input type="text" name="descripcion" id="descripcion" class="form-control" onkeypress="return Solo_TextoEnriquesido(event);" placeholder="Ingrese la descripcion del producto nuevo" aria-describedby="invalid-feedback" minlength="3"  maxlength="600" required>
+                                    <input type="text" name="descripcion" id="descripcion" class="form-control" onkeypress="return Solo_Texto(event);" placeholder="Ingrese la descripcion del producto nuevo" aria-describedby="invalid-feedback" minlength="3"  maxlength="600" required>
                                     <div class="invalid-feedback">
                                         Ingrese la descripción del producto.
                                     </div>
@@ -84,10 +84,10 @@
                         <div class="col">
                             <form method="post" action="" id="formEditar" class="needs-validation" novalidate>
                                 @Html.AntiForgeryToken()
-                                <input type="number" name="IdUpdate" id="IdUpdate" class="form-control" readonly hidden>
+                                <input type="number" name="idUpdate" id="idUpdate" class="form-control" readonly hidden>
                                 <div class="form-group">
                                     <label for="nombreUpdate">Nombre</label>
-                                    <input type="text" name="nombreUpdate" id="nombreUpdate" class="form-control" onkeypress="return Solo_TextoEnriquesido(event);" placeholder="Ingrese el nombre del producto nuevo" aria-describedby="invalid-feedback"
+                                    <input type="text" name="nombreUpdate" id="nombreUpdate" class="form-control" onkeypress="return Solo_TextoYnumeros(event);" placeholder="Ingrese el nombre del producto nuevo" aria-describedby="invalid-feedback"
                                         minlength="3" maxlength="200" required>
                                     <div class="invalid-feedback">
                                         Ingrese el Nombre del producto.
@@ -95,7 +95,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="descripcionUpdate">Descripcion</label>
-                                    <input type="text" name="descripcionUpdate" id="descripcionUpdate" class="form-control" onkeypress="return Solo_TextoEnriquesido(event);" placeholder="Ingrese la descripcion del producto nuevo" aria-describedby="invalid-feedback" minlength="3"  maxlength="600" required>
+                                    <input type="text" name="descripcionUpdate" id="descripcionUpdate" class="form-control" onkeypress="return Solo_TextoYnumeros(event);" placeholder="Ingrese la descripcion del producto nuevo" aria-describedby="invalid-feedback" minlength="3"  maxlength="600" required>
                                     <div class="invalid-feedback">
                                         Ingrese la descripción del producto.
                                     </div>

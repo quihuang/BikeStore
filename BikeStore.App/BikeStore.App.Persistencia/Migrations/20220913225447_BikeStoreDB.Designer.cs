@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BikeStore.App.Persistencia.Migrations
 {
     [DbContext(typeof(AppContext))]
-    [Migration("20220902033511_BikeStoreDB")]
+    [Migration("20220913225447_BikeStoreDB")]
     partial class BikeStoreDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -71,12 +71,10 @@ namespace BikeStore.App.Persistencia.Migrations
                     b.Property<double>("PrecioUniVenta")
                         .HasColumnType("float");
 
-                    b.Property<int?>("ProductoId")
+                    b.Property<int>("ProductoId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ProductoId");
 
                     b.ToTable("Inventarios");
                 });
@@ -139,28 +137,22 @@ namespace BikeStore.App.Persistencia.Migrations
                     b.Property<int>("CantidadProducto")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ClienteId")
+                    b.Property<int>("ClienteId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Fecha")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("InventarioId")
+                    b.Property<int>("InventarioId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("TrabajadorId")
+                    b.Property<int>("TrabajadorId")
                         .HasColumnType("int");
 
                     b.Property<int>("ValorVenta")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ClienteId");
-
-                    b.HasIndex("InventarioId");
-
-                    b.HasIndex("TrabajadorId");
 
                     b.ToTable("Venta");
                 });
@@ -213,36 +205,6 @@ namespace BikeStore.App.Persistencia.Migrations
                     b.HasOne("BikeStore.App.Dominio.Trabajador", "Trabajador")
                         .WithMany()
                         .HasForeignKey("TrabajadorId");
-
-                    b.Navigation("Inventario");
-
-                    b.Navigation("Trabajador");
-                });
-
-            modelBuilder.Entity("BikeStore.App.Dominio.Inventario", b =>
-                {
-                    b.HasOne("BikeStore.App.Dominio.Producto", "Producto")
-                        .WithMany()
-                        .HasForeignKey("ProductoId");
-
-                    b.Navigation("Producto");
-                });
-
-            modelBuilder.Entity("BikeStore.App.Dominio.Venta", b =>
-                {
-                    b.HasOne("BikeStore.App.Dominio.Cliente", "Cliente")
-                        .WithMany()
-                        .HasForeignKey("ClienteId");
-
-                    b.HasOne("BikeStore.App.Dominio.Inventario", "Inventario")
-                        .WithMany()
-                        .HasForeignKey("InventarioId");
-
-                    b.HasOne("BikeStore.App.Dominio.Trabajador", "Trabajador")
-                        .WithMany()
-                        .HasForeignKey("TrabajadorId");
-
-                    b.Navigation("Cliente");
 
                     b.Navigation("Inventario");
 
