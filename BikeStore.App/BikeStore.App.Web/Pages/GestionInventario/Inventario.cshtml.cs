@@ -17,7 +17,7 @@ namespace BikeStore.App.Web.Pages
         public List<Inventario> listadoInventario { get; set; }
         public List<Producto> listadoProducto { get; set; }
 
-        public List<Inventario> listadoInvPro {get; set; }
+        public List<Producto> listadoInvPro {get; set; }
 
         public string mensaje;
 
@@ -35,16 +35,9 @@ namespace BikeStore.App.Web.Pages
             listadoProducto = new List<Producto>(); // se instancia vacío
             listadoProducto = _repositorioProducto.GetAllProductos().ToList();
 
-            listadoInvPro = new List<Inventario>();
-            listadoInvPro = _repositorioInventario.GetAllInventarioProducto().ToList();
-
-            foreach(var inventario in listadoInvPro){
-                Console.WriteLine(inventario.ProductoId);
-            }
-
+            listadoInvPro = new List<Producto>();
+            listadoInvPro = _repositorioInventario.GetAllInventarioProducto().ToList();            
             
-            
-
             // PARA MOSTRAR UN MENSAJE - PENDIENTE POR PROBAR
             if(ViewData["mensaje"] != null){
                 mensaje = ViewData["mensaje"].ToString();

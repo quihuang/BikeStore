@@ -78,7 +78,7 @@ namespace BikeStore.App.Web.Pages
 
                 RedirectToPage("Error");
             }
-            return Content(mensaje);
+            return RedirectToPage("./GestionClientes");
         }
 
         // METODO PARA POST DE ACTUALIZAR MEDIANTE AJAX CON DATOS CRUDOS

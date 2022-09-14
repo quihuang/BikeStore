@@ -71,14 +71,14 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="nombreUsuario">Nombre de Usuario</label>
-                                    <input type="text" name="nombreUsuario" id="nombreUsuario" class="form-control" onkeypress="return Solo_Texto(event);" placeholder="Ingrese el Nombre usuario" aria-describedby="invalid-feedback" minlength="3" maxlength="50" required>
+                                    <input type="text" name="nombreUsuario" id="nombreUsuario" class="form-control" placeholder="Ingrese el Nombre usuario" aria-describedby="invalid-feedback" minlength="3" maxlength="50" required>
                                     <div class="invalid-feedback">
                                     Ingrese el nombre de usuario.
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="password">Contraseña</label>
-                                    <input type="password" name="password" id="password" class="form-control" onkeypress="return Solo_Texto(event);" placeholder="Ingrese un password" aria-describedby="invalid-feedback" minlength="3" maxlength="50" required>
+                                    <input type="password" name="password" id="password" class="form-control" placeholder="Ingrese un password" aria-describedby="invalid-feedback" minlength="3" maxlength="50" required>
                                     <div class="invalid-feedback">
                                     Ingrese un password.
                                     </div>
@@ -162,14 +162,14 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="nombreUsuarioUpdate">Nombre de Usuario</label>
-                                    <input type="text" name="nombreUsuarioUpdate" id="nombreUsuarioUpdate" class="form-control" onkeypress="return Solo_Texto(event);" placeholder="Ingrese el Nombre usuario" aria-describedby="invalid-feedback" minlength="3" maxlength="50" required>
+                                    <input type="text" name="nombreUsuarioUpdate" id="nombreUsuarioUpdate" class="form-control" placeholder="Ingrese el Nombre usuario" aria-describedby="invalid-feedback" minlength="3" maxlength="50" required>
                                     <div class="invalid-feedback">
                                     Ingrese el nombre de usuario.
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="passwordUpdate">Contraseña</label>
-                                    <input type="password" name="passwordUpdate" id="passwordUpdate" class="form-control" onkeypress="return Solo_Password(event);" placeholder="Ingrese contraseña" aria-describedby="invalid-feedback" minlength="3" maxlength="50" required>
+                                    <input type="password" name="passwordUpdate" id="passwordUpdate" class="form-control" placeholder="Ingrese contraseña" aria-describedby="invalid-feedback" minlength="3" maxlength="50" required>
                                     <div class="invalid-feedback">
                                     Ingrese una contraseña fuerte.
                                     </div>
@@ -248,7 +248,7 @@
                             <td>@item.Apellido</td>
                             <td>@item.NumeroTelefono</td>
                             <td>@item.NombreUsuario</td>
-                            <td>@item.Salario</td>
+                            <td>$ @item.Salario</td>
                             @if (item.Rol == 1){ <td>Comercial</td>}else if(item.Rol == 2){<td>Jefe Operativo</td>}else if(item.Rol == 3){<td>Bodeguero</td>}
                         </tr>
                     }

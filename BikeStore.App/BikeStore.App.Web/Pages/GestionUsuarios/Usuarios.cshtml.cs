@@ -80,7 +80,7 @@ namespace BikeStore.App.Web
                 Console.WriteLine("Falla en el método de creación");
                 mensaje = "Falla en el método de creación";
             }
-            return Content(mensaje);
+            return RedirectToPage("./Usuarios");
         }
 
         // METODO PARA POST DE ACTUALIZAR MEDIANTE AJAX CON DATOS CRUDOS

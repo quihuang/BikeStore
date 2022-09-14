@@ -20,10 +20,10 @@
         <button type="button" id="btn-delete" class="btn btn-primary btn-crud" hidden>
             Eliminar
         </button>
-        <button type="button" id="btn-update" class="btn btn-primary btn-crud" data-toggle="modal" data-target="#ModalActualizar" onclick="editar('Trabajador');" hidden>
+        <button type="button" id="btn-update" class="btn btn-primary btn-crud" data-toggle="modal" data-target="#ModalActualizar" onclick="editar('Inventario');" hidden>
             Editar
         </button>
-        <button type="button" id="btn-create" class="btn btn-primary " data-toggle="modal" data-target="#ModalCrear" onclick="crear('Trabajador');">
+        <button type="button" id="btn-create" class="btn btn-primary " data-toggle="modal" data-target="#ModalCrear" onclick="crear('Inventario');">
             Crear
         </button>
     </div>
@@ -46,20 +46,22 @@
                                 <div class="form-group">
                                     <label for="producto">Producto</label>
                                         <select name="producto" id="producto" class="form-control" required>
-                                        <option value="" selected>Seleccionar...</option>
-                                        @foreach (var inventario in Model.listadoInventario)
-                                        {
-                                            foreach (var productos in Model.listadoProducto)
+                                        @{
+                                            if(Model.listadoInvPro.Count > 0)
                                             {
-                                                if( inventario.ProductoId == productos.Id){
-                                                   continue;
-                                                }else{
-                                                     <option value="@productos.Id">@productos.Nombre</option>
-                                                }
-                                                break;
-                                            }
+                                                <option value="" selected>Seleccionar...</option>
+                                                foreach (var productosInv in Model.listadoInvPro)
+                                                {
+                                                    <option value="@productosInv.Id">@productosInv.Nombre</option>
+                                                } 
 
-                                        }         
+                                            }else{
+                                                <option value="">Todos los productos ya tienen inventario</option>
+                                            }
+                                            
+                                        
+                                            
+                                        }        
                                         </select>
                                         <div class="invalid-feedback">
                                         Seleccionar un producto.
@@ -265,8 +267,8 @@
                         }
                         <td>@item.Existencias</td>
                         <td>@item.NumeroRefCompra</td>
-                        <td>@item.PrecioUniVenta</td>
-                        <td>@item.PrecioUniCompra</td>
+                        <td>$ @item.PrecioUniVenta</td>
+                        <td>$ @item.PrecioUniCompra</td>
                     </tr>
                     }
                 </tbody>

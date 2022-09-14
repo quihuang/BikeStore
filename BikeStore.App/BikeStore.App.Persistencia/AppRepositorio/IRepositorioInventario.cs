@@ -8,7 +8,7 @@ namespace BikeStore.App.Persistencia
     public interface IRepositorioInventario
     {
         IEnumerable<Inventario> GetAllInventarios();
-        IEnumerable<Inventario> GetAllInventarioProducto();
+        IEnumerable<Producto> GetAllInventarioProducto();
         Inventario GetInventario(int idInventario);
         int AddInventario(Inventario Inventario);
         int UpdateInventario(Inventario Inventario);
