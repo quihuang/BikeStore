@@ -59,6 +59,7 @@ namespace BikeStore.App.Web.Pages
                 foreach (var inventario in listadoInventario)
                 {
                    repetidos.Add(productos.Nombre);
+                   Console.WriteLine("<option value='"+inventario.Id+"'>"+productos.Nombre+"</option>");
                 } 
             }
             foreach (var productos in listadoProductos)
@@ -69,7 +70,7 @@ namespace BikeStore.App.Web.Pages
                         if(repetido.Equals(productos.Nombre)){
                             continue;
                         }else{
-                            Console.WriteLine("<option value='"+inventario.Id+"'>"+productos.Nombre+"</option>");
+                           
                         }
                     }
                 } 
