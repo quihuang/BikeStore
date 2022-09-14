@@ -47,12 +47,11 @@
                                     <label for="inventario">Producto</label>
                                     <select name="inventario" id="inventario" class="form-control" required>
                                         <option value="" selected>Seleccionar...</option>
-                                        @* PENDIENTE POR ARREGLAR *@
                                         @foreach (var inventario in Model.listadoInventario)
                                         {
                                             @foreach (var productos in Model.listadoProductos){
-                                                @if(inventario.ProductoId == productos.Id){<option value="@inventario.Id">@productos.Nombre</option>}
-                                            } 
+                                                @if(inventario.ProductoId != productos.Id){<option value="@inventario.Id">@productos.Nombre</option>}
+                                            }
                                         }
                                     </select>
                                     <div class="invalid-feedback">
