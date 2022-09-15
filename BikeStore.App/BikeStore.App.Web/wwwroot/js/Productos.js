@@ -23,14 +23,15 @@ function seleccionarRegistroTabla(e, id, nombre, descripcion) {
 // 2. Luego de modificar los campos en el ModalActualizar, al dar clic en el botón Actualizar se envia a la DB
 $().ready(function() {
 
+    //Peticion AJAX para Actualizar
+
     $("#btn-update-modal").click(function() {
 
-        // debugger;
-
         /* Enviar petición AJAX datos JSON */
-        var paquete = { "Id": $("#idUpdate").val(), 
-        "Nombre": $("#nombreUpdate").val(), 
-        "Descripcion": $("#descripcionUpdate").val() 
+        var paquete = {
+            "Id": parseInt($("#idUpdate").val()),
+            "Nombre": $("#nombreUpdate").val(),
+            "Descripcion": $("#descripcionUpdate").val()
         };
 
         $.ajax({
@@ -44,12 +45,95 @@ $().ready(function() {
                 data: JSON.stringify(paquete),
             })
             .done(function(result) {
-                alert(result);
+                $.confirm({
+                    title: 'Info',
+                    content: result,
+                    type: 'dark',
+                    typeAnimated: true,
+                    buttons: {
+                        confirm: function() {}
+                    }
+                });
                 location.reload();
             })
             .fail(function(error) {
-                alert(error);
+                $.confirm({
+                    title: 'Error!',
+                    content: error,
+                    type: 'red',
+                    typeAnimated: true,
+                    buttons: {
+                        tryAgain: {
+                            text: 'OK',
+                            btnClass: 'btn-red',
+                            action: function() {}
+                        },
+                    }
+                });
             });
+    });
+
+    debugger;
+
+    //Peticion AJAX para eliminar
+
+    $("#btn-delete").click(function() {
+
+        $.confirm({
+            title: 'Alerta!',
+            content: 'Seguro que desea eliminar este registro?',
+            buttons: {
+                cancel: function() {},
+                somethingElse: {
+                    text: 'OK',
+                    btnClass: 'btn-blue',
+                    keys: ['enter', 'shift'],
+                    action: function() {
+                        var paquete = {
+                            "Id": parseInt($("#idUpdate").val()),
+                        };
+
+                        $.ajax({
+                                type: "POST",
+                                url: "/GestionProductos/Productos?handler=DeleteJson",
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "html",
+                                headers: {
+                                    "RequestVerificationToken": $('input:hidden[name="__RequestVerificationToken"]').val()
+                                },
+                                data: JSON.stringify(paquete),
+                            })
+                            .done(function(result) {
+                                // location.reload();
+                                $.confirm({
+                                    title: 'Info',
+                                    content: result,
+                                    type: 'dark',
+                                    typeAnimated: true,
+                                    buttons: {
+                                        confirm: function() {}
+                                    }
+                                });
+                            })
+                            .fail(function(error) {
+                                $.confirm({
+                                    title: 'Error!',
+                                    content: error,
+                                    type: 'red',
+                                    typeAnimated: true,
+                                    buttons: {
+                                        tryAgain: {
+                                            text: 'OK',
+                                            btnClass: 'btn-red',
+                                            action: function() {}
+                                        },
+                                    }
+                                });
+                            });
+                    }
+                }
+            }
+        });
     });
 });
 

@@ -70,6 +70,7 @@ function Solo_Texto(e) {
     if (AllowRegex.test(character)) return true;
     return false;
 }
+
 function Solo_TextoYnumeros(e) {
     var code;
     if (!e) var e = window.event;
@@ -80,6 +81,7 @@ function Solo_TextoYnumeros(e) {
     if (AllowRegex.test(character)) return true;
     return false;
 }
+
 function Solo_Password(e) {
     var code;
     if (!e) var e = window.event;

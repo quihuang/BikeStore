@@ -79,6 +79,7 @@ namespace BikeStore.App.Web.Pages
         public IActionResult OnPostUpdateJson([FromBody]Producto producto)
         {
             var productoResult = _repositorioProducto.GetProducto( producto.Id );
+            Console.WriteLine("producto id: " + producto.Id + " producto Nombre: " + producto.Nombre + "producto Descripcion" + producto.Descripcion);
 
             var mensaje = "";
 
@@ -99,9 +100,40 @@ namespace BikeStore.App.Web.Pages
                 mensaje = "La consulta no encontró ningún registro";
             }
 
+            RedirectToPage("./Productos");
+
             //return new JsonResult(persona);
 
             return Content(mensaje);
         } 
+
+        // // METODO PARA POST DE ELIMINAR MEDIANTE AJAX CON JSON
+        public IActionResult OnPostDeleteJson([FromBody]Producto producto)
+        {
+            var productoResult = _repositorioProducto.GetProducto( producto.Id );
+            Console.WriteLine("producto id: " + producto.Id + " producto Nombre: " + producto.Nombre + "producto Descripcion" + producto.Descripcion);
+
+            var mensaje = "";
+
+            if( productoResult != null){
+
+                var result = _repositorioProducto.DeleteProducto(productoResult);
+
+                if( result > 0){
+                    mensaje = "Se elimino correctamente";
+                }else{
+                    mensaje = "No se pudo eliminar";
+                }
+
+            }else{
+                mensaje = "no se encontró el registro a eliminar";
+            }
+
+            RedirectToPage("./Productos");
+
+            //return new JsonResult(persona);
+
+            return Content(mensaje);
+        }
     }
 }

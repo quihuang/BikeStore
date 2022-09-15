@@ -11,13 +11,15 @@ function seleccionarRegistroTabla(e, id, productoId, existencias, numerorefcompr
 
     selectedRow.addClass("selected");
 
+    //debugger;
+
     $('#btn-const').removeAttr('hidden');
     $('#btn-delete').removeAttr('hidden');
     $('#btn-update').removeAttr('hidden');
 
     // Tomamos los parametros y se los asignamos a los campos del ModalActualizar para mostrarlos en Frontend
     document.getElementById("idUpdate").value = id;
-    document.getElementById("productoUpdate").value = productoId;
+    $('#productoUpdateId-' + productoId).attr('selected');
     document.getElementById("existenciasUpdate").value = existencias;
     document.getElementById("numeroRefCompraUpdate").value = numerorefcompra;
     document.getElementById("precioUniVentaUpdate").value = preciouniventa;
@@ -33,12 +35,13 @@ $().ready(function() {
 
         /* Enviar petición AJAX datos JSON */
         // Tomamos los campos del ModalActualizar para crear un objeto para enviarlo a la DB
-        var paquete = { "Id": $("#idUpdate").val(), 
-        "ProductoId": $("#productoUpdate").val(), 
-        "Existencias": $("#existenciasUpdate").val(), 
-        "NumeroRefCompra": $("#numeroRefCompraUpdate").val(), 
-        "PrecioUniVenta": $("#precioUniVentaUpdate").val(), 
-        "PrecioUniCompra": $("#precioUniCompraUpdate").val() 
+        var paquete = {
+            "Id": $("#idUpdate").val(),
+            "ProductoId": $("#productoUpdate").val(),
+            "Existencias": $("#existenciasUpdate").val(),
+            "NumeroRefCompra": $("#numeroRefCompraUpdate").val(),
+            "PrecioUniVenta": $("#precioUniVentaUpdate").val(),
+            "PrecioUniCompra": $("#precioUniCompraUpdate").val()
         };
 
         $.ajax({
