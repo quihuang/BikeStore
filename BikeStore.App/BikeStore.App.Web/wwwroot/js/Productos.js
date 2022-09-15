@@ -19,15 +19,18 @@ function seleccionarRegistroTabla(e, id, nombre, descripcion) {
     document.getElementById("nombreUpdate").value = nombre;
     document.getElementById("descripcionUpdate").value = descripcion;
 }
+// 2. Luego de modificar los campos en el ModalActualizar, al dar clic en el botón Actualizar se envia a la DB mediante metodo ajax
 
-// 2. Luego de modificar los campos en el ModalActualizar, al dar clic en el botón Actualizar se envia a la DB
+// // funciones de JQUERY
 $().ready(function() {
 
-    //Peticion AJAX para Actualizar
-
+    // // Peticion AJAX para Actualizar
     $("#btn-update-modal").click(function() {
-
+        $('#ModalActualizar').modal('hide');
+        $('#ModalActualizar').modal('toggle');
+        
         /* Enviar petición AJAX datos JSON */
+        // Tomamos los campos del ModalActualizar para crear un objeto para enviarlo a la DB
         var paquete = {
             "Id": parseInt($("#idUpdate").val()),
             "Nombre": $("#nombreUpdate").val(),
@@ -45,18 +48,20 @@ $().ready(function() {
                 data: JSON.stringify(paquete),
             })
             .done(function(result) {
+                // // Muestra una ventana emergente dando a conocer el resultado de la acción y recarga la pagina
                 $.confirm({
                     title: 'Info',
                     content: result,
                     type: 'dark',
                     typeAnimated: true,
                     buttons: {
-                        confirm: function() {}
+                        confirm: function() {location.reload();}
                     }
                 });
-                location.reload();
+                
             })
             .fail(function(error) {
+                // // Muestra una ventana emergente dando a conocer el resultado de la acción y recarga la pagina
                 $.confirm({
                     title: 'Error!',
                     content: error,
@@ -66,17 +71,15 @@ $().ready(function() {
                         tryAgain: {
                             text: 'OK',
                             btnClass: 'btn-red',
-                            action: function() {}
+                            action: function() {location.reload();}
                         },
                     }
                 });
             });
     });
 
-    debugger;
 
-    //Peticion AJAX para eliminar
-
+    // // Peticion AJAX para eliminar
     $("#btn-delete").click(function() {
 
         $.confirm({
@@ -104,18 +107,19 @@ $().ready(function() {
                                 data: JSON.stringify(paquete),
                             })
                             .done(function(result) {
-                                // location.reload();
+                                // // Muestra una ventana emergente dando a conocer el resultado de la acción y recarga la pagina
                                 $.confirm({
                                     title: 'Info',
                                     content: result,
                                     type: 'dark',
                                     typeAnimated: true,
                                     buttons: {
-                                        confirm: function() {}
+                                        confirm: function() {location.reload();}
                                     }
                                 });
                             })
                             .fail(function(error) {
+                                // // Muestra una ventana emergente dando a conocer el resultado de la acción y recarga la pagina
                                 $.confirm({
                                     title: 'Error!',
                                     content: error,
@@ -125,7 +129,7 @@ $().ready(function() {
                                         tryAgain: {
                                             text: 'OK',
                                             btnClass: 'btn-red',
-                                            action: function() {}
+                                            action: function() {location.reload();}
                                         },
                                     }
                                 });

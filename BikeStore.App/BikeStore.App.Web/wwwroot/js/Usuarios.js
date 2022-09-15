@@ -25,16 +25,17 @@ function seleccionarRegistroTabla(e, id, cedula, nombre, apellido, numeroTelefon
     document.getElementById("salarioUpdate").value = salario;
     document.getElementById("rolUpdate").value = rol;
 }
-
 // 2. Luego de modificar los campos en el ModalActualizar, al dar clic en el botón Actualizar se envia a la DB
+
+// // funciones de JQUERY
 $().ready(function() {
 
+    // // Peticion AJAX para Actualizar
     $("#btn-update-modal").click(function() {
 
-        // debugger;
-
         /* Enviar petición AJAX datos JSON */
-        var paquete = { "Id": $("#idUpdate").val(), 
+        // Tomamos los campos del ModalActualizar para crear un objeto para enviarlo a la DB
+        var paquete = { "Id": parseInt($("#idUpdate").val()), 
         "Cedula": $("#cedulaUpdate").val(), 
         "Nombre": $("#nombreUpdate").val(), 
         "Apellido": $("#apellidoUpdate").val(), 
@@ -56,14 +57,95 @@ $().ready(function() {
                 data: JSON.stringify(paquete),
             })
             .done(function(result) {
-                alert(result);
-                console.log(result);
-                location.reload();
+                // // Muestra una ventana emergente dando a conocer el resultado de la acción y recarga la pagina
+                $.confirm({
+                    title: 'Info',
+                    content: result,
+                    type: 'dark',
+                    typeAnimated: true,
+                    buttons: {
+                        confirm: function() {location.reload();}
+                    }
+                });
             })
             .fail(function(error) {
-                console.log(result);
-                alert(error);
+                // // Muestra una ventana emergente dando a conocer el resultado de la acción y recarga la pagina
+                $.confirm({
+                    title: 'Error!',
+                    content: error,
+                    type: 'red',
+                    typeAnimated: true,
+                    buttons: {
+                        tryAgain: {
+                            text: 'OK',
+                            btnClass: 'btn-red',
+                            action: function() {location.reload();}
+                        },
+                    }
+                });
             });
+    });
+
+
+    // // Peticion AJAX para eliminar
+    $("#btn-delete").click(function() {
+
+        $.confirm({
+            title: 'Alerta!',
+            content: 'Seguro que desea eliminar este registro?',
+            buttons: {
+                cancel: function() {},
+                somethingElse: {
+                    text: 'OK',
+                    btnClass: 'btn-blue',
+                    keys: ['enter', 'shift'],
+                    action: function() {
+                        var paquete = {
+                            "Id": parseInt($("#idUpdate").val()),
+                        };
+
+                        $.ajax({
+                                type: "POST",
+                                url: "/GestionUsuarios/Usuarios?handler=DeleteJson",
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "html",
+                                headers: {
+                                    "RequestVerificationToken": $('input:hidden[name="__RequestVerificationToken"]').val()
+                                },
+                                data: JSON.stringify(paquete),
+                            })
+                            .done(function(result) {
+                                // // Muestra una ventana emergente dando a conocer el resultado de la acción y recarga la pagina
+                                $.confirm({
+                                    title: 'Info',
+                                    content: result,
+                                    type: 'dark',
+                                    typeAnimated: true,
+                                    buttons: {
+                                        confirm: function() {location.reload();}
+                                    }
+                                });
+                            })
+                            .fail(function(error) {
+                                // // Muestra una ventana emergente dando a conocer el resultado de la acción y recarga la pagina
+                                $.confirm({
+                                    title: 'Error!',
+                                    content: error,
+                                    type: 'red',
+                                    typeAnimated: true,
+                                    buttons: {
+                                        tryAgain: {
+                                            text: 'OK',
+                                            btnClass: 'btn-red',
+                                            action: function() {location.reload();}
+                                        },
+                                    }
+                                });
+                            });
+                    }
+                }
+            }
+        });
     });
 });
 
