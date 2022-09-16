@@ -31,6 +31,8 @@ $().ready(function() {
 
     // // Peticion AJAX para Actualizar
     $("#btn-update-modal").click(function() {
+        // variable que se usará un poco mas abajo para ocultar el modal
+        var modal = $('#ModalActualizar');
 
         // Enviar petición AJAX datos JSON
         // Tomamos los campos del ModalActualizar para crear un objeto para enviarlo a la DB
@@ -54,6 +56,13 @@ $().ready(function() {
                 data: JSON.stringify(paquete),
             })
             .done(function(result) {
+                // // oculta el modal de actualizar
+                modal.on('hidden.bs.modal', function(e) {
+                    return this.render();
+                });
+                $('#ModalActualizar').hide();
+                $('.modal-backdrop').remove();
+
                 // // Muestra una ventana emergente dando a conocer el resultado de la acción y recarga la pagina
                 $.confirm({
                     title: 'Info',
@@ -66,7 +75,7 @@ $().ready(function() {
                 });
             })
             .fail(function(error) {
-                // // Muestra una ventana emergente dando a conocer el resultado de la acción y recarga la pagina
+                // // Muestra una ventana emergente dando a conocer el ERROR pero NO recarga la pagina
                 $.confirm({
                     title: 'Error!',
                     content: error,
@@ -76,7 +85,7 @@ $().ready(function() {
                         tryAgain: {
                             text: 'OK',
                             btnClass: 'btn-red',
-                            action: function() { location.reload(); }
+                            action: function() {}
                         },
                     }
                 });
@@ -123,7 +132,7 @@ $().ready(function() {
                                 });
                             })
                             .fail(function(error) {
-                                // // Muestra una ventana emergente dando a conocer el resultado de la acción y recarga la pagina
+                                // // Muestra una ventana emergente dando a conocer el ERROR y recarga la pagina
                                 $.confirm({
                                     title: 'Error!',
                                     content: error,
