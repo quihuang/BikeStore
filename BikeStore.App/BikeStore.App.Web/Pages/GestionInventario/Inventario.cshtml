@@ -128,12 +128,11 @@
                                     <label for="productoUpdate">Producto</label>
                                         <select name="productoUpdate" id="productoUpdate" class="form-control" required>
                                         <option value="">Seleccionar...</option>
-                                        @foreach (var inventario in Model.listadoInventario)
-                                        {
+                                       
                                             @foreach (var productos in Model.listadoProducto){
-                                                @if(inventario.ProductoId == productos.Id){<option id="productoUpdateId-@inventario.Id" value="@inventario.Id">@productos.Nombre</option>}
+                                                <option class="productoUpdateId" id="productoUpdateId-@productos.Id" value="@productos.Id">@productos.Nombre</option>
                                             } 
-                                        }
+                                        
                                         </select>
                                         <div class="invalid-feedback">
                                         Seleccionar un producto.

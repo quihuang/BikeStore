@@ -11,6 +11,12 @@ function seleccionarRegistroTabla(e, id, productoId, existencias, numerorefcompr
 
     selectedRow.addClass("selected");
 
+    debugger;
+
+    var selectOption = $('.productoUpdateId');
+
+    selectOption.removeAttr('selected');
+
     // debugger;
 
     $('#btn-const').removeAttr('hidden');
@@ -19,7 +25,8 @@ function seleccionarRegistroTabla(e, id, productoId, existencias, numerorefcompr
 
     // Tomamos los parametros y se los asignamos a los campos del ModalActualizar para mostrarlos en Frontend
     document.getElementById("idUpdate").value = id;
-    $('#productoUpdateId-' + productoId).attr('selected');
+    debugger
+    $('#productoUpdateId-' + productoId).attr('selected', true);
     document.getElementById("existenciasUpdate").value = existencias;
     document.getElementById("numeroRefCompraUpdate").value = numerorefcompra;
     document.getElementById("precioUniVentaUpdate").value = preciouniventa;
@@ -62,7 +69,7 @@ $().ready(function() {
                     type: 'dark',
                     typeAnimated: true,
                     buttons: {
-                        confirm: function() {location.reload();}
+                        confirm: function() { location.reload(); }
                     }
                 });
             })
@@ -77,7 +84,7 @@ $().ready(function() {
                         tryAgain: {
                             text: 'OK',
                             btnClass: 'btn-red',
-                            action: function() {location.reload();}
+                            action: function() { location.reload(); }
                         },
                     }
                 });
@@ -120,7 +127,7 @@ $().ready(function() {
                                     type: 'dark',
                                     typeAnimated: true,
                                     buttons: {
-                                        confirm: function() {location.reload();}
+                                        confirm: function() { location.reload(); }
                                     }
                                 });
                             })
@@ -135,7 +142,7 @@ $().ready(function() {
                                         tryAgain: {
                                             text: 'OK',
                                             btnClass: 'btn-red',
-                                            action: function() {location.reload();}
+                                            action: function() { location.reload(); }
                                         },
                                     }
                                 });

@@ -36,11 +36,11 @@ $().ready(function() {
         // Tomamos los campos del ModalActualizar para crear un objeto para enviarlo a la DB
         var paquete = {
             "Id": parseInt($("#idUpdate").val()),
-            "Inventario": $("#inventarioUpdate").val(),
-            "CantidadProducto": $("#cantidadProductoUpdate").val(),
-            "ValorVenta": $("#valorVentaUpdate").val(),
-            "Trabajador": $("#trabajadorUpdate").val(),
-            "Cliente": $("#clienteUpdate").val()
+            "InventarioId": parseInt($("#inventarioUpdate").val()),
+            "CantidadProducto": parseInt($("#cantidadProductoUpdate").val()),
+            "ValorVenta": parseInt($("#valorVentaUpdate").val()),
+            "TrabajadorId": parseInt($("#trabajadorUpdate").val()),
+            "ClienteId": parseInt($("#clienteUpdate").val())
         };
 
         $.ajax({
@@ -61,7 +61,7 @@ $().ready(function() {
                     type: 'dark',
                     typeAnimated: true,
                     buttons: {
-                        confirm: function() {location.reload();}
+                        confirm: function() { location.reload(); }
                     }
                 });
             })
@@ -76,7 +76,7 @@ $().ready(function() {
                         tryAgain: {
                             text: 'OK',
                             btnClass: 'btn-red',
-                            action: function() {location.reload();}
+                            action: function() { location.reload(); }
                         },
                     }
                 });
@@ -118,7 +118,7 @@ $().ready(function() {
                                     type: 'dark',
                                     typeAnimated: true,
                                     buttons: {
-                                        confirm: function() {location.reload();}
+                                        confirm: function() { location.reload(); }
                                     }
                                 });
                             })
@@ -133,7 +133,7 @@ $().ready(function() {
                                         tryAgain: {
                                             text: 'OK',
                                             btnClass: 'btn-red',
-                                            action: function() {location.reload();}
+                                            action: function() { location.reload(); }
                                         },
                                     }
                                 });

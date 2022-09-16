@@ -26,9 +26,9 @@ $().ready(function() {
 
     // // Peticion AJAX para Actualizar
     $("#btn-update-modal").click(function() {
-        $('#ModalActualizar').modal('hide');
-        $('#ModalActualizar').modal('toggle');
-        
+
+        var modal = $('#ModalActualizar');
+
         /* Enviar petición AJAX datos JSON */
         // Tomamos los campos del ModalActualizar para crear un objeto para enviarlo a la DB
         var paquete = {
@@ -49,16 +49,24 @@ $().ready(function() {
             })
             .done(function(result) {
                 // // Muestra una ventana emergente dando a conocer el resultado de la acción y recarga la pagina
+
+                modal.on('hidden.bs.modal', function(e) {
+                    return this.render();
+                });
+                $('#ModalActualizar').hide();
+                $('.modal-backdrop').remove();
+
+                modal.modal('hide');
                 $.confirm({
                     title: 'Info',
                     content: result,
                     type: 'dark',
                     typeAnimated: true,
                     buttons: {
-                        confirm: function() {location.reload();}
+                        confirm: function() { location.reload(); }
                     }
                 });
-                
+
             })
             .fail(function(error) {
                 // // Muestra una ventana emergente dando a conocer el resultado de la acción y recarga la pagina
@@ -71,7 +79,7 @@ $().ready(function() {
                         tryAgain: {
                             text: 'OK',
                             btnClass: 'btn-red',
-                            action: function() {location.reload();}
+                            action: function() { location.reload(); }
                         },
                     }
                 });
@@ -114,7 +122,7 @@ $().ready(function() {
                                     type: 'dark',
                                     typeAnimated: true,
                                     buttons: {
-                                        confirm: function() {location.reload();}
+                                        confirm: function() { location.reload(); }
                                     }
                                 });
                             })
@@ -129,7 +137,7 @@ $().ready(function() {
                                         tryAgain: {
                                             text: 'OK',
                                             btnClass: 'btn-red',
-                                            action: function() {location.reload();}
+                                            action: function() { location.reload(); }
                                         },
                                     }
                                 });

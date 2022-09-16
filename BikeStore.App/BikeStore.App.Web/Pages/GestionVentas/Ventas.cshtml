@@ -144,7 +144,6 @@
                                         {
                                             @foreach (var productos in Model.listadoProductos){
                                                 @if(inventario.ProductoId == productos.Id){<option value="@inventario.Id" selected>@productos.Nombre</option>}
-                                                @if(inventario.ProductoId != productos.Id){<option value="@inventario.Id">@productos.Nombre</option>}
                                             } 
                                         }
                                     </select>
@@ -267,7 +266,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Producto</th> 
-                        <th>Fecha</th>
+                        <th>Fecha Creacion</th>
                         <th>Cantidad del Producto</th>
                         <th>Valor Venta</th>
                         <th>Vendedor</th>
@@ -278,7 +277,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Producto</th> 
-                        <th>Fecha</th>
+                        <th>Fecha Creacion</th>
                         <th>Cantidad del Producto</th>
                         <th>Valor Venta</th>
                         <th>Vendedor</th>
