@@ -46,6 +46,7 @@ namespace BikeStore.App.Web.Pages
             }
         }
 
+
         // // METODO PARA POST DE CREAR
         public IActionResult OnPost()
         {
@@ -71,22 +72,14 @@ namespace BikeStore.App.Web.Pages
 
             // video del 09/09 min 2:53:00
             if( result > 0){
-                //TODO Mostrar este mensaje por alert en el Front
-                Console.WriteLine("Creación realizada con éxito");
                 mensaje = "Creación realizada con éxito";
+                return RedirectToPage();
             }else{
-                //TODO Mostrar este mensaje por alert en el Front
-                Console.WriteLine("Falla en el método de creación");
                 mensaje = "Falla en el método de creación";
+                return RedirectToPage("Error");
             }
-            return RedirectToPage("./Inventario");
         }
 
-        // METODO PARA POST DE ACTUALIZAR MEDIANTE AJAX CON DATOS CRUDOS
-        public IActionResult OnPostUpdate()
-        {
-            return Content("Se ejecuto el consumo del metodo Update via ajax con datos crudos");
-        }
 
         // // METODO PARA POST DE ACTUALIZAR MEDIANTE AJAX CON JSON
         public IActionResult OnPostUpdateJson([FromBody]Inventario inventario)
@@ -115,7 +108,30 @@ namespace BikeStore.App.Web.Pages
                 mensaje = "La consulta no encontró ningún registro";
             }
 
-            //return new JsonResult(persona);
+            return Content(mensaje);
+        }
+
+
+        // // METODO PARA POST DE ELIMINAR MEDIANTE AJAX CON JSON
+        public IActionResult OnPostDeleteJson([FromBody]Inventario inventario)
+        {
+            var inventarioResult = _repositorioInventario.GetInventario( inventario.Id );
+
+            var mensaje = "";
+
+            if( inventarioResult != null){
+
+                var result = _repositorioInventario.DeleteInventario(inventarioResult);
+
+                if( result > 0){
+                    mensaje = "Se eliminó correctamente";
+                }else{
+                    mensaje = "No se pudo eliminar";
+                }
+
+            }else{
+                mensaje = "La consulta no encontró ningún registro";
+            }
 
             return Content(mensaje);
         }

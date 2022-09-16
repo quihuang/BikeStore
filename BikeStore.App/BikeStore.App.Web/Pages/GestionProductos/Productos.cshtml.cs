@@ -21,6 +21,7 @@ namespace BikeStore.App.Web.Pages
 
         public string mensaje;
 
+
         public void OnGet()
         {
             // video 02/09 min 2:50:22
@@ -38,6 +39,7 @@ namespace BikeStore.App.Web.Pages
                 mensaje = "";
             }
         }
+
 
         // video 02/09 min 2:09:20
         // // METODO PARA POST DE CREAR
@@ -58,16 +60,14 @@ namespace BikeStore.App.Web.Pages
 
             // video del 09/09 min 2:53:00
             if( result > 0){
-                //ToDo Mostrar este mensaje por alert en el Front
-                Console.WriteLine("Creación realizada con éxito");
                 mensaje = "Creación realizada con éxito";
+                return RedirectToPage();
             }else{
-                //ToDo Mostrar este mensaje por alert en el Front
-                Console.WriteLine("Falla en el método de creación");
                 mensaje = "Falla en el método de creación";
+                return RedirectToPage("Error");
             }
-            return RedirectToPage("./Productos");
         }
+
 
         // METODO PARA POST DE ACTUALIZAR MEDIANTE AJAX CON DATOS CRUDOS
         public IActionResult OnPostUpdate()
@@ -75,11 +75,11 @@ namespace BikeStore.App.Web.Pages
             return Content("Se ejecuto el consumo del metodo Update via ajax con datos crudos");
         }
 
+
         // // METODO PARA POST DE ACTUALIZAR MEDIANTE AJAX CON JSON
         public IActionResult OnPostUpdateJson([FromBody]Producto producto)
         {
             var productoResult = _repositorioProducto.GetProducto( producto.Id );
-            Console.WriteLine("producto id: " + producto.Id + " producto Nombre: " + producto.Nombre + "producto Descripcion" + producto.Descripcion);
 
             var mensaje = "";
 
@@ -91,7 +91,7 @@ namespace BikeStore.App.Web.Pages
                 var result = _repositorioProducto.UpdateProducto(productoResult);
 
                 if( result > 0){
-                    mensaje = "Se actualizo correctamente";
+                    mensaje = "Se actualizó correctamente";
                 }else{
                     mensaje = "No se pudo actualizar";
                 }
@@ -100,7 +100,7 @@ namespace BikeStore.App.Web.Pages
                 mensaje = "La consulta no encontró ningún registro";
             }
 
-            RedirectToPage("./Productos");
+            // RedirectToPage("./Productos");
 
             //return new JsonResult(persona);
 
@@ -111,7 +111,6 @@ namespace BikeStore.App.Web.Pages
         public IActionResult OnPostDeleteJson([FromBody]Producto producto)
         {
             var productoResult = _repositorioProducto.GetProducto( producto.Id );
-            Console.WriteLine("producto id: " + producto.Id + " producto Nombre: " + producto.Nombre + "producto Descripcion" + producto.Descripcion);
 
             var mensaje = "";
 
@@ -120,16 +119,16 @@ namespace BikeStore.App.Web.Pages
                 var result = _repositorioProducto.DeleteProducto(productoResult);
 
                 if( result > 0){
-                    mensaje = "Se elimino correctamente";
+                    mensaje = "Se eliminó correctamente";
                 }else{
                     mensaje = "No se pudo eliminar";
                 }
 
             }else{
-                mensaje = "no se encontró el registro a eliminar";
+                mensaje = "La consulta no encontró ningún registro";
             }
 
-            RedirectToPage("./Productos");
+            // RedirectToPage("./Productos");
 
             //return new JsonResult(persona);
 

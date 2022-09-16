@@ -31,6 +31,9 @@ namespace BikeStore.App.Web.Pages
         public List<Producto> listadoProductos { get; set; }
         DateTime fechaActual = DateTime.Now;
 
+        public string mensaje;
+
+
         public void OnGet()
         {
             // Método para listar todas las Ventas y mostrarlas en la tabla
@@ -49,50 +52,107 @@ namespace BikeStore.App.Web.Pages
             listadoInventario = _repositorioInventario.GetAllInventarios().ToList();
 
             listadoProductos = new List<Producto>();
-            listadoProductos = _repositorioProducto.GetAllProductos().ToList();                
+            listadoProductos = _repositorioProducto.GetAllProductos().ToList();
 
+            // PARA MOSTRAR UN MENSAJE - PENDIENTE POR PROBAR
+            if(ViewData["mensaje"] != null){
+                mensaje = ViewData["mensaje"].ToString();
+            } else {
+                mensaje = "";
+            }
         }
 
+
         // video 02/09 min 2:09:20
-        // // Método para capturar el Post del formulario
+        // // METODO PARA POST DE CREAR
         public IActionResult OnPost()
         {
             // aquí se debe poner entre [] el nombre de cada campo del formulario
             var fecha = fechaActual;
-            var cantidadProducto = Request.Form["cantidadProducto"]; // ! Error: al capturar el dato, lo recibe string
-            var valorVenta = Request.Form["valorVenta"]; // ! Error: al capturar el dato, lo recibe string
+            var cantidadProducto = Request.Form["cantidadProducto"];
+            var valorVenta = Request.Form["valorVenta"];
             var trabajador = Request.Form["trabajador"];
             var cliente = Request.Form["cliente"];
             var inventario = Request.Form["inventario"];
 
-             Console.WriteLine("fecha : "+ fecha);
-             Console.WriteLine("cantidadProducto : " + cantidadProducto);
-             Console.WriteLine("valorVenta : " + valorVenta);
-             Console.WriteLine("trabajador : " + trabajador);
-             Console.WriteLine("cliente : " + cliente);
-             Console.WriteLine("inventario : " + inventario);
-
-            // // Creamos el objeto Venta y le pasamos los datos del formulario
-            var venta = new Venta
-            {
-               Fecha = fecha,
-               CantidadProducto = int.Parse(cantidadProducto), // ! Error: debe ser un Entero
-               ValorVenta = int.Parse(valorVenta),    // ! Error: debe ser un Entero
-               TrabajadorId = int.Parse(trabajador),    // ! Error: debe ser un tipo Objeto
-               ClienteId = int.Parse(cliente),       // ! Error: debe ser un tipo Objeto
-               InventarioId = int.Parse(inventario)  // ! Error: debe ser un tipo Objeto
+            // Creamos el objeto Venta y le pasamos los datos del formulario
+            var venta = new Venta{
+                Fecha = fecha,
+                CantidadProducto = int.Parse(cantidadProducto),
+                ValorVenta = int.Parse(valorVenta),
+                TrabajadorId = int.Parse(trabajador),
+                ClienteId = int.Parse(cliente),
+                InventarioId = int.Parse(inventario)
             };
 
             // video 02/09 min 2:23:15
             // llamamos el método del Repositorio y le pasamos por parámetro el objeto que acabamos de crear, y el resultado del método lo almacenamos en la variable result.
             var result = _repositorioVenta.AddVenta(venta);
+
+            // video del 09/09 min 2:53:00
             if( result > 0){
-                Console.WriteLine("Se creó con éxito el venta");
+                mensaje = "Creación realizada con éxito";
+                return RedirectToPage();
             }else{
-                Console.WriteLine("Falló el registro de la venta");
+                mensaje = "Falla en el método de creación";
+                return RedirectToPage("Error");
+            }
+        }
+
+
+        // // METODO PARA POST DE ACTUALIZAR MEDIANTE AJAX CON JSON
+        public IActionResult OnPostUpdateJson([FromBody]Venta venta)
+        {
+            var ventaResult = _repositorioVenta.GetVenta( venta.Id );
+
+            var mensaje = "";
+
+            if( ventaResult != null)
+            {
+                ventaResult.CantidadProducto = venta.CantidadProducto;
+                ventaResult.ValorVenta = venta.ValorVenta;
+                ventaResult.TrabajadorId = venta.TrabajadorId;
+                ventaResult.ClienteId = venta.ClienteId;
+                ventaResult.InventarioId = venta.InventarioId;
+
+                var result = _repositorioVenta.UpdateVenta(ventaResult);
+
+                if( result > 0){
+                    mensaje = "Se actualizó correctamente";
+                }else{
+                    mensaje = "No se pudo actualizar";
+                }
+
+            }else{
+                mensaje = "La consulta no encontró ningún registro";
             }
 
-            return RedirectToPage("./Ventas");
+            return Content(mensaje);
+        } 
+
+
+        // // METODO PARA POST DE ELIMINAR MEDIANTE AJAX CON JSON
+        public IActionResult OnPostDeleteJson([FromBody]Venta venta)
+        {
+            var ventaResult = _repositorioVenta.GetVenta( venta.Id );
+
+            var mensaje = "";
+
+            if( ventaResult != null)
+            {
+                var result = _repositorioVenta.DeleteVenta(ventaResult);
+
+                if( result > 0){
+                    mensaje = "Se eliminó correctamente";
+                }else{
+                    mensaje = "No se pudo eliminar";
+                }
+
+            }else{
+                mensaje = "La consulta no encontró ningún registro";
+            }
+
+            return Content(mensaje);
         }
     }
 }

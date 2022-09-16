@@ -40,10 +40,11 @@ namespace BikeStore.App.Web
             }
         }
 
+
         // video 02/09 min 2:09:20
         // // METODO PARA POST DE CREAR
-        public IActionResult OnPost(){
-
+        public IActionResult OnPost()
+        {
             // aquí se debe poner entre [] el nombre de cada campo del formulario
             var cedula = Request.Form["cedula"];
             var nombre = Request.Form["nombre"];
@@ -72,39 +73,24 @@ namespace BikeStore.App.Web
 
             // video del 09/09 min 2:53:00
             if( result > 0){
-                //ToDo Mostrar este mensaje por alert en el Front
-                Console.WriteLine("Creación realizada con éxito");
                 mensaje = "Creación realizada con éxito";
+                return RedirectToPage();
             }else{
-                //ToDo Mostrar este mensaje por alert en el Front
-                Console.WriteLine("Falla en el método de creación");
                 mensaje = "Falla en el método de creación";
+                return RedirectToPage("Error");
             }
-            return RedirectToPage("./Usuarios");
         }
 
-        // METODO PARA POST DE ACTUALIZAR MEDIANTE AJAX CON DATOS CRUDOS
-        public IActionResult OnPostUpdate()
-        {
-            return Content("Se ejecuto el consumo del metodo Update via ajax con datos crudos");
-        }
 
         // // METODO PARA POST DE ACTUALIZAR MEDIANTE AJAX CON JSON
         public IActionResult OnPostUpdateJson([FromBody]Trabajador trabajador)
         {
-            Console.WriteLine("\n\n Punto de control 0");
-            Console.WriteLine("\n\n"+ trabajador.Id);
-            Console.WriteLine("\n\n Punto de control 1");
-            // // AQUI SE ROMPE TODO
-            
             var trabajadorResult = _repositorioTrabajador.GetTrabajador( trabajador.Id );
-            Console.WriteLine("\n\n Punto de control 2");
 
             var mensaje = "";
-            Console.WriteLine("\n\n Punto de control 3");
 
-            if( trabajadorResult != null){
-
+            if( trabajadorResult != null)
+            {
                 trabajadorResult.Cedula = trabajador.Cedula;
                 trabajadorResult.Nombre = trabajador.Nombre;
                 trabajadorResult.Apellido = trabajador.Apellido;
@@ -114,23 +100,42 @@ namespace BikeStore.App.Web
                 trabajadorResult.Rol = trabajador.Rol;
                 trabajadorResult.Salario = trabajador.Salario;
 
-                Console.WriteLine("\n\n Punto de control 4");
-
                 var result = _repositorioTrabajador.UpdateTrabajador(trabajadorResult);
-                Console.WriteLine("\n\n Punto de control 5");
 
                 if( result > 0){
-                    mensaje = "Se actualizo correctamente";
+                    mensaje = "Se actualizó correctamente";
                 }else{
                     mensaje = "No se pudo actualizar";
                 }
-                Console.WriteLine("\n\n Punto de control 6");
 
             }else{
                 mensaje = "La consulta no encontró ningún registro";
             }
 
-            //return new JsonResult(persona);
+            return Content(mensaje);
+        } 
+
+
+        // // METODO PARA POST DE ELIMINAR MEDIANTE AJAX CON JSON
+        public IActionResult OnPostDeleteJson([FromBody]Trabajador trabajador)
+        {
+            var trabajadorResult = _repositorioTrabajador.GetTrabajador( trabajador.Id );
+
+            var mensaje = "";
+
+            if( trabajadorResult != null)
+            {
+                var result = _repositorioTrabajador.DeleteTrabajador(trabajadorResult);
+
+                if( result > 0){
+                    mensaje = "Se eliminó correctamente";
+                }else{
+                    mensaje = "No se pudo eliminar";
+                }
+
+            }else{
+                mensaje = "La consulta no encontró ningún registro";
+            }
 
             return Content(mensaje);
         }

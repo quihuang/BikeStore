@@ -66,26 +66,14 @@ namespace BikeStore.App.Web.Pages
 
             // video del 09/09 min 2:53:00
             if( result > 0){
-                //ToDo Mostrar este mensaje por alert en el Front
-                Console.WriteLine("Creación realizada con éxito");
                 mensaje = "Creación realizada con éxito";
-                
-                Page(); // retorna la misma página donde está
+                return RedirectToPage();
             }else{
-                //ToDo Mostrar este mensaje por alert en el Front
-                Console.WriteLine("Falla en el método de creación");
                 mensaje = "Falla en el método de creación";
-
-                RedirectToPage("Error");
+                return RedirectToPage("Error");
             }
-            return RedirectToPage("./GestionClientes");
         }
 
-        // METODO PARA POST DE ACTUALIZAR MEDIANTE AJAX CON DATOS CRUDOS
-        public IActionResult OnPostUpdate()
-        {
-            return Content("Se ejecuto el consumo del metodo Update via ajax con datos crudos");
-        }
 
         // // METODO PARA POST DE ACTUALIZAR MEDIANTE AJAX CON JSON
         public IActionResult OnPostUpdateJson([FromBody]Cliente cliente)
@@ -101,12 +89,12 @@ namespace BikeStore.App.Web.Pages
                 clienteResult.Apellido = cliente.Apellido;
                 clienteResult.NumeroTelefono = cliente.NumeroTelefono;
                 clienteResult.Email = cliente.Email;
-                //personaResult.Genero = (persona.Genero == "0" ? Genero.Femenino : Genero.Masculino);
+                clienteResult.Direccion = cliente.Direccion;
 
                 var result = _repositorioCliente.UpdateCliente(clienteResult);
 
                 if( result > 0){
-                    mensaje = "Se actualizo correctamente";
+                    mensaje = "Se actualizó correctamente";
                 }else{
                     mensaje = "No se pudo actualizar";
                 }
@@ -115,8 +103,32 @@ namespace BikeStore.App.Web.Pages
                 mensaje = "La consulta no encontró ningún registro";
             }
 
-            //return new JsonResult(persona);
             return Content(mensaje);
-        } 
+        }
+
+
+        // // METODO PARA POST DE ELIMINAR MEDIANTE AJAX CON JSON
+        public IActionResult OnPostDeleteJson([FromBody]Cliente cliente)
+        {
+            var clienteResult = _repositorioCliente.GetCliente( cliente.Id );
+
+            var mensaje = "";
+
+            if( clienteResult != null){
+
+                var result = _repositorioCliente.DeleteCliente(clienteResult);
+
+                if( result > 0){
+                    mensaje = "Se eliminó correctamente";
+                }else{
+                    mensaje = "No se pudo eliminar";
+                }
+
+            }else{
+                mensaje = "La consulta no encontró ningún registro";
+            }
+
+            return Content(mensaje);
+        }
     }
 }
