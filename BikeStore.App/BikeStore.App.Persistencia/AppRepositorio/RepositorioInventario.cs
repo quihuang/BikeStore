@@ -45,8 +45,8 @@ namespace BikeStore.App.Persistencia
 
         // Metodo para traer los productos que no esten en el inventario
         IEnumerable<Producto> IRepositorioInventario.GetAllInventarioProducto () {
+            
             var InventarioProIds = _appContext.Inventarios.Select(p => p.ProductoId).ToArray();
-           // var productoIds = _appContext.Productos.Select(p => p.Id).ToArray();
             var producto = _appContext.Productos.Where( x => !InventarioProIds.Contains(x.Id) );
 
             return producto;
