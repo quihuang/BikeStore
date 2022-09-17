@@ -11,8 +11,6 @@ function seleccionarRegistroTabla(e, id, productoId, existencias, numerorefcompr
 
     selectedRow.addClass("selected");
 
-    debugger;
-
     var selectOption = $('.productoUpdateId');
 
     selectOption.removeAttr('selected');

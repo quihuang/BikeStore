@@ -26,64 +26,88 @@ $().ready(function() {
 
     // // Peticion AJAX para Actualizar
     $("#btn-update-modal").click(function() {
-        // variable que se usará un poco mas abajo para ocultar el modal
-        var modal = $('#ModalActualizar');
 
-        /* Enviar petición AJAX datos JSON */
-        // Tomamos los campos del ModalActualizar para crear un objeto para enviarlo a la DB
-        var paquete = {
-            "Id": parseInt($("#idUpdate").val()),
-            "Nombre": $("#nombreUpdate").val(),
-            "Descripcion": $("#descripcionUpdate").val()
-        };
+        var valitations = false;
 
-        $.ajax({
-                type: "POST",
-                url: "/GestionProductos/Productos?handler=UpdateJson",
-                contentType: "application/json; charset=utf-8",
-                dataType: "html",
-                headers: {
-                    "RequestVerificationToken": $('input:hidden[name="__RequestVerificationToken"]').val()
-                },
-                data: JSON.stringify(paquete),
-            })
-            .done(function(result) {
-                // // oculta el modal de actualizar
-                modal.on('hidden.bs.modal', function(e) {
-                    return this.render();
+        if ($("#nombreUpdate").val().trim().length > 0 && $("#descripcionUpdate").val().trim().length > 0) {
+            valitations = true;
+        }
+
+
+        if (valitations) {
+
+            // variable que se usará un poco mas abajo para ocultar el modal
+            var modal = $('#ModalActualizar');
+
+            /* Enviar petición AJAX datos JSON */
+            // Tomamos los campos del ModalActualizar para crear un objeto para enviarlo a la DB
+            var paquete = {
+                "Id": parseInt($("#idUpdate").val()),
+                "Nombre": $("#nombreUpdate").val(),
+                "Descripcion": $("#descripcionUpdate").val()
+            };
+
+            $.ajax({
+                    type: "POST",
+                    url: "/GestionProductos/Productos?handler=UpdateJson",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "html",
+                    headers: {
+                        "RequestVerificationToken": $('input:hidden[name="__RequestVerificationToken"]').val()
+                    },
+                    data: JSON.stringify(paquete),
+                })
+                .done(function(result) {
+
+                    // // oculta el modal de actualizar
+                    modal.on('hidden.bs.modal', function(e) {
+                        return this.render();
+                    });
+                    $('#ModalActualizar').hide();
+                    $('.modal-backdrop').remove();
+
+                    // // Muestra una ventana emergente dando a conocer el resultado de la acción y recarga la pagina
+                    modal.modal('hide');
+                    $.confirm({
+                        title: 'Info',
+                        content: result,
+                        type: 'dark',
+                        typeAnimated: true,
+                        buttons: {
+                            confirm: function() { location.reload(); }
+                        }
+                    });
+
+                })
+                .fail(function(error) {
+                    // // Muestra una ventana emergente dando a conocer el ERROR pero NO recarga la pagina
+                    $.confirm({
+                        title: 'Error!',
+                        content: error,
+                        type: 'red',
+                        typeAnimated: true,
+                        buttons: {
+                            tryAgain: {
+                                text: 'OK',
+                                btnClass: 'btn-red',
+                                action: function() {}
+                            },
+                        }
+                    });
                 });
-                $('#ModalActualizar').hide();
-                $('.modal-backdrop').remove();
+        } else {
 
-                // // Muestra una ventana emergente dando a conocer el resultado de la acción y recarga la pagina
-                modal.modal('hide');
-                $.confirm({
-                    title: 'Info',
-                    content: result,
-                    type: 'dark',
-                    typeAnimated: true,
-                    buttons: {
-                        confirm: function() { location.reload(); }
-                    }
-                });
-
-            })
-            .fail(function(error) {
-                // // Muestra una ventana emergente dando a conocer el ERROR pero NO recarga la pagina
-                $.confirm({
-                    title: 'Error!',
-                    content: error,
-                    type: 'red',
-                    typeAnimated: true,
-                    buttons: {
-                        tryAgain: {
-                            text: 'OK',
-                            btnClass: 'btn-red',
-                            action: function() {}
-                        },
-                    }
-                });
+            $.confirm({
+                title: 'Alerta!',
+                content: 'Todos los campos tienen que estar diligenciados',
+                type: 'orange',
+                buttons: {
+                    confirm: function() {},
+                }
             });
+
+        }
+
     });
 
 
