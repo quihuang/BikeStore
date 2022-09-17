@@ -26,27 +26,34 @@ $().ready(function() {
 
     // // Peticion AJAX para Actualizar
     $("#btn-update-modal").click(function() {
+        // Tomamos los campos del ModalActualizar para crear un objeto para enviarlo a la DB
+        var paquete = {
+            "Id": parseInt($("#idUpdate").val()),
+            "Nombre": $("#nombreUpdate").val(),
+            "Descripcion": $("#descripcionUpdate").val()
+        };
 
-        var valitations = false;
 
-        if ($("#nombreUpdate").val().trim().length > 0 && $("#descripcionUpdate").val().trim().length > 0) {
-            valitations = true;
+        var validation = true;
+        
+        // // validacion de los campos del formulario
+        for (let x in paquete) {
+            // tomamos el valor de cada propiedad y se convierte en String y se le quitan los espacios
+            var text = paquete[x].toString().trim();
+            console.log("campo: " + x + " -- tipo: " + typeof text + " -- valor: " + text);
+            // Nota: cuando el campo es vacío, de tipo Entero o Select, entonces aparece como "NaN" por eso se incluye NaN en el condicional, tambien si el valor entero es cero lo acepta como valido por eso se incluye
+            if (text==0 || text=="NaN" || text.length<=0) {
+                validation = false;
+                console.log(validation);
+            }
         }
 
-
-        if (valitations) {
+        if (validation) {
 
             // variable que se usará un poco mas abajo para ocultar el modal
             var modal = $('#ModalActualizar');
 
             /* Enviar petición AJAX datos JSON */
-            // Tomamos los campos del ModalActualizar para crear un objeto para enviarlo a la DB
-            var paquete = {
-                "Id": parseInt($("#idUpdate").val()),
-                "Nombre": $("#nombreUpdate").val(),
-                "Descripcion": $("#descripcionUpdate").val()
-            };
-
             $.ajax({
                     type: "POST",
                     url: "/GestionProductos/Productos?handler=UpdateJson",
@@ -58,7 +65,6 @@ $().ready(function() {
                     data: JSON.stringify(paquete),
                 })
                 .done(function(result) {
-
                     // // oculta el modal de actualizar
                     modal.on('hidden.bs.modal', function(e) {
                         return this.render();
@@ -77,14 +83,12 @@ $().ready(function() {
                             confirm: function() { location.reload(); }
                         }
                     });
-
                 })
                 .fail(function(error) {
                     // // Muestra una ventana emergente dando a conocer el ERROR pero NO recarga la pagina
-                    error = 'No se puedo eliminar el registro : El registro tiene llaves foraneas en otras tablas';
                     $.confirm({
                         title: 'Error!',
-                        content: error,
+                        content: 'No se puedo actualizar el registro : El registro tiene llaves foraneas en otras tablas. \nError.status:' + error.status,
                         type: 'red',
                         typeAnimated: true,
                         buttons: {
@@ -97,18 +101,15 @@ $().ready(function() {
                     });
                 });
         } else {
-
             $.confirm({
                 title: 'Alerta!',
-                content: 'Todos los campos tienen que estar diligenciados',
+                content: 'No se aceptan campos vacíos, con cero o solo con especios',
                 type: 'orange',
                 buttons: {
                     confirm: function() {},
                 }
             });
-
         }
-
     });
 
 

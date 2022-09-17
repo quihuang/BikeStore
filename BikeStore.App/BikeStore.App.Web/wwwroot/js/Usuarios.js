@@ -32,10 +32,7 @@ $().ready(function() {
 
     // // Petición AJAX para Actualizar
     $("#btn-update-modal").click(function() {
-        // variable que se usará un poco mas abajo para ocultar el modal
-        var modal = $('#ModalActualizar');
 
-        /* Enviar petición AJAX datos JSON */
         // Tomamos los campos del ModalActualizar para crear un objeto para enviarlo a la DB
         var paquete = { "Id": parseInt($("#idUpdate").val()), 
         "Cedula": $("#cedulaUpdate").val(), 
@@ -48,51 +45,82 @@ $().ready(function() {
         "Rol": parseInt($("#rolUpdate").val()) 
         };
 
-        $.ajax({
-                type: "POST",
-                url: "/GestionUsuarios/Usuarios?handler=UpdateJson",
-                contentType: "application/json; charset=utf-8",
-                dataType: "html",
-                headers: {
-                    "RequestVerificationToken": $('input:hidden[name="__RequestVerificationToken"]').val()
-                },
-                data: JSON.stringify(paquete),
-            })
-            .done(function(result) {
-                // // oculta el modal de actualizar
-                modal.on('hidden.bs.modal', function(e) {
-                    return this.render();
-                });
-                $('#ModalActualizar').hide();
-                $('.modal-backdrop').remove();
+        var validation = true;
+        
+        debugger;
+        // // validacion de los campos del formulario
+        for (let x in paquete) {
+            // tomamos el valor de cada propiedad y se convierte en String y se le quitan los espacios
+            var text = paquete[x].toString().trim();
+            console.log("campo: " + x + " -- tipo: " + typeof text + " -- valor: " + text);
+            // Nota: cuando el campo es vacío, de tipo Entero o Select, entonces aparece como "NaN" por eso se incluye NaN en el condicional, tambien si el valor entero es cero lo acepta como valido por eso se incluye
+            if (text==0 || text=="NaN" || text.length<=0) {
+                validation = false;
+                console.log(validation);
+            }
+        }
 
-                // // Muestra una ventana emergente dando a conocer el resultado de la acción y recarga la pagina
-                $.confirm({
-                    title: 'Info',
-                    content: result,
-                    type: 'dark',
-                    typeAnimated: true,
-                    buttons: {
-                        confirm: function() { location.reload(); }
-                    }
+        if (validation) {
+
+            // variable que se usará un poco mas abajo para ocultar el modal
+            var modal = $('#ModalActualizar');
+
+            /* Enviar petición AJAX datos JSON */
+            $.ajax({
+                    type: "POST",
+                    url: "/GestionUsuarios/Usuarios?handler=UpdateJson",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "html",
+                    headers: {
+                        "RequestVerificationToken": $('input:hidden[name="__RequestVerificationToken"]').val()
+                    },
+                    data: JSON.stringify(paquete),
+                })
+                .done(function(result) {
+                    // // oculta el modal de actualizar
+                    modal.on('hidden.bs.modal', function(e) {
+                        return this.render();
+                    });
+                    $('#ModalActualizar').hide();
+                    $('.modal-backdrop').remove();
+
+                    // // Muestra una ventana emergente dando a conocer el resultado de la acción y recarga la pagina
+                    $.confirm({
+                        title: 'Info',
+                        content: result,
+                        type: 'dark',
+                        typeAnimated: true,
+                        buttons: {
+                            confirm: function() { location.reload(); }
+                        }
+                    });
+                })
+                .fail(function(error) {
+                    // // Muestra una ventana emergente dando a conocer el ERROR pero NO recarga la pagina
+                    $.confirm({
+                        title: 'Error!',
+                        content: 'No se puedo actualizar el registro : El registro tiene llaves foraneas en otras tablas. \nError.status:' + error.status,
+                        type: 'red',
+                        typeAnimated: true,
+                        buttons: {
+                            tryAgain: {
+                                text: 'OK',
+                                btnClass: 'btn-red',
+                                action: function() {}
+                            },
+                        }
+                    });
                 });
-            })
-            .fail(function(error) {
-                // // Muestra una ventana emergente dando a conocer el ERROR pero NO recarga la pagina
-                $.confirm({
-                    title: 'Error!',
-                    content: error,
-                    type: 'red',
-                    typeAnimated: true,
-                    buttons: {
-                        tryAgain: {
-                            text: 'OK',
-                            btnClass: 'btn-red',
-                            action: function() {}
-                        },
-                    }
-                });
+        } else {
+            $.confirm({
+                title: 'Alerta!',
+                content: 'No se aceptan campos vacíos, con cero o solo con especios',
+                type: 'orange',
+                buttons: {
+                    confirm: function() {},
+                }
             });
+        }
     });
 
 
