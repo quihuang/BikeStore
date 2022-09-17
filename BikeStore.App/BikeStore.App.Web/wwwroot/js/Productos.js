@@ -81,6 +81,7 @@ $().ready(function() {
                 })
                 .fail(function(error) {
                     // // Muestra una ventana emergente dando a conocer el ERROR pero NO recarga la pagina
+                    error = 'No se puedo eliminar el registro : El registro tiene llaves foraneas en otras tablas';
                     $.confirm({
                         title: 'Error!',
                         content: error,
