@@ -28,6 +28,25 @@
         </button>
     </div>
 
+    @{
+        if(Model.mensaje != ""){
+            <script>
+                $.confirm({
+                    title: 'Info',
+                    content: @Model.mensaje,
+                    type: 'dark',
+                    typeAnimated: true,
+                    buttons: {
+                        confirm: function() {}
+                    }
+                });  
+            </script>
+          <div class="alert alert-primary" role="alert">
+              @Model.mensaje
+          </div>
+        }
+    }  
+
     <!-- ModalCrear -->
     <div class="modal fade" id="ModalCrear" tabindex="-1" role="dialog" aria-labelledby="ModalCrearLabel"
         aria-hidden="true">
@@ -68,13 +87,6 @@
                                     <input type="number" name="cantidadProducto" id="cantidadProducto" class="form-control" onkeypress="return Solo_Numeros(event);" placeholder="Ingrese la cantidad del producto" aria-describedby="invalid-feedback" minlength="3" maxlength="50" required>
                                     <div class="invalid-feedback">
                                         Ingrese la cantidad de producto vendido.
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="valorVenta">Valor Venta</label>
-                                    <input type="number" name="valorVenta" id="valorVenta" class="form-control" onkeypress="return Solo_Numeros(event);" placeholder=" Ingrese el Valor Venta" aria-describedby="invalid-feedback" minlength="3" maxlength="50" required>
-                                    <div class="invalid-feedback">
-                                        Ingrese el valor de la venta.
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -158,13 +170,7 @@
                                         Ingrese la cantidad del producto vendido.
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="valorVentaUpdate">Valor Venta</label>
-                                    <input type="number" name="valorVentaUpdate" id="valorVentaUpdate" class="form-control" onkeypress="return Solo_Numeros(event);" placeholder="Ingrese el valor de la venta" aria-describedby="invalid-feedback" minlength="3" maxlength="50" required>
-                                    <div class="invalid-feedback">
-                                        Ingrese el valor de la venta.
-                                    </div>
-                                </div>
+                                    <input type="number" name="valorVentaUpdate" id="valorVentaUpdate" class="form-control" hidden>  
                                 <div class="form-group">
                                     <label for="trabajadorUpdate">Trabajador</label>
                                     <select name="trabajadorUpdate" id="trabajadorUpdate" class="form-control" required>

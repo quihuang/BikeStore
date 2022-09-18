@@ -67,36 +67,56 @@ namespace BikeStore.App.Web.Pages
         // // METODO PARA POST DE CREAR
         public IActionResult OnPost()
         {
-            // aquí se debe poner entre [] el nombre de cada campo del formulario
-            var fecha = fechaActual;
-            var cantidadProducto = Request.Form["cantidadProducto"];
-            var valorVenta = Request.Form["valorVenta"];
-            var trabajador = Request.Form["trabajador"];
-            var cliente = Request.Form["cliente"];
             var inventario = Request.Form["inventario"];
+            var cantidadProducto = Request.Form["cantidadProducto"];
+            var inventarioUpdate = _repositorioInventario.GetInventario(int.Parse(inventario));
+            Double restaInventario = inventarioUpdate.Existencias - Double.Parse(cantidadProducto);
 
-            // Creamos el objeto Venta y le pasamos los datos del formulario
-            var venta = new Venta{
-                Fecha = fecha,
-                CantidadProducto = int.Parse(cantidadProducto),
-                ValorVenta = int.Parse(valorVenta),
-                TrabajadorId = int.Parse(trabajador),
-                ClienteId = int.Parse(cliente),
-                InventarioId = int.Parse(inventario)
-            };
+            if(restaInventario > 0){
+                // aquí se debe poner entre [] el nombre de cada campo del formulario
+                var fecha = fechaActual;
+                var trabajador = Request.Form["trabajador"];
+                var cliente = Request.Form["cliente"];        
 
-            // video 02/09 min 2:23:15
-            // llamamos el método del Repositorio y le pasamos por parámetro el objeto que acabamos de crear, y el resultado del método lo almacenamos en la variable result.
-            var result = _repositorioVenta.AddVenta(venta);
+                Double valorVentaCal = inventarioUpdate.PrecioUniVenta * Double.Parse(cantidadProducto);
 
-            // video del 09/09 min 2:53:00
-            if( result > 0){
-                mensaje = "Creación realizada con éxito";
-                return RedirectToPage();
+                Console.WriteLine("restaInventario : " + restaInventario);
+                Console.WriteLine("valorVenta : " + valorVentaCal);
+                Console.WriteLine("inventarioUpdate : " + inventarioUpdate.Id);
+
+                inventarioUpdate.Existencias = (int) restaInventario;
+    
+                var resultInventario = _repositorioInventario.UpdateInventario(inventarioUpdate);
+
+                // Creamos el objeto Venta y le pasamos los datos del formulario
+                var venta = new Venta{
+                    Fecha = fecha,
+                    CantidadProducto = int.Parse(cantidadProducto),
+                    ValorVenta = (int) valorVentaCal,
+                    TrabajadorId = int.Parse(trabajador),
+                    ClienteId = int.Parse(cliente),
+                    InventarioId = int.Parse(inventario)
+                };
+
+                // video 02/09 min 2:23:15
+                // llamamos el método del Repositorio y le pasamos por parámetro el objeto que acabamos de crear, y el resultado del método lo almacenamos en la variable result.
+            
+                var result = _repositorioVenta.AddVenta(venta);
+
+                // video del 09/09 min 2:53:00
+                if( result > 0){
+                    mensaje = "Creación realizada con éxito";
+                    return RedirectToPage();
+                }else{
+                    mensaje = "Falla en el método de creación";
+                    return RedirectToPage("Error");
+                }
+
             }else{
-                mensaje = "Falla en el método de creación";
+                mensaje = "No hay inventario disponible";
                 return RedirectToPage("Error");
             }
+
         }
 
 

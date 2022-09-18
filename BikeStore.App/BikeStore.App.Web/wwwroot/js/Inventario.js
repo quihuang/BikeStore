@@ -15,15 +15,12 @@ function seleccionarRegistroTabla(e, id, productoId, existencias, numerorefcompr
 
     selectOption.removeAttr('selected');
 
-    // debugger;
-
     $('#btn-const').removeAttr('hidden');
     $('#btn-delete').removeAttr('hidden');
     $('#btn-update').removeAttr('hidden');
 
     // Tomamos los parametros y se los asignamos a los campos del ModalActualizar para mostrarlos en Frontend
     document.getElementById("idUpdate").value = id;
-    debugger
     $('#productoUpdateId-' + productoId).attr('selected', true);
     document.getElementById("existenciasUpdate").value = existencias;
     document.getElementById("numeroRefCompraUpdate").value = numerorefcompra;
@@ -49,14 +46,14 @@ $().ready(function() {
 
 
         var validation = true;
-        
+
         // // validacion de los campos del formulario
         for (let x in paquete) {
             // tomamos el valor de cada propiedad y se convierte en String y se le quitan los espacios
             var text = paquete[x].toString().trim();
             console.log("campo: " + x + " -- tipo: " + typeof text + " -- valor: " + text);
             // Nota: cuando el campo es vacío, de tipo Entero o Select, entonces aparece como "NaN" por eso se incluye NaN en el condicional, tambien si el valor entero es cero lo acepta como valido por eso se incluye
-            if (text==0 || text=="NaN" || text.length<=0) {
+            if (text == 0 || text == "NaN" || text.length <= 0) {
                 validation = false;
                 console.log(validation);
             }
