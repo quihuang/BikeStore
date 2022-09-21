@@ -12,7 +12,9 @@ function seleccionarRegistroTabla(e, id, productoId, existencias, numerorefcompr
     selectedRow.addClass("selected");
 
     var selectOption = $('.productoUpdateId');
+    var selectOptionCons = $('.productoUpdateId');
 
+    selectOptionCons.removeAttr('productoCosId');
     selectOption.removeAttr('selected');
 
     $('#btn-const').removeAttr('hidden');
@@ -26,6 +28,14 @@ function seleccionarRegistroTabla(e, id, productoId, existencias, numerorefcompr
     document.getElementById("numeroRefCompraUpdate").value = numerorefcompra;
     document.getElementById("precioUniVentaUpdate").value = preciouniventa;
     document.getElementById("precioUniCompraUpdate").value = preciounicompra;
+
+    // Tomamos los parametros y se los asignamos a los campos del ModalActualizar para mostrarlos en Constancia
+    $('#productoCosId-' + productoId).attr('selected', true);
+    document.getElementById("existenciasContancia").value = existencias;
+    document.getElementById("numerorefcompraContancia").value = numerorefcompra;
+    document.getElementById("preciouniventaContancia").value = preciouniventa;
+    document.getElementById("preciounicompraContancia").value = preciounicompra;
+
 }
 // 2. Luego de modificar los campos en el ModalActualizar, al dar clic en el botón Actualizar se envia a la DB
 
@@ -199,3 +209,4 @@ function crear(text) {
 
     document.getElementById("btn-create-modal").innerHTML = "Crear";
 }
+$('#productoUpdateId-' + productoId).attr('selected', true);

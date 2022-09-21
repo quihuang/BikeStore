@@ -195,24 +195,28 @@
                         <div class="col">
                             <form method="post">
                                 <div class="form-group">
-                                    <label for="producto">Producto</label>
-                                    <input type="text" name="producto" id="producto" class="form-control" aria-describedby="placeholder" placeholder="Los valores deben ser cargados automáticamente" readonly>
+                                    <label for="productoUpdate">Producto</label>
+                                        <select name="productoUpdate" id="productoUpdate" class="form-control" required disabled>
+                                            @foreach (var productos in Model.listadoProducto){
+                                                <option class="productoCosId" id="productoCosId-@productos.Id" value="@productos.Id">@productos.Nombre</option>
+                                            } 
+                                        </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="existencias">Existencias</label>
-                                    <input type="number" name="existencias" id="existencias" class="form-control" aria-describedby="placeholder" placeholder="Los valores deben ser cargados automáticamente" readonly>
+                                    <label for="existenciasContancia">Existencias</label>
+                                    <input type="number" name="existenciasContancia" id="existenciasContancia" class="form-control" readonly>
                                 </div>
                                 <div class="form-group">
-                                    <label for="numerorefcompra">Numero referencia de compra</label>
-                                    <input type="number" name="numerorefcompra" id="numerorefcompra" class="form-control" aria-describedby="placeholder" placeholder="Los valores deben ser cargados automáticamente" readonly>
+                                    <label for="numerorefcompraContancia">Numero referencia de compra</label>
+                                    <input type="number" name="numerorefcompraContancia" id="numerorefcompraContancia" class="form-control" readonly>
                                 </div>
                                 <div class="form-group">
-                                    <label for="preciouniventa">Precio unitario de venta</label>
-                                    <input type="text" name="preciouniventa" id="preciouniventa" class="form-control" aria-describedby="placeholder" placeholder="Los valores deben ser cargados automáticamente" readonly>
+                                    <label for="preciouniventaContancia">Precio unitario de venta</label>
+                                    <input type="text" name="preciouniventaContancia" id="preciouniventaContancia" class="form-control" readonly>
                                 </div>
                                 <div class="form-group">
-                                    <label for="preciounicompra">Precio unitario de compra</label>
-                                    <input type="text" name="preciounicompra" id="preciounicompra" class="form-control" aria-describedby="placeholder" placeholder="Los valores deben ser cargados automáticamente" readonly>
+                                    <label for="preciounicompraContancia">Precio unitario de compra</label>
+                                    <input type="text" name="preciounicompraContancia" id="preciounicompraContancia" class="form-control" readonly>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="reset" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>

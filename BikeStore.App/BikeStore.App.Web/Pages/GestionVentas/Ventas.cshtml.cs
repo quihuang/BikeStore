@@ -119,6 +119,59 @@ namespace BikeStore.App.Web.Pages
 
         }
 
+         public IActionResult OnPostCreateJson([FromBody]Venta venta)
+        {
+            var inventario = venta.InventarioId;
+            var cantidadProducto = venta.CantidadProducto;
+            var fecha = fechaActual;
+            var trabajador = venta.TrabajadorId;
+            var cliente = venta.ClienteId; 
+            var inventarioUpdate = _repositorioInventario.GetInventario(inventario);
+            Double restaInventario = inventarioUpdate.Existencias - cantidadProducto;
+
+            if(restaInventario >= 0){
+                // aquí se debe poner entre [] el nombre de cada campo del formulario       
+
+                Double valorVentaCal = inventarioUpdate.PrecioUniVenta * cantidadProducto;
+
+                Console.WriteLine("restaInventario : " + restaInventario);
+                Console.WriteLine("valorVenta : " + valorVentaCal);
+                Console.WriteLine("inventarioUpdate : " + inventarioUpdate.Id);
+
+                inventarioUpdate.Existencias = (int) restaInventario;
+    
+                var resultInventario = _repositorioInventario.UpdateInventario(inventarioUpdate);
+
+                // Creamos el objeto Venta y le pasamos los datos del formulario
+                var NewVenta = new Venta{
+                    Fecha = fecha,
+                    CantidadProducto = cantidadProducto,
+                    ValorVenta = (int) valorVentaCal,
+                    TrabajadorId = trabajador,
+                    ClienteId = cliente,
+                    InventarioId = inventario
+                };
+
+                // video 02/09 min 2:23:15
+                // llamamos el método del Repositorio y le pasamos por parámetro el objeto que acabamos de crear, y el resultado del método lo almacenamos en la variable result.
+            
+                var result = _repositorioVenta.AddVenta(NewVenta);
+
+                // video del 09/09 min 2:53:00
+                if( result > 0){
+                    mensaje = "Creación realizada con éxito";
+                }else{
+                    mensaje = "Falla en el método de creación";
+                }
+
+            }else{
+                mensaje = "No hay inventario disponible";
+            }
+
+            return Content(mensaje);
+
+        }
+
 
         // // METODO PARA POST DE ACTUALIZAR MEDIANTE AJAX CON JSON
         public IActionResult OnPostUpdateJson([FromBody]Venta venta)
