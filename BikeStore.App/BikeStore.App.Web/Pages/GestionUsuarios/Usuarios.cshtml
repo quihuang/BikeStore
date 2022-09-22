@@ -248,7 +248,7 @@
                             <td>@item.Apellido</td>
                             <td>@item.NumeroTelefono</td>
                             <td>@item.NombreUsuario</td>
-                            <td>$ @item.Salario</td>
+                            <td id="formatPesos">@item.Salario</td>
                             @if (item.Rol == 1){ <td>Comercial</td>}else if(item.Rol == 2){<td>Jefe Operativo</td>}else if(item.Rol == 3){<td>Bodeguero</td>}
                         </tr>
                     }

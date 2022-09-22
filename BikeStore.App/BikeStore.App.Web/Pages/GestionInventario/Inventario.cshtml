@@ -267,10 +267,10 @@
                         {
                             @if(item.ProductoId == productos.Id){<td>@productos.Nombre</td>}
                         }
-                        <td>@item.Existencias</td>
-                        <td>@item.NumeroRefCompra</td>
-                        <td>$ @item.PrecioUniVenta</td>
-                        <td>$ @item.PrecioUniCompra</td>
+                        <td id="formatDecimal">@item.Existencias</td>
+                        <td>Ref. @item.NumeroRefCompra</td>
+                        <td id="formatPesos">@item.PrecioUniVenta</td>
+                        <td id="formatPesos">@item.PrecioUniCompra</td>
                     </tr>
                     }
                 </tbody>

@@ -4,6 +4,31 @@
 // Write your Javascript code.
 $().ready(function() {
 
+    var valoresPesos = $("td#formatPesos");
+    var valoresDecimal = $("td#formatDecimal");
+    var numValue;
+    var num;
+
+    valoresPesos.each(function() {
+        numValue = this.data;
+        num = numValue.replace(/\./g, '');
+        if (!isNaN(num)) {
+            num = num.toString().split('').reverse().join('').replace(/(?=\d*\.?)(\d{3})/g, '$1.');
+            num = num.split('').reverse().join('').replace(/^[\.]/, '');
+            $(this).text("$ " + num);
+        }
+    });
+
+    valoresDecimal.each(function() {
+        numValue = this.data;
+        num = numValue.replace(/\./g, '');
+        if (!isNaN(num)) {
+            num = num.toString().split('').reverse().join('').replace(/(?=\d*\.?)(\d{3})/g, '$1.');
+            num = num.split('').reverse().join('').replace(/^[\.]/, '');
+            $(this).text(num);
+        }
+    });
+
     //Funcion para aplicar validacion con bootstrap
     (function() {
         'use strict'

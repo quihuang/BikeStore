@@ -327,8 +327,8 @@
                              }
                          }   
                         <td>@item.Fecha</td>
-                        <td>@item.CantidadProducto</td>
-                        <td>$ @item.ValorVenta</td>
+                        <td id="formatDecimal">@item.CantidadProducto</td>
+                        <td id="formatPesos">@item.ValorVenta</td>
                         @foreach (var trabajador in Model.listadoTrabajador){
                             @if(@item.TrabajadorId == trabajador.Id){<td>@trabajador.Nombre</td>}
                         }
