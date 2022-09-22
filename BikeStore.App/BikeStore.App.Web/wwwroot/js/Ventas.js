@@ -247,7 +247,11 @@ $().ready(function() {
                     action: function() {
                         var paquete = {
                             "Id": parseInt($("#idUpdate").val()),
+                            "CantidadProducto": parseInt($("#cantidadProductoUpdate").val()),
+                            "InventarioId": parseInt($("#inventarioUpdate").val()),
                         };
+
+                        debugger;
 
                         $.ajax({
                                 type: "POST",

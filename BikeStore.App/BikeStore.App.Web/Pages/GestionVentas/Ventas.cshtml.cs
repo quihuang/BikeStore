@@ -231,17 +231,22 @@ namespace BikeStore.App.Web.Pages
         public IActionResult OnPostDeleteJson([FromBody]Venta venta)
         {
             var ventaResult = _repositorioVenta.GetVenta( venta.Id );
+            var inventario = venta.InventarioId;
 
             var mensaje = "";
 
             if( ventaResult != null)
             {
+                var inventarioUpdate = _repositorioInventario.GetInventario(inventario);
+                inventarioUpdate.Existencias = inventarioUpdate.Existencias + ventaResult.CantidadProducto;
+                _repositorioInventario.UpdateInventario(inventarioUpdate);
+
                 var result = _repositorioVenta.DeleteVenta(ventaResult);
 
                 if( result > 0){
-                    mensaje = "Se eliminó correctamente";
+                    mensaje = "Se realizo la devolución correctamente";
                 }else{
-                    mensaje = "No se pudo eliminar";
+                    mensaje = "No se pudo realizar la devolución";
                 }
 
             }else{
