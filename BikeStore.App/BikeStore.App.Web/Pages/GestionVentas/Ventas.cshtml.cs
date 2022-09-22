@@ -134,10 +134,6 @@ namespace BikeStore.App.Web.Pages
 
                 Double valorVentaCal = inventarioUpdate.PrecioUniVenta * cantidadProducto;
 
-                Console.WriteLine("restaInventario : " + restaInventario);
-                Console.WriteLine("valorVenta : " + valorVentaCal);
-                Console.WriteLine("inventarioUpdate : " + inventarioUpdate.Id);
-
                 inventarioUpdate.Existencias = (int) restaInventario;
     
                 var resultInventario = _repositorioInventario.UpdateInventario(inventarioUpdate);
@@ -177,23 +173,50 @@ namespace BikeStore.App.Web.Pages
         public IActionResult OnPostUpdateJson([FromBody]Venta venta)
         {
             var ventaResult = _repositorioVenta.GetVenta( venta.Id );
+            var inventario = venta.InventarioId;
+            var cantidadProducto = venta.CantidadProducto;
 
             var mensaje = "";
 
             if( ventaResult != null)
             {
-                ventaResult.CantidadProducto = venta.CantidadProducto;
-                ventaResult.ValorVenta = venta.ValorVenta;
-                ventaResult.TrabajadorId = venta.TrabajadorId;
-                ventaResult.ClienteId = venta.ClienteId;
-                ventaResult.InventarioId = venta.InventarioId;
+                
+                var inventarioUpdate = _repositorioInventario.GetInventario(inventario);
+                
+                inventarioUpdate.Existencias = inventarioUpdate.Existencias + ventaResult.CantidadProducto;
 
-                var result = _repositorioVenta.UpdateVenta(ventaResult);
+                _repositorioInventario.UpdateInventario(inventarioUpdate);
 
-                if( result > 0){
-                    mensaje = "Se actualizó correctamente";
+                //Nuevo inventario Actualizado
+
+                var inventarioUpdatetwo = _repositorioInventario.GetInventario(inventario);
+
+                Double valorVentaCal = inventarioUpdatetwo.PrecioUniVenta * cantidadProducto;
+
+                Double restaInventario = inventarioUpdatetwo.Existencias - cantidadProducto;
+
+                if(restaInventario >= 0){
+
+                    inventarioUpdatetwo.Existencias = (int) restaInventario;
+
+                    _repositorioInventario.UpdateInventario(inventarioUpdatetwo);
+
+                    ventaResult.CantidadProducto = venta.CantidadProducto;
+                    ventaResult.ValorVenta = (int) valorVentaCal;
+                    ventaResult.TrabajadorId = venta.TrabajadorId;
+                    ventaResult.ClienteId = venta.ClienteId;
+                    ventaResult.InventarioId = venta.InventarioId;
+
+                    var result = _repositorioVenta.UpdateVenta(ventaResult);
+
+                    if( result > 0){
+                        mensaje = "Se actualizó correctamente";
+                    }else{
+                        mensaje = "No se pudo actualizar";
+                    }
+                    
                 }else{
-                    mensaje = "No se pudo actualizar";
+                    mensaje = "No hay inventario disponible";
                 }
 
             }else{

@@ -51,6 +51,22 @@ namespace BikeStore.App.Persistencia
 
             return producto;
         }
+
+        int IRepositorioInventario.GetTotalInversion(){
+
+            var invetarios = _appContext.Inventarios;
+            var total = 0;
+            var multiplica = 0;
+
+            foreach (var invetario in invetarios)
+            {
+              multiplica = (int) invetario.PrecioUniCompra * invetario.Existencias;
+
+              total+= multiplica;
+            }
+
+             return (int) total;
+        }
     
     }
 }
