@@ -12,5 +12,7 @@ namespace BikeStore.App.Persistencia
         int AddVenta(Venta Venta);
         int UpdateVenta(Venta Venta);
         int DeleteVenta(Venta Venta);
+        long GetTotalGanancia();
+        long GetTotalVendidos();
     } 
 }

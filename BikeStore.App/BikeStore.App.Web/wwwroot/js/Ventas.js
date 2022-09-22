@@ -236,7 +236,8 @@ $().ready(function() {
 
         $.confirm({
             title: 'Alerta!',
-            content: 'Seguro que desea eliminar este registro?',
+            content: 'Seguro que desea realizar la devolución de esta venta?',
+            type: 'orange',
             buttons: {
                 cancel: function() {},
                 somethingElse: {

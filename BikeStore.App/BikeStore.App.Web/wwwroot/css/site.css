@@ -336,3 +336,10 @@ tr.selected:hover {
     --bs-table-hover-color: white !important;
     --bs-table-hover-bg: #0d6efd !important;
 }
+
+.bottons {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    align-items: center;
+}

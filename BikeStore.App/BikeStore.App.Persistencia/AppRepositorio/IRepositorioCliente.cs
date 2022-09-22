@@ -13,5 +13,6 @@ namespace BikeStore.App.Persistencia
         int AddCliente(Cliente Cliente);
         int UpdateCliente(Cliente Cliente);
         int DeleteCliente(Cliente Cliente);
+        long GetTotalClientes();
     } 
 }

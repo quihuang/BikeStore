@@ -130,6 +130,7 @@ $().ready(function() {
         $.confirm({
             title: 'Alerta!',
             content: 'Seguro que desea eliminar este registro?',
+            type: 'orange',
             buttons: {
                 cancel: function() {},
                 somethingElse: {

@@ -18,16 +18,18 @@ namespace BikeStore.App.Web.Pages
         private IRepositorioInventario _repositorioInventario = new RepositorioInventario( new BikeStore.App.Persistencia.AppContext() );
         private IRepositorioProducto _repositorioProducto = new RepositorioProducto( new BikeStore.App.Persistencia.AppContext() );
 
-        public int totalInversion;
-        public int totalVentas;
-        public int totalTotalTrabajadores;
-        public int totalClientes;
+        public long totalInversion;
+        public long totalVentas;
+        public long totalProductosVendidos;
+        public long totalClientes;
 
 
         public void OnGet()
         {
             totalInversion = _repositorioInventario.GetTotalInversion();
-            Console.WriteLine("totalInversion" + totalInversion);
+            totalVentas = _repositorioVenta.GetTotalGanancia();
+            totalProductosVendidos = _repositorioVenta.GetTotalVendidos();
+            totalClientes = _repositorioCliente.GetTotalClientes();
         }
     }
 }

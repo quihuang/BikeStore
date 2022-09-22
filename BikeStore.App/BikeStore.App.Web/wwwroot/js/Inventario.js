@@ -139,6 +139,7 @@ $().ready(function() {
         $.confirm({
             title: 'Alerta!',
             content: 'Seguro que desea eliminar este registro?',
+            type: 'orange',
             buttons: {
                 cancel: function() {},
                 somethingElse: {
@@ -209,4 +210,3 @@ function crear(text) {
 
     document.getElementById("btn-create-modal").innerHTML = "Crear";
 }
-$('#productoUpdateId-' + productoId).attr('selected', true);

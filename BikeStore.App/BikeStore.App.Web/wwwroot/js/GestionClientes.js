@@ -43,21 +43,21 @@ $().ready(function() {
 
 
         var validation = true;
-        
+
         // // validacion de los campos del formulario
         for (let x in paquete) {
             // tomamos el valor de cada propiedad y se convierte en String y se le quitan los espacios
             var text = paquete[x].toString().trim();
             console.log("campo: " + x + " -- tipo: " + typeof text + " -- valor: " + text);
             // Nota: cuando el campo es vacío, de tipo Entero o Select, entonces aparece como "NaN" por eso se incluye NaN en el condicional, tambien si el valor entero es cero lo acepta como valido por eso se incluye
-            if (text==0 || text=="NaN" || text.length<=0) {
+            if (text == 0 || text == "NaN" || text.length <= 0) {
                 validation = false;
                 console.log(validation);
             }
         }
 
         if (validation) {
-        
+
             // variable que se usará un poco mas abajo para ocultar el modal
             var modal = $('#ModalActualizar');
 
@@ -126,6 +126,7 @@ $().ready(function() {
         $.confirm({
             title: 'Alerta!',
             content: 'Seguro que desea eliminar este registro?',
+            type: 'orange',
             buttons: {
                 cancel: function() {},
                 somethingElse: {

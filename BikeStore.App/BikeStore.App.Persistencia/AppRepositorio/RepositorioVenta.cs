@@ -45,5 +45,19 @@ namespace BikeStore.App.Persistencia
             _appContext.Venta.Remove(venta);
             return _appContext.SaveChanges();
         }
+
+        long IRepositorioVenta.GetTotalGanancia(){
+
+              var totalVentas = _appContext.Venta.Sum(x=> x.ValorVenta);
+            
+             return (long) totalVentas;
+        }
+
+        long IRepositorioVenta.GetTotalVendidos(){
+
+              var totalVendidos = _appContext.Venta.Sum(x=> x.CantidadProducto);
+            
+             return (long) totalVendidos;
+        }
     }
 }

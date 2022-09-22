@@ -13,6 +13,6 @@ namespace BikeStore.App.Persistencia
         int AddInventario(Inventario Inventario);
         int UpdateInventario(Inventario Inventario);
         int DeleteInventario(Inventario Inventario);
-        int GetTotalInversion();
+        long GetTotalInversion();
     } 
 }
