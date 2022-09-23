@@ -251,8 +251,6 @@ $().ready(function() {
                             "InventarioId": parseInt($("#inventarioUpdate").val()),
                         };
 
-                        debugger;
-
                         $.ajax({
                                 type: "POST",
                                 url: "/GestionVentas/Ventas?handler=DeleteJson",
