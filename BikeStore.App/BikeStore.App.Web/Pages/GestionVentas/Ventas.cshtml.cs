@@ -1,5 +1,4 @@
 using System;
-//using System.Web.Script.Serialization;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,11 +7,27 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using BikeStore.App.Dominio;
 using BikeStore.App.Persistencia;
 using System.Collections;
-//dotnet add reference ..\System.Web.Script.Serialization\
+using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Session;
+
 namespace BikeStore.App.Web.Pages
 {
     public class VentasModel : PageModel
     {
+
+        //private readonly ILogger<VentasModel> _logger;
+        public string _sessionIdUser = "_IdUser";
+        public string _sessionIdRol = "_idRol";
+        public IHttpContextAccessor _httpContextAccessor;
+        public string rolValidateSession;
+
+         public VentasModel(ILogger<VentasModel> logger, IHttpContextAccessor httpContextAccessor)
+        {
+            //var login = 
+            _httpContextAccessor = httpContextAccessor;
+        }
+
         // video 02/09 min 2:30:20 y en el minuto 2:41:27
         // Instanciar el repositorio, igual como se hizo en la capa Consola
         private IRepositorioVenta _repositorioVenta = new RepositorioVenta( new BikeStore.App.Persistencia.AppContext() );
@@ -34,32 +49,48 @@ namespace BikeStore.App.Web.Pages
         public string mensaje;
 
 
-        public void OnGet()
+        public IActionResult OnGet()
         {
-            // Método para listar todas las Ventas y mostrarlas en la tabla
-            listadoVenta = new List<Venta>(); // se instancia vacío
-            listadoVenta = _repositorioVenta.GetAllVentas().ToList();
 
-            // Método para listar los trabajadores y mostrarlos en una lista desplegable en la ventana Modal de Crear Venta
-            listadoTrabajador = new List<Trabajador>(); // se instancia vacío
-            listadoTrabajador = _repositorioTrabajador.GetAllTrabajadores().ToList();
+            var userValidateSession = _httpContextAccessor.HttpContext.Session.GetString(_sessionIdUser);
+            rolValidateSession = _httpContextAccessor.HttpContext.Session.GetString(_sessionIdRol);
 
-            // Método para listar los trabajadores y mostrarlos en una lista desplegable en la ventana Modal de Crear Venta
-            listadoCliente = new List<Cliente>();
-            listadoCliente = _repositorioCliente.GetAllClientes().ToList();
+            if( string.IsNullOrEmpty(userValidateSession) || string.IsNullOrEmpty(rolValidateSession))
+            {
+                
+                return RedirectToPage("/Error");
+            
+            }else if(rolValidateSession == "1" || rolValidateSession == "2"){
 
-            listadoInventario = new List<Inventario>();
-            listadoInventario = _repositorioInventario.GetAllInventarios().ToList();
+                // Método para listar todas las Ventas y mostrarlas en la tabla
+                listadoVenta = new List<Venta>(); // se instancia vacío
+                listadoVenta = _repositorioVenta.GetAllVentas().ToList();
 
-            listadoProductos = new List<Producto>();
-            listadoProductos = _repositorioProducto.GetAllProductos().ToList();
+                // Método para listar los trabajadores y mostrarlos en una lista desplegable en la ventana Modal de Crear Venta
+                listadoTrabajador = new List<Trabajador>(); // se instancia vacío
+                listadoTrabajador = _repositorioTrabajador.GetAllTrabajadores().ToList();
 
-            // PARA MOSTRAR UN MENSAJE - PENDIENTE POR PROBAR
-            if(ViewData["mensaje"] != null){
-                mensaje = ViewData["mensaje"].ToString();
-            } else {
-                mensaje = "";
+                // Método para listar los trabajadores y mostrarlos en una lista desplegable en la ventana Modal de Crear Venta
+                listadoCliente = new List<Cliente>();
+                listadoCliente = _repositorioCliente.GetAllClientes().ToList();
+
+                listadoInventario = new List<Inventario>();
+                listadoInventario = _repositorioInventario.GetAllInventarios().ToList();
+
+                listadoProductos = new List<Producto>();
+                listadoProductos = _repositorioProducto.GetAllProductos().ToList();
+
+                // PARA MOSTRAR UN MENSAJE - PENDIENTE POR PROBAR
+                if(ViewData["mensaje"] != null){
+                    mensaje = ViewData["mensaje"].ToString();
+                } else {
+                    mensaje = "";
+                }
+                return Page();
+            }else{
+                return RedirectToPage("/Error");
             }
+            
         }
 
 
@@ -79,10 +110,6 @@ namespace BikeStore.App.Web.Pages
                 var cliente = Request.Form["cliente"];        
 
                 Double valorVentaCal = inventarioUpdate.PrecioUniVenta * Double.Parse(cantidadProducto);
-
-                Console.WriteLine("restaInventario : " + restaInventario);
-                Console.WriteLine("valorVenta : " + valorVentaCal);
-                Console.WriteLine("inventarioUpdate : " + inventarioUpdate.Id);
 
                 inventarioUpdate.Existencias = (int) restaInventario;
     

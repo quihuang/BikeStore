@@ -4,6 +4,23 @@
 // Write your Javascript code.
 $().ready(function() {
 
+    // validacion para Bodeguero
+    if ($('#containerRol').text() == "3") {
+        $('#core').attr('hidden', true);
+        $('.btn-reporte-gerencial').attr('hidden', true);
+        $('.btn-gestion-user').attr('hidden', true);
+        $('.btn-gestion-user-icon').attr('hidden', true);
+        $('#btn-ventas').attr('hidden', true);
+    }
+    // validacion para Comercial
+    if ($('#containerRol').text() == "1") {
+        $('#core').attr('hidden', true);
+        $('#btn-reporte-gerencial').attr('hidden', true);
+        $('.btn-trabajador').attr('hidden', true);
+        $('#btn-productos').attr('hidden', true);
+        $('#btn-inventario').attr('hidden', true);
+    }
+
     var valoresPesos = $("td#formatPesos");
     var valoresDecimal = $("td#formatDecimal");
     var numValue;

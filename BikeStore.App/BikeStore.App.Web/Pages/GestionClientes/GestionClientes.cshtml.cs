@@ -6,11 +6,24 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using BikeStore.App.Dominio;
 using BikeStore.App.Persistencia;
+using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Session;
 
 namespace BikeStore.App.Web.Pages
 {
     public class GestionClientesModel : PageModel
     {
+        public string _sessionIdUser = "_IdUser";
+        public string _sessionIdRol = "_idRol";
+        public IHttpContextAccessor _httpContextAccessor;
+        public string rolValidateSession;
+
+        public GestionClientesModel(ILogger<GestionClientesModel> logger, IHttpContextAccessor httpContextAccessor)
+        {
+            _httpContextAccessor = httpContextAccessor;
+        }
+
         // video 02/09 min 2:30:20 y en el minuto 2:41:27
         // Instanciar el repositorio, igual como se hizo en la capa Consola
         private IRepositorioCliente _repositorioCliente = new RepositorioCliente( new Persistencia.AppContext() );
@@ -21,22 +34,42 @@ namespace BikeStore.App.Web.Pages
 
         public string mensaje;
         
-        public void OnGet()
+        public IActionResult OnGet()
         {
-            // video 02/09 min 2:50:22
-            // debo inicializar el objeto listado____ dentro de OnGet para que lo pueda interpretar
-            listadoCliente = new List<Cliente>(); // se instancia vacío
-            
-            // llenamos la variable listado____ a traves del método GetAll____()
-            // al final se usa el método ToList para convertir a Lista el IEnumerable que genera el método GetAll____.
-            listadoCliente = _repositorioCliente.GetAllClientes().ToList();
 
-            // PARA MOSTRAR UN MENSAJE - PENDIENTE POR PROBAR
-            if(ViewData["mensaje"] != null){
-                mensaje = ViewData["mensaje"].ToString();
-            } else {
-                mensaje = "";
+            var userValidateSession = _httpContextAccessor.HttpContext.Session.GetString(_sessionIdUser);
+            rolValidateSession = _httpContextAccessor.HttpContext.Session.GetString(_sessionIdRol);
+
+            if( string.IsNullOrEmpty(userValidateSession) || string.IsNullOrEmpty(rolValidateSession))
+            {
+
+                return RedirectToPage("/Error");
+            
+            }else if(rolValidateSession == "1" || rolValidateSession == "2"){
+
+                 // video 02/09 min 2:50:22
+                // debo inicializar el objeto listado____ dentro de OnGet para que lo pueda interpretar
+                listadoCliente = new List<Cliente>(); // se instancia vacío
+            
+                // llenamos la variable listado____ a traves del método GetAll____()
+                // al final se usa el método ToList para convertir a Lista el IEnumerable que genera el método GetAll____.
+                listadoCliente = _repositorioCliente.GetAllClientes().ToList();
+
+                // PARA MOSTRAR UN MENSAJE - PENDIENTE POR PROBAR
+                if(ViewData["mensaje"] != null){
+                    mensaje = ViewData["mensaje"].ToString();
+                } else {
+                    mensaje = "";
+                }
+
+                return Page();
+
+            }else{
+
+                return RedirectToPage("/Error");
+
             }
+           
         }
 
         // video 02/09 min 2:09:20

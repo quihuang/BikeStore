@@ -45,11 +45,7 @@ $().ready(function() {
                                 confirm: function() {}
                             }
                         });
-                    } else if (result == "2") {
-                        window.location.href = "Bienvenida/Inicio";
-                    } else if (result == "1") {
-                        window.location.href = "Bienvenida/Inicio";
-                    } else if (result == "3") {
+                    } else {
                         window.location.href = "Bienvenida/Inicio";
                     }
 

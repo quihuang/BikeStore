@@ -16,26 +16,32 @@ namespace BikeStore.App.Web.Pages
         public string _sessionIdUser = "_IdUser";
         public string _sessionIdRol = "_idRol";
         public IHttpContextAccessor _httpContextAccessor;
+        public string rolValidateSession;
 
         public InicioModel(ILogger<InicioModel> logger, IHttpContextAccessor httpContextAccessor)
         {
             _logger = logger;
             _httpContextAccessor = httpContextAccessor;
-            Console.WriteLine("Constructor Inicio");    
-            Console.WriteLine(_httpContextAccessor.HttpContext.Session.GetString(_sessionIdUser));
-            Console.WriteLine(_httpContextAccessor.HttpContext.Session.GetString(_sessionIdRol));
         }
         
         public IActionResult OnGet()
         {
-            if( string.IsNullOrEmpty(_httpContextAccessor.HttpContext.Session.GetString(_sessionIdUser)) ||
-                string.IsNullOrEmpty(_httpContextAccessor.HttpContext.Session.GetString(_sessionIdRol)))
+            var userValidateSession = _httpContextAccessor.HttpContext.Session.GetString(_sessionIdUser);
+            rolValidateSession = _httpContextAccessor.HttpContext.Session.GetString(_sessionIdRol);
+
+            if( string.IsNullOrEmpty(userValidateSession) || string.IsNullOrEmpty(rolValidateSession))
             {
-                Console.WriteLine("Acceso Ilegal");
+                
                 return RedirectToPage("/Index");
-            }else{
-                Console.WriteLine("Tiene permiso");
+                    
+            }else if(rolValidateSession == "1" || rolValidateSession == "2" || rolValidateSession ==  "3"){
+
                 return Page();
+
+            }else{
+
+                return RedirectToPage("/Index");
+
             }
         }
     }

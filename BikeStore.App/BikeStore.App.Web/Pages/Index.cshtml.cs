@@ -32,15 +32,17 @@ namespace BikeStore.App.Web.Pages
         //     _logger = logger;
         // }
 
-        public void OnGet(string cerrar)
+        public IActionResult OnGet(string cerrar)
         {
             if(cerrar == "1"){
 
                 _httpContextAccessor.HttpContext.Session.Remove(_sessionIdUser);
                 _httpContextAccessor.HttpContext.Session.Remove(_sessionIdRol);
                 _httpContextAccessor.HttpContext.Session.Clear();
-                Console.WriteLine("sesion terminada");
+                return RedirectToPage("/Index");
             }  
+
+            return Page();
         }
 
         public IActionResult OnPost()
@@ -72,9 +74,6 @@ namespace BikeStore.App.Web.Pages
                         _httpContextAccessor.HttpContext.Session.SetString(_sessionIdUser, userId);
                         _httpContextAccessor.HttpContext.Session.SetString(_sessionIdRol, rolId.ToString());
 
-                        Console.WriteLine(_httpContextAccessor.HttpContext.Session.GetString(_sessionIdUser));
-                        Console.WriteLine(_httpContextAccessor.HttpContext.Session.GetString(_sessionIdRol));
-
                         mensaje = rolId.ToString();
 
                     }else{
@@ -86,8 +85,6 @@ namespace BikeStore.App.Web.Pages
             }else{
                 mensaje = "El usuario y la contraseña son requeridos para poder iniciar sesion";
             }
-
-            Console.WriteLine(mensaje);
 
             return Content(mensaje);
             

@@ -6,11 +6,24 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using BikeStore.App.Dominio;
 using BikeStore.App.Persistencia;
+using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Session;
 
 namespace BikeStore.App.Web
 {
     public class UsuariosModel : PageModel
     {
+        // private readonly ILogger<UsuariosModel> _logger;
+        public string _sessionIdUser = "_IdUser";
+        public string _sessionIdRol = "_idRol";
+        public IHttpContextAccessor _httpContextAccessor;
+        public string rolValidateSession;
+
+        public UsuariosModel(ILogger<UsuariosModel> logger, IHttpContextAccessor httpContextAccessor)
+        {
+            _httpContextAccessor = httpContextAccessor;
+        }
         // video 02/09 min 2:30:20 y en el minuto 2:41:27
         // Instanciar el repositorio, igual como se hizo en la capa Consola
         private IRepositorioTrabajador _repositorioTrabajador = new RepositorioTrabajador( new Persistencia.AppContext() );
@@ -22,21 +35,33 @@ namespace BikeStore.App.Web
 
         public string mensaje;
 
-        public void OnGet()
+        public IActionResult OnGet()
         {
-            // video 02/09 min 2:50:22
-            // debo inicializar el objeto listado_____ dentro de OnGet para que lo pueda interpretar
-            listadoTrabajador = new List<Trabajador>(); // se instancia vacío
+            var userValidateSession = _httpContextAccessor.HttpContext.Session.GetString(_sessionIdUser);
+            rolValidateSession = _httpContextAccessor.HttpContext.Session.GetString(_sessionIdRol);
 
-            // llenamos la variable listado____ a traves del método GetAll____()
-            // al final se usa el método ToList para convertir a Lista el IEnumerable que genera el método GetAll____.
-            listadoTrabajador = _repositorioTrabajador.GetAllTrabajadores().ToList();
+            if( string.IsNullOrEmpty(userValidateSession) || string.IsNullOrEmpty(rolValidateSession))
+            {
+            return RedirectToPage("/Error");
 
-            // PARA MOSTRAR UN MENSAJE - PENDIENTE POR PROBAR
-            if(ViewData["mensaje"] != null){
+            }else if(rolValidateSession == "2"){
+                // video 02/09 min 2:50:22
+                // debo inicializar el objeto listado_____ dentro de OnGet para que lo pueda interpretar
+                listadoTrabajador = new List<Trabajador>(); // se instancia vacío
+
+                // llenamos la variable listado____ a traves del método GetAll____()
+                // al final se usa el método ToList para convertir a Lista el IEnumerable que genera el método GetAll____.
+                listadoTrabajador = _repositorioTrabajador.GetAllTrabajadores().ToList();
+
+                // PARA MOSTRAR UN MENSAJE - PENDIENTE POR PROBAR
+                if(ViewData["mensaje"] != null){
                 mensaje = ViewData["mensaje"].ToString();
-            } else {
+                } else {
                 mensaje = "";
+                }
+                return Page();
+            }else{
+                return RedirectToPage("/Error");
             }
         }
 
