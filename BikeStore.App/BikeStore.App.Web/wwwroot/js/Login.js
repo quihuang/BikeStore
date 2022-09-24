@@ -25,24 +25,34 @@ $().ready(function() {
 
             $.ajax({
                     type: "POST",
-                    url: "Index?handler=ValidateLogin",
+                    url: "/Index?handler=ValidateLogin",
                     contentType: "application/json; charset=utf-8",
                     dataType: "html",
                     headers: {
                         "RequestVerificationToken": $('input:hidden[name="__RequestVerificationToken"]').val()
-                    }
+                    },
+                    data: JSON.stringify(credentials),
                 })
                 .done(function(result) {
                     // // Muestra una ventana emergente dando a conocer el resultado de la acción y recarga la pagina
-                    $.confirm({
-                        title: 'Info',
-                        content: result,
-                        type: 'dark',
-                        typeAnimated: true,
-                        buttons: {
-                            confirm: function() { location.reload(); }
-                        }
-                    });
+                    if (result == "0") {
+                        $.confirm({
+                            title: 'Info',
+                            content: "Usuario y/o contraseña incorrectos",
+                            type: 'dark',
+                            typeAnimated: true,
+                            buttons: {
+                                confirm: function() {}
+                            }
+                        });
+                    } else if (result == "2") {
+                        window.location.href = "Bienvenida/Inicio";
+                    } else if (result == "1") {
+                        window.location.href = "Bienvenida/Inicio";
+                    } else if (result == "3") {
+                        window.location.href = "Bienvenida/Inicio";
+                    }
+
                 })
                 .fail(function(error) {
                     // // Muestra una ventana emergente dando a conocer el ERROR pero NO recarga la pagina

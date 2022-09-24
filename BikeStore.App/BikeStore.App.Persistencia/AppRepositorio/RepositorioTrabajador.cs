@@ -49,5 +49,29 @@ namespace BikeStore.App.Persistencia
             _appContext.Trabajadores.Remove(trabajador);
             return _appContext.SaveChanges();
         }
+
+        Trabajador IRepositorioTrabajador.GetTrabajadoresForUser(string user) {
+
+            var trabajadorObject = new Trabajador();
+            
+            var trabajadores = _appContext.Trabajadores;
+
+            foreach (var trabajador in trabajadores)
+            {
+                if(Equals(trabajador.NombreUsuario,user)){
+                
+                    trabajadorObject.NombreUsuario = trabajador.NombreUsuario;
+                    trabajadorObject.Contraseña = trabajador.Contraseña;
+                    trabajadorObject.Rol = trabajador.Rol;
+
+                    break;
+                }else{
+                    trabajadorObject.NombreUsuario = "null";
+                }
+            }
+            
+            return trabajadorObject;
+            
+        }
     }
 }

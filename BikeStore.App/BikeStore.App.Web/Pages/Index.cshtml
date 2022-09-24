@@ -1,6 +1,7 @@
 ﻿@page
 @model IndexModel
 @{
+    Layout = "_LayoutLogin";
     ViewData["Title"] = "Login";
     ViewData["script"] = "Login.js"; 
 }
@@ -16,6 +17,7 @@
                     </div>
                     <div class="card-body">
                         <form>
+                            @Html.AntiForgeryToken()
                             <div class="form-floating mb-3">
                                 <input class="form-control" id="inputEmail" type="email"
                                     placeholder="name@example.com" />
@@ -26,7 +28,7 @@
                                 <label for="inputPassword">Contraseña</label>
                             </div>
                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                <a id="btn-login" class="btn btn-primary loginbtn" asp-page="/Bienvenida/Inicio">Login</a>
+                                <a id="btn-login" class="btn btn-primary loginbtn">Login</a>
                             </div>
                         </form>
                     </div>

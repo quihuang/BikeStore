@@ -10,6 +10,7 @@ namespace BikeStore.App.Persistencia
         IEnumerable<Trabajador> GetAllTrabajadores();
         Trabajador GetTrabajador(int idTrabajador);
         IEnumerable<Trabajador> GetAllTrabajadoresForName(string name);
+        Trabajador GetTrabajadoresForUser(string user);
         int AddTrabajador(Trabajador Trabajador);
         int UpdateTrabajador(Trabajador Trabajador);
         int DeleteTrabajador(Trabajador Trabajador);
