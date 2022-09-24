@@ -7,7 +7,7 @@ $().ready(function() {
     // validacion para Bodeguero
     if ($('#containerRol').text() == "3") {
         $('#core').attr('hidden', true);
-        $('.btn-reporte-gerencial').attr('hidden', true);
+        $('#btn-reporte-gerencial').attr('hidden', true);
         $('.btn-gestion-user').attr('hidden', true);
         $('.btn-gestion-user-icon').attr('hidden', true);
         $('#btn-ventas').attr('hidden', true);
