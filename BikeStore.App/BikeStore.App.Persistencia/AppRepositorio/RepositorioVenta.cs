@@ -16,7 +16,7 @@ namespace BikeStore.App.Persistencia
 
         // Método para buscar todos los registros
         IEnumerable<Venta> IRepositorioVenta.GetAllVentas(){
-             return _appContext.Venta;
+             return _appContext.Venta.OrderByDescending(x => x.Id);
         }
 
         // Método para buscar por id
